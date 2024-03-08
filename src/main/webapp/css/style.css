@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+/*
+	css 적용 규칙,
+	Bolck이름__Element이름
+	ex)form class = "freeBoard"
+		input class = "freeBoard__name"
+		input class = "freeBoard__pwd"
+	
+	Block 만 적용하여 선택자를 이용해도 가능합니다.
+	ex)
+		form class = "freeBoard"
+		 input
+		 input
+		
+		.freeBoard >input:last-child{
+			css 내용
+		}
+*/
+
+
+/* components - 페이지의 일부분에 들어가는 css를 작성할 때 아래에 import 합니다.
+	ex) header - footer
+*/
+
+
+/* screens - 각 페이지에 들어가는 css를 작성할 때 아래에 import 합니다
+	ex) 리스트, 상세화면, 수정 등등
+ */
+/*components*/
+@import "./components/header.css";
+@import "./components/footer.css";
+
+/*screens*/
+
+
+
+/* 이 아래는 모든 곳에서 공통되는 css를 적용합니다.
+	ex) a 태그, font-size, font-family 등등
+*/
+
+*{
+	font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-optical-sizing: auto;
+	box-sizing: border-box;
+	object-fit: cover;
+	color: var(--text-title-color);
+}
+
+
+:root{
+	--main-color: #82b4f0; /* 메인색 */
+	--main-btn-color : #154783; /* 버튼 메인색*/
+	--main-blur-color : #d4e7fd; /* 연한 메인색 */
+	--main-location-color : #4586d4; /*이동 링크 메인색*/
+	--text-title-color : #333333; /* 텍스트 진한색 (글 제목) */
+	--text-cont-color : #898989; /* 텍스트 보통색 (글 내용) */
+	--text-sub-color : #b0b0b0; /* 텍스트 연한색 */ 
+	--border-color : #eeeeee; /* 보더색상 */
+	--main-width: 1200px; /*body 사이즈*/
+}
+
+
