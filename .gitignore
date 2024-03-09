@@ -1,3 +1,6 @@
+.project
+.classpath
+
 # Our Disable Function
 images/*.jpg
 images/*.jpeg
