@@ -55,8 +55,7 @@ buildNumber.properties
 
 ## Eclipse configs
 
-.project
-.classpath
+
 .settings/
 
 # Dev executables
