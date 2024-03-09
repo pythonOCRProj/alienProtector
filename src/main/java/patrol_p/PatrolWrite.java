@@ -10,9 +10,9 @@ import java.util.Arrays;
 public class PatrolWrite {
 
 	public static void main(String[] args) {
-		String path = "ailenPython/patrol_python/ocr.py";
+		String path = "C:\\woong\\workspace\\alienProtector\\ailenPython\\patrol_python\\ocr.py";
 
-		ProcessBuilder pb = new ProcessBuilder("python3", path);
+		ProcessBuilder pb = new ProcessBuilder("python", path);
 		try {
 			Process process = pb.start();
 			
@@ -26,17 +26,17 @@ public class PatrolWrite {
 				System.out.println(line);
 				char [] ocr = line.trim().toCharArray();            
 				switch(ocr[2]) {
-				case '1':
-					System.out.println("101");
-					break;
-				case '2':
-					System.out.println("102");
-					break;
-				case '3':
-					System.out.println("103");
-					break;
+					case '1':
+						System.out.println("101");
+						break;
+					case '2':
+						System.out.println("102");
+						break;
+					case '3':
+						System.out.println("103");
+						break;
 				}
-				}
+			}
 			
 			br.close();
 			isr.close();
