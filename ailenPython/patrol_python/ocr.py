@@ -7,7 +7,7 @@ try:
     from imutils.perspective import four_point_transform
     from PIL import Image
     print("aaaa")
-    ori = cv2.imread("/Users/zuzooclub/Desktop/Proj/java/hone/src/main/webapp/img/102.jpeg")
+    ori = cv2.imread("C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\img\\102.jpeg")
     blur = cv2.GaussianBlur(ori,(5,5),0)
     edged = cv2.Canny(blur,0,255)
     pts, hh = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
