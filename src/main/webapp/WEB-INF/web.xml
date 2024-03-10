@@ -19,4 +19,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>WorkerController</display-name>
+    <servlet-name>WorkerController</servlet-name>
+    <servlet-class>controller_p.WorkerController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WorkerController</servlet-name>
+    <url-pattern>/WorkerController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUp</display-name>
+    <servlet-name>FileUp</servlet-name>
+    <servlet-class>worker_p.FileUp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUp</servlet-name>
+    <url-pattern>/FileUp</url-pattern>
+  </servlet-mapping>
 </web-app>
