@@ -6,10 +6,6 @@
     <servlet-name>NoticeController</servlet-name>
     <servlet-class>controller_p.NoticeController</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>NoticeController</servlet-name>
-    <url-pattern>/NoticeController</url-pattern>
-  </servlet-mapping>
   <display-name>alienProtector</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
