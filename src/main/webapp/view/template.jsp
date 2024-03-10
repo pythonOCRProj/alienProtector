@@ -13,7 +13,7 @@
 	<jsp:include page="components/header.jsp" />
 	
 	<main>
-		<%-- <jsp:include page="${incUrl}"/>  --%>
+		<jsp:include page="${incUrl}"/>
 	</main>
 	
 	<jsp:include page="components/footer.jsp" />
