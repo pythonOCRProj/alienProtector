@@ -7,48 +7,32 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PatrolWrite {
+import dao_p.PatrolDAO;
+import dto_p.PatrolDTO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import service_p.PatrolService;
 
-	public static void main(String[] args) {
-		String path = "C:\\woong\\workspace\\alienProtector\\ailenPython\\patrol_python\\ocr.py";
-
-		ProcessBuilder pb = new ProcessBuilder("python", path);
-		try {
-			Process process = pb.start();
+public class PatrolWrite implements PatrolService{
+	public void service(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("순찰 등록 페이지");
+		ArrayList<PatrolDTO> data = new PatrolDAO().list();
+		ArrayList<Boolean> chk = new ArrayList<Boolean>();
+		
+		for (int i = 0; i < 5; i++) {
+			chk.add(false);
 			
-			// 실행중에 print()로 출력하는 내용 가져오기
-			InputStreamReader isr = new InputStreamReader(process.getInputStream(), "ms949");
-//			FileReader fr = new FileReader("ailenPython/text/aaa.txt");
-			BufferedReader br = new BufferedReader(isr);
-			
-			String line = null;
-			while((line=br.readLine())!=null) {
-				System.out.println(line);
-				char [] ocr = line.trim().toCharArray();            
-				switch(ocr[2]) {
-					case '1':
-						System.out.println("101");
-						break;
-					case '2':
-						System.out.println("102");
-						break;
-					case '3':
-						System.out.println("103");
-						break;
-				}
-			}
-			
-			br.close();
-			isr.close();
-//			fr.close();
-			int exitCode = process.waitFor();
-			System.out.println("종료 코드 : " + exitCode);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-
+		for (PatrolDTO dto : data) {
+			int len = dto.getPosition().length();
+			int no = Integer.parseInt( dto.getPosition().substring(len-2,len-1) );
+			chk.set(no-1, true);
+		}
+		
+		
+		request.setAttribute("data", data);
+		request.setAttribute("pos", chk);
+		
 	}
 
 }
