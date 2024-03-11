@@ -29,7 +29,7 @@ function fileDel(){
 		</div>
 		<div>
 			<div>파일</div>
-		<%-- 	<div>
+		<%--<div>
 				<c:choose>
 					<c:when test="${ModifyData.upfile!=null }">  <!-- 바꿔야함 대기 -->
 						<input type="text" name="upfile" value=${ModifyData.no } readonly="readonly"/>
@@ -39,7 +39,6 @@ function fileDel(){
 						<input type="file" name="upfile" />	
 					</c:otherwise>
 				</c:choose>
-				
 			</div> --%>
 		</div>
 

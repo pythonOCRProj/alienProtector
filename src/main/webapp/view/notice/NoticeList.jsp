@@ -35,6 +35,7 @@
 				</div>
 
 				<div class="Notice__info">
+					<div>작성자:: ${ dto.id }</div>
 					<div>등록일시: ${dto.time}</div>
 					<div>조회수: ${dto.cnt }</div>
 				</div>

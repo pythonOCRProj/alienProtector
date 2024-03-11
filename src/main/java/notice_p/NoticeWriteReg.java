@@ -16,16 +16,15 @@ public class NoticeWriteReg implements NoticeService{
 		NoticeDTO dto =new NoticeDTO();
 		dto.setTitle(request.getParameter("title"));
 		dto.setContent(request.getParameter("content"));
-		
+		System.out.println(dto.getContent());
 		new NoticeDAO().write(dto);
 		
 		int no = new NoticeDAO().newNo();
 		
+		
+		
 		request.setAttribute("incUrl", "components/moveUrl.jsp");
 		request.setAttribute("msg", "작성되었습니다.");
 		request.setAttribute("move", "NoticeList");
-		
-		
-		
 	}
 }

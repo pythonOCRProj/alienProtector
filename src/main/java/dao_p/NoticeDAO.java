@@ -144,15 +144,53 @@ public class NoticeDAO {
 	public void write(NoticeDTO dto){
 
 		
-		sql = "insert into notice ( title , content , time) values (?,?,sysdate())";
+		sql = "insert into notice ( title , content ,time,id) values (?,?,sysdate(),'master')";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getId());
-			psmt.setString(3, dto.getContent());
+			psmt.setString(2, dto.getContent());
+			
+			
+
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	public void delete(int no){
+
+		sql = "delete from notice where no = ?";
+		
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+
+	}
+	
+	public void noticeCnt(int bNo) {
+		sql="update notice set "
+				+ "cnt = notice.cnt + 1 "
+				+ "where no = ? ";
+		System.out.println("노티스 카운트 실행 ---------------"+sql);
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, bNo);
 			
 			
 			psmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

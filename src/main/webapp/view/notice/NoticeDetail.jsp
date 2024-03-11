@@ -1,10 +1,5 @@
 <script>
-	function del(){
-		
-		if(confirm("정말로 삭제하시겠습니까?")){
-			location.href = "NoticeDelete?no=${dto.no }"
-		}
-	}
+
 </script>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -37,7 +32,7 @@
 					<a href="NoticeModify?no=${noticeDetail.no }"> 수정 </a>
 				</div>
 				<div>
-					<a href="javascript:del()"> 삭제 </a>
+					<a href="NoticeDelete?no=${noticeDelete.no}"> 삭제 </a>
 				</div>
 		</div>
 	</div>
