@@ -34,7 +34,7 @@
 			</div>
 				<div>
 				
-					<a href="NoticeModifyForm?no=${dto.no }"> 수정 </a>
+					<a href="NoticeModify?no=${noticeDetail.no }"> 수정 </a>
 				</div>
 				<div>
 					<a href="javascript:del()"> 삭제 </a>

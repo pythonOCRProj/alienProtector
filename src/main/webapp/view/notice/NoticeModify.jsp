@@ -18,21 +18,21 @@ function fileDel(){
 }
 </script>
 
-<form name="frm" action="NoticeModifyReg" method="post" >
+<form name="frm" action="NoticeModifyReg" method="post" enctype="multipart/form-data">
 	<div>
 		<div>
 			<div>제목</div>
 			<div>
 				<input type="text" name="title"
-					value="디테일에서받아오는제목값" />
+					value=${ModifyData.title } />
 			</div>
 		</div>
 		<div>
 			<div>파일</div>
-			<div>
+		<%-- 	<div>
 				<c:choose>
-					<c:when test="${dto.upfile!=null }">
-						<input type="text" name="upfile" value="${dto.upfile }" readonly="readonly"/>
+					<c:when test="${ModifyData.upfile!=null }">  <!-- 바꿔야함 대기 -->
+						<input type="text" name="upfile" value=${ModifyData.no } readonly="readonly"/>
 						<input type="button" onclick="fileDel()" value="파일삭제" />
 					</c:when>
 					<c:otherwise>
@@ -40,14 +40,14 @@ function fileDel(){
 					</c:otherwise>
 				</c:choose>
 				
-			</div>
+			</div> --%>
 		</div>
 
 		<div>
 			<div>내용</div>
 			
 			<div>
-				<textarea name="content" rows="8" cols="168">디테일에서받아오는 내용값</textarea>
+				<textarea name="content" rows="8" cols="168">${ModifyData.content }</textarea>
 			</div>
 		</div>
 		<div>

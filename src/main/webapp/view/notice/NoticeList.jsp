@@ -44,6 +44,6 @@
 	</div>
 </div>
 
-	<input type="button" value="글쓰기" onclick="location.href='NoticeWrite'"
+	<input type="button" value="글쓰기" onclick="location.href='NoticeWriteForm'"
 		class="Notice__button">
 

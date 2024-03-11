@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 import dto_p.NoticeDTO;
 
 public class NoticeDAO {
@@ -99,5 +100,66 @@ public class NoticeDAO {
 		return dto;
 	}
 	
+	public void noticeModify(NoticeDTO dto) {
+		
+		sql = "update notice set title = ?, time = sysdate(), cnt = ?, content = ?, img = ? where no = ?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getImg());
+			psmt.setInt(4, dto.getNo());
+			psmt.setInt(5, dto.getCnt());
+			
+			
+			psmt.executeUpdate();
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	public int newNo(){
+		int res = 0;
+		sql = "select max(no) from notice";
+		try {
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			rs.next();
+			res = rs.getInt(1);			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+
+		return res;
+	}
+	
+	public void write(NoticeDTO dto){
+
+		
+		sql = "insert into notice ( title , content , time) values (?,?,sysdate())";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getId());
+			psmt.setString(3, dto.getContent());
+			
+			
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	
 }
