@@ -2,27 +2,25 @@ package controller_p;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service_p.NoticeService;
+import service_p.PatrolService;
 
 import java.io.IOException;
 
 /**
- * Servlet implementation class NoticeController
+ * Servlet implementation class WorkerController
  */
-@WebServlet("/notice/*")
-@MultipartConfig()
-public class NoticeController extends HttpServlet {
+@WebServlet("/patrol/*")
+public class PatrolController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeController() {
+    public PatrolController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,25 +29,23 @@ public class NoticeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cate = "patrol/";
+		String service = request.getRequestURI().substring((request.getContextPath()+"/"+cate).length());
+		System.out.println(cate+service);
 		
-		String incFolder = "alienProtector/notice/";
-		String incJsp = request.getRequestURI().substring(incFolder.length()+1);
-		
-		request.setAttribute("incUrl", incFolder.substring("alienProtector/".length())+incJsp+".jsp");
-		
-		System.out.println(incJsp);
-		
+		request.setAttribute("incUrl", cate+service+".jsp");
 		try {
-			NoticeService ns = (NoticeService)Class.forName("notice_p."+incJsp).newInstance();
-			ns.execute(request, response);
+		
+			PatrolService ser = (PatrolService)Class.forName("patrol_p."+service).newInstance(); //다형
+			ser.service(request, response);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/templateSecurity.jsp");
 			dispatcher.forward(request, response);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**

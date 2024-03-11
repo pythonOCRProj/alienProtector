@@ -2,27 +2,25 @@ package controller_p;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service_p.NoticeService;
+import service_p.LoginService;
 
 import java.io.IOException;
 
 /**
- * Servlet implementation class NoticeController
+ * Servlet implementation class LoginController
  */
-@WebServlet("/notice/*")
-@MultipartConfig()
-public class NoticeController extends HttpServlet {
+@WebServlet("/login/*")
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeController() {
+    public LoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,25 +29,25 @@ public class NoticeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String incFolder = "alienProtector/login/"; //폴더
+		String incJsp = request.getRequestURI().substring(incFolder.length()+1); //파일명
 		
-		String incFolder = "alienProtector/notice/";
-		String incJsp = request.getRequestURI().substring(incFolder.length()+1);
+		request.setAttribute("incUrl", incFolder.substring("alienProtector/".length())+incJsp+".jsp"); //join폴더에 있는 jsp파일
 		
-		request.setAttribute("incUrl", incFolder.substring("alienProtector/".length())+incJsp+".jsp");
-		
-		System.out.println(incJsp);
-		
+//		System.out.println("url:"+ incFolder+incJsp+".jsp");
+//		System.out.println(incJsp);
+	
 		try {
-			NoticeService ns = (NoticeService)Class.forName("notice_p."+incJsp).newInstance();
-			ns.execute(request, response);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
+			LoginService ls = (LoginService)Class.forName("login_p."+incJsp).newInstance(); //어떤 패키지에 있는지 꼭!적어
+			ls.execute(request, response);
+	
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp"); //불러올 페이지 view/template.jsp(바구니)
 			dispatcher.forward(request, response);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**

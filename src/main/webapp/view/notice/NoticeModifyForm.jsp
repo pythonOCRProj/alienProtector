@@ -20,7 +20,6 @@ function fileDel(){
 
 <form name="frm" action="NoticeModifyReg" method="post" >
 	<div>
-	
 		<div>
 			<div>제목</div>
 			<div>
