@@ -60,6 +60,9 @@ public class PatrolDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			close();
+		}
 		
 		
 		return patrol;

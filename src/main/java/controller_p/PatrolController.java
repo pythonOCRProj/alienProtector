@@ -2,6 +2,7 @@ package controller_p;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,6 +15,15 @@ import java.io.IOException;
  * Servlet implementation class WorkerController
  */
 @WebServlet("/patrol/*")
+@MultipartConfig(
+		//서버에 임시저장될 위치
+	location="D:\\kmj\\apache-tomcat-10.1.18\\temp",
+		//파일 최대 크기
+	maxFileSize = 1024*1024*10, 
+		//요청정보 최대 크기
+	maxRequestSize = 1024*1024*1000,
+	fileSizeThreshold = 1024*1024*10
+)
 public class PatrolController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
