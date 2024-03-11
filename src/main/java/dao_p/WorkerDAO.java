@@ -64,4 +64,50 @@ public class WorkerDAO {
 		}
 		return res;
 	}
+	
+	public int attend(WorkerDTO dto) {
+		int res = 0;
+		
+		sql = "insert into commute(id, go_time) values (?, ?)";
+		
+		try{
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getAttendTimeStr());
+			res = psmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return res;
+	}
+	
+	
+	public int getOutWork(WorkerDTO dto) {
+		int res = 0;
+		
+		sql = "update commute set leave_time = ? where id = ? and go_time = ?";
+
+		try{
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getLeaveTimeStr());
+			psmt.setString(2, dto.getId());
+			psmt.setString(3, dto.getAttendTimeStr());
+			
+			
+			
+			res = psmt.executeUpdate();
+			System.out.println("Logout " + dto.getId());
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return res;
+	}
+	
 }
