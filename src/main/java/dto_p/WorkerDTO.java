@@ -6,10 +6,43 @@ import java.util.Date;
 
 public class WorkerDTO {
 	Date joinDate;
-	String id, pwd, profileImg, email, phone_num, name, addr;
+	String id, pwd, profileImg, email, phone_num, name, addr, attendTimeStr;
 	int no, hire;
+	Date attendTime, leaveTime;
+	private String leaveTimeStr;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	public Date getAttendTime() {
+		return attendTime;
+	}
+	public void setAttendTime(Date attendTime) {
+		this.attendTime = attendTime;
+		this.attendTimeStr = sdf.format(attendTime);
+	}
+	public String getLeaveTimeStr() {
+		return leaveTimeStr;
+	}
+	public void setLeaveTimeStr(String leaveTimeStr) {
+		this.leaveTimeStr = leaveTimeStr;
+	}
+	public Date getLeaveTime() {
+		return leaveTime;
+	}
+	public void setLeaveTime(Date leaveTime) {
+		this.leaveTime = leaveTime;
+	}
+	public void setAttendTimeStr(String attendTimeStr) {
+		this.attendTimeStr = attendTimeStr;
+		try {
+			this.attendTime = sdf.parse(attendTimeStr);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+	public String getAttendTimeStr() {
+		return attendTimeStr;
+	}
+
 	public String getJoinDateStr() {
 		return sdf.format(joinDate);
 	}
