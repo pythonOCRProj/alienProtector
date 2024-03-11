@@ -12,6 +12,7 @@ public class WorkerDTO {
 	private String leaveTimeStr;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	
+
 	public Date getAttendTime() {
 		return attendTime;
 	}
@@ -42,6 +43,7 @@ public class WorkerDTO {
 	public String getAttendTimeStr() {
 		return attendTimeStr;
 	}
+
 
 	public String getJoinDateStr() {
 		return sdf.format(joinDate);

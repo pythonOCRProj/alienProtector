@@ -6,23 +6,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import service_p.WorkService;
 
 import java.io.IOException;
 
-import dashboard_p.DashUtills;
-
 /**
- * Servlet implementation class DashBoardController
+ * Servlet implementation class WorkController
  */
-@WebServlet("/dashboard/*")
-public class DashBoardController extends HttpServlet {
+@WebServlet("/work/*")
+public class WorkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DashBoardController() {
+    public WorkController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,18 +29,26 @@ public class DashBoardController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.setAttribute("incUrl", "dashboard/dashboard.jsp");
+		String incFolder = "alienProtector/work/"; //폴더
+		String incJsp = request.getRequestURI().substring(incFolder.length()+1); //파일명
 		
-		DashUtills utill = new DashUtills(request, response);
-		utill.getTodayGo();
-		utill.getTodayLeave();
-		utill.getTodayPatrol();
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
+		request.setAttribute("incUrl", incFolder.substring("alienProtector/".length())+incJsp+".jsp"); //join폴더에 있는 jsp파일
+		
+//		System.out.println("url:"+ incFolder+incJsp+".jsp");
+//		System.out.println(incJsp);
 	
-		dispatcher.forward(request, response);
+		try {
+			WorkService ws = (WorkService)Class.forName("work_p."+incJsp).newInstance(); //어떤 패키지에 있는지 꼭!적어
+			ws.execute(request, response);
+	
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp"); //불러올 페이지 view/template.jsp(바구니)
+			dispatcher.forward(request, response);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
