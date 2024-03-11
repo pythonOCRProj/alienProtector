@@ -49,7 +49,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<form action="PatrolReg">
+<form action="PatrolReg" method="post" enctype="multipart/form-data">
 	<div class="big">
 		<div class="box">
 			<div class="positon">
