@@ -40,14 +40,45 @@ public class WorkDAO {
 		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
 		PatrolDTO dto = null;
 		
-		sql = "select date from work_log group by date ";
+		sql = "select date from work_log group by date "
+				+"order by date desc";
 		try {
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				dto = new PatrolDTO();
-				dto.setDate(rs.getDate("date"));
+				dto.setDate(rs.getString("date"));
+				
+				res.add(dto);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+
+		
+		return res;
+	}
+	
+	public ArrayList<PatrolDTO> workList(){
+		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
+		PatrolDTO dto = null;
+		
+		sql = "select * from work_log";
+		try {
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new PatrolDTO();
+				dto.setId(rs.getString("id"));
+				dto.setPosition(rs.getString("position"));
+				dto.setSpecial(rs.getString("special"));
+				dto.setDate(rs.getString("date"));
 				
 				res.add(dto);
 				

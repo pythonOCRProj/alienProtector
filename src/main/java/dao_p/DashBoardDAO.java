@@ -111,7 +111,7 @@ public class DashBoardDAO {
 				dto.setId(rs.getString("id"));
 				dto.setSpecial(rs.getString("special"));
 				dto.setPosition(rs.getString("position"));
-				
+//				dto.setTime(rs.getTime("time"));
 				
 				res.add(dto);
 			}

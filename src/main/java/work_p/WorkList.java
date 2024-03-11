@@ -14,14 +14,10 @@ public class WorkList implements WorkService {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		ArrayList<PatrolDTO> dateArr = new WorkDAO().dateList();
-		
-		System.out.println("go");
-		for (PatrolDTO dd : dateArr) {			
-			System.out.println(dd.getDate());
-		}
-		System.out.println("fin");
+		ArrayList<PatrolDTO> workArr = new WorkDAO().workList();
 		
 		request.setAttribute("dateArr", dateArr);
+		request.setAttribute("workArr", workArr);
 	}
 
 }
