@@ -25,11 +25,18 @@ public class WorkerDTO {
 	}
 	public void setLeaveTimeStr(String leaveTimeStr) {
 		this.leaveTimeStr = leaveTimeStr;
+		try {
+			this.leaveTime = sdf.parse(leaveTimeStr);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public Date getLeaveTime() {
 		return leaveTime;
 	}
 	public void setLeaveTime(Date leaveTime) {
+		this.leaveTimeStr = sdf.format(leaveTime);
 		this.leaveTime = leaveTime;
 	}
 	public void setAttendTimeStr(String attendTimeStr) {

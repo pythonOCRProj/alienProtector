@@ -8,27 +8,28 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service_p.LoginService;
 import service_p.LogoutService;
+import service_p.WorkerService;
 
 import java.io.IOException;
 
-@WebServlet("/logout/*")
-public class LogoutController extends HttpServlet {
+@WebServlet("/worker/*")
+public class WorkerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    public LogoutController() {
+    public WorkerController() {
         super();
 
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String incFolder = "logout/";
+		String incFolder = "worker/";
 		String incJsp = request.getRequestURI().substring((request.getContextPath()+"/"+incFolder).length());
-		System.out.println(incJsp);
-		request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
+
+		request.setAttribute("incUrl", "/alienProtector/"+incFolder+incJsp+".jsp");
 		try {
-			LogoutService ls = (LogoutService)Class.forName("woerker_p."+incJsp).newInstance();
-			ls.execute(request, response);
+			WorkerService ws = (WorkerService)Class.forName("worker_p."+incJsp).newInstance();
+			ws.execute(request, response);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
 			dispatcher.forward(request, response);
