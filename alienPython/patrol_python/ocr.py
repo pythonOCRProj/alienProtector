@@ -6,20 +6,20 @@ try:
     from imutils.perspective import four_point_transform
     from PIL import Image
     from PIL.ExifTags import TAGS
-    photo = sys.argv[1]
+    photo = 'D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\104.jpg'
 
-    img = Image.open(sys.argv[2])
+    img = Image.open('D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\104.jpg')
     time = ''
     info = img.getexif()
     for tag_id in info:
         tag = TAGS.get(tag_id, tag_id)
         data = info.get(tag_id)
         if tag == 'DateTime' or tag == 'DateTimeOriginal':
-            time = f'{tag} , {data}'
+            time = f'{tag},{data}'
     img.close()
     print(time)
     ori = cv2.imread(photo)
-    blur = cv2.GaussianBlur(ori,(5,5),0)
+    blur = cv2.GaussianBlur(ori,(7,7),0)
     edged = cv2.Canny(blur,0,255)
     pts, hh = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     pts = sorted(pts, key=cv2.contourArea, reverse=True)
@@ -43,9 +43,9 @@ try:
     # f = open('../text/aaa.txt', 'w', encoding='utf-8')
     # f.writelines(ttt)
     # f.close()
-    #
-    # cv2.imshow('bi',edged)
-    # cv2.waitKey()
+    # #
+    cv2.imshow('bi',edged)
+    cv2.waitKey()
 
 except Exception as e:
     print(e)
