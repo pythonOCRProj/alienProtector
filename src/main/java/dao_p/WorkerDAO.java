@@ -39,7 +39,7 @@ public class WorkerDAO {
 	public WorkerDTO loginChk(WorkerDTO dto) {
 		WorkerDTO res = null;
 		
-		sql = "select id, no, name from worker where id = ? and pwd = ?";
+		sql = "select id, no, name, hire from worker where id = ? and pwd = ?";
 		
 		
 		try {
@@ -54,6 +54,7 @@ public class WorkerDAO {
 				res.setId(rs.getString("id")); 
 				res.setNo(rs.getInt("no"));
 				res.setName(rs.getString("name"));
+				res.setHire(rs.getInt("hire"));
 			}
 			
 		} catch (SQLException e) {
@@ -93,6 +94,7 @@ public class WorkerDAO {
 
 		try{
 			psmt = con.prepareStatement(sql);
+			System.out.println(dto.getId()+" : "+dto.getLeaveTimeStr() + " : "+ dto.getAttendTimeStr());
 			psmt.setString(1, dto.getLeaveTimeStr());
 			psmt.setString(2, dto.getId());
 			psmt.setString(3, dto.getAttendTimeStr());
@@ -100,13 +102,47 @@ public class WorkerDAO {
 			
 			
 			res = psmt.executeUpdate();
-			System.out.println("Logout " + dto.getId());
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close();
 		}
 		
+		return res;
+	}
+	
+	
+	public WorkerDTO getWorkerInfo(WorkerDTO dto) {
+		WorkerDTO res = null;
+		
+		sql = "select id, join_date, profile_img, email, phone_num, name, addr, hire  from worker where id = ?";
+		
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getId());  //회원이 입력한 값입니다!
+			psmt.setString(2, dto.getPwd());
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {	
+				res = new WorkerDTO();
+				res.setId(rs.getString("id"));
+				res.setJoinDate(rs.getDate("join_date"));
+				res.setProfileImg(rs.getString("profile_img"));
+				res.setEmail(rs.getString("email"));
+				res.setPhone_num(rs.getString("phone_num"));
+				res.setName(rs.getString("name"));
+				res.setAddr(rs.getString("addr"));
+				res.setHire(rs.getInt("hire"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
 		return res;
 	}
 	
