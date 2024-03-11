@@ -15,21 +15,21 @@ public class LoginReg implements LoginService {
 		dto.setId(request.getParameter("id"));
 		dto.setPwd(request.getParameter("pwd"));
 		WorkerDTO res = new WorkerDAO().loginChk(dto);
-		
+		System.out.println("로그인reg");
 		if(res==null) {
 			request.setAttribute("msg", "아이디, 비밀번호 확인해주세요");
 			request.setAttribute("move", "/alienProtector/login/Login");
 			request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
 		}else {
-			if(res.getId() == "master") {
+	
+			if(request.getParameter("id").equals("master")) {
 				request.setAttribute("msg", "관리자 로그인 성공");
 				request.setAttribute("move", "/alienProtector/dashboard");
 				request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
 				request.getSession().setAttribute("Worker", res);
 			}else {
-				
 				request.setAttribute("msg", "출근");
-				request.setAttribute("move", "/alienProtector/dashboard");
+				request.setAttribute("move", "/alienProtector/patrol/PatrolWrite");
 				request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
 				request.getSession().setAttribute("Worker", res);
 			}

@@ -10,6 +10,7 @@ public class WorkerDTO {
 	int no, hire;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
 	public String getJoinDateStr() {
 		return sdf.format(joinDate);
 	}
