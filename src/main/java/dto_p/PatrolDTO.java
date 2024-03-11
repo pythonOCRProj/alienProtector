@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class PatrolDTO {
 	String photo, special, shoot, id, position;
-	Date date;
+	String date, time;
 	public String getPhoto() {
 		return photo;
 	}
@@ -35,10 +35,17 @@ public class PatrolDTO {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 }

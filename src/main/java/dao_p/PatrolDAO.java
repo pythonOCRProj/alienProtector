@@ -70,16 +70,17 @@ public class PatrolDAO {
 	}
 	
 	public void write(PatrolDTO dto){
-		sql = "insert into work_log (photo, date, special, position, id) values (?,?,?,?,?)";
+		sql = "insert into work_log (photo, date, special, position, id, time) values (?,?,?,?,?,?)";
 		try {
 			psmt = con.prepareStatement(sql);
 	
 	
 			psmt.setString(1,dto.getPhoto());
-			psmt.setDate(2,(Date) dto.getDate());
+			psmt.setString(2, dto.getDate());
 			psmt.setString(3,dto.getSpecial());
 			psmt.setString(4,dto.getPosition());
 			psmt.setString(5,dto.getId());
+			psmt.setString(6,dto.getTime());
 		
 	
 			psmt.executeUpdate();

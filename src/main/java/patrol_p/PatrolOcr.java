@@ -10,7 +10,7 @@ import java.util.Arrays;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class PatrolOcr {
-	String photo, path, position;
+	String photo, path, position, date, time;
 	
 	public String ocr(String  file, HttpServletRequest request) {
 		
@@ -32,8 +32,12 @@ public class PatrolOcr {
 				arr.add(line.trim());
 			}
 			
-			String [] dateTime = arr.get(0).split(",");
-			System.out.println(dateTime[1]);
+			String [] str = arr.get(0).split(",");
+			String [] dateTime = str[1].split(" ");
+			date = dateTime[0].replace(":", "-");
+			time = dateTime[1];
+			System.out.println(date);
+			System.out.println(time);
 			
 			char [] ocr = arr.get(1).toCharArray();  
 			switch(ocr[2]) {
