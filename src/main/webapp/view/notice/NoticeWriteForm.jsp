@@ -10,14 +10,13 @@
 					value="" />
 			</div>
 		</div>
-		
-		<div>
+		<!-- <div>
 			<div>파일</div>
 			<div>
 				<input type="file" name="upfile"
 					value="파일없음;" />
 			</div>
-		</div>
+		</div> -->
 
 		<div >
 			<div>내용</div>
@@ -28,8 +27,10 @@
 		</div>
 
 		<div>
+			<input type="button" value="목록보기" onclick="location.href='NoticeList'">
 			<input type="submit" value="작성"/>
 			 <a href="NoticeList">취소</a>
+			 
 		</div>
 	</div>	
 </form>
