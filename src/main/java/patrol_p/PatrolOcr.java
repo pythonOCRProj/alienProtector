@@ -1,0 +1,77 @@
+package patrol_p;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+public class PatrolOcr {
+	String photo, path, position;
+	
+	public String ocr(String  file, HttpServletRequest request) {
+		
+		path = "D:/kmj/javaProj/alienProtector/alienPython/patrol_python/ocr.py";
+		photo = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\"+file;
+		ProcessBuilder pb = new ProcessBuilder("python", path, photo, photo.replace("\\", "/"));
+
+		try {
+			Process process = pb.start();
+			
+			// 실행중에 print()로 출력하는 내용 가져오기
+			
+			InputStreamReader isr = new InputStreamReader(process.getInputStream(), "ms949");
+			BufferedReader br = new BufferedReader(isr);
+			
+			String line = null;
+			ArrayList<String> arr = new ArrayList<String>();
+			while((line=br.readLine())!=null) {
+				arr.add(line.trim());
+			}
+			
+			String [] dateTime = arr.get(0).split(",");
+			System.out.println(dateTime[1]);
+			
+			char [] ocr = arr.get(1).toCharArray();  
+			switch(ocr[2]) {
+				case '1':
+					System.out.println("101호");
+					position = "101호";
+					break;
+				case '2':
+					System.out.println("102호");
+					position = "102호";
+					break;
+				case '3':
+					System.out.println("103호");
+					position = "103호";
+					break;
+				case '4':
+					System.out.println("104호");
+					position = "104호";
+					break;
+				case '5':
+					System.out.println("105호");
+					position = "105호";
+					break;
+			}
+			
+			
+			
+			br.close();
+			isr.close();
+			int exitCode = process.waitFor();
+			System.out.println("종료 코드 : " + exitCode);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return position;
+		
+	}
+
+}

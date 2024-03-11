@@ -15,7 +15,6 @@ import service_p.PatrolService;
 
 public class PatrolWrite implements PatrolService{
 	public void service(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("순찰 등록 페이지");
 		ArrayList<PatrolDTO> data = new PatrolDAO().list();
 		ArrayList<Boolean> chk = new ArrayList<Boolean>();
 		
