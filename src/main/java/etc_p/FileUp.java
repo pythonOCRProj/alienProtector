@@ -52,7 +52,7 @@ public class FileUp {
 		return null;				
 	}
 	
-	/** images 파일에서 file 지우기 */
+	
 	public void fileDelete(String upFileName) {
 		
 		new File(dir+upFileName).delete();		

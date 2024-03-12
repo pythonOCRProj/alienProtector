@@ -5,6 +5,7 @@ import java.io.IOException;
 import dao_p.NoticeDAO;
 import dto_p.NoticeDTO;
 import etc_p.FileUp;
+import etc_p.RedirectionPage;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,9 +34,9 @@ public class NoticeWriteReg implements NoticeService{
 			
 			int no = new NoticeDAO().newNo();
 
-			request.setAttribute("incUrl", "components/moveUrl.jsp");
-			request.setAttribute("msg", "작성되었습니다.");
-			request.setAttribute("move", "NoticeList");
+			new RedirectionPage(request, response).movePage("작성되었습니다","NoticeList" );
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

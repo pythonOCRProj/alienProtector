@@ -26,6 +26,7 @@
 		<main>
 			<jsp:include page="${incUrl}"/>
 		</main>
+
 	
 <%-- 	<jsp:include page="components/footer.jsp" /> --%>
 	</body>
