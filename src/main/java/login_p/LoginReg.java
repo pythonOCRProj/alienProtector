@@ -30,7 +30,7 @@ public class LoginReg implements LoginService {
 
 			//로그인과 동시에 출근 등록
 			if(new WorkerDAO().attend(dto) != 0) {
-				if(res.getId() == "master") {
+				if(res.getId().equals("master")) {
 					request.setAttribute("msg", "관리자 로그인 성공");
 					request.setAttribute("move", "/alienProtector/dashboard");
 					request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
