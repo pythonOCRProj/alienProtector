@@ -11,7 +11,7 @@ public class FileUp {
 	String dir;
 	
 	public FileUp(HttpServletRequest request) {		
-		dir = request.getServletContext().getRealPath("images/");	
+		dir = request.getServletContext().getRealPath("img/");	
 
 		dir = "C:\\CSJ\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //성재
 //		dir = "C:\\gunwoopark\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //건우
@@ -23,6 +23,7 @@ public class FileUp {
 	 * */
 	public String fileUpload(Part file) {
 		System.out.println("111111");
+		System.out.println(file);
 		if(!file.getSubmittedFileName().equals("")) {
 			String upFileName = file.getSubmittedFileName();
 			try {	

@@ -6,17 +6,17 @@
 		<div>
 			<div>제목</div>
 			<div>
-				<input type="text" name="title"
-					value="" />
+				<input type="text" name="title" value="" />
+					
 			</div>
 		</div>
-		<!-- <div>
+		<div>
 			<div>파일</div>
 			<div>
-				<input type="file" name="upfile"
-					value="파일없음;" />
+				<input type="file" name="upfile" value="파일없음;" />
+					
 			</div>
-		</div> -->
+		</div>
 
 
 		<div >

@@ -100,7 +100,8 @@ public class DashBoardDAO {
 		PatrolDTO dto = null;
 		
 		sql = "select * from work_log "
-				+"where Date(date) >= ? ";
+				+"where Date(date) >= ? "
+				+"order by time";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, today);
@@ -111,7 +112,7 @@ public class DashBoardDAO {
 				dto.setId(rs.getString("id"));
 				dto.setSpecial(rs.getString("special"));
 				dto.setPosition(rs.getString("position"));
-//				dto.setTime(rs.getTime("time"));
+				dto.setTime(rs.getString("time"));
 				
 				res.add(dto);
 			}
