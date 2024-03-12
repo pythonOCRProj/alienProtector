@@ -18,6 +18,7 @@ try:
             time = f'{tag},{data}'
     img.close()
     print(time)
+
     ori = cv2.imread(photo)
     blur = cv2.GaussianBlur(ori,(7,7),0)
     edged = cv2.Canny(blur,0,255)

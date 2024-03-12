@@ -55,6 +55,8 @@ public class PatrolDAO {
 				dto.setPosition(rs.getString("position"));
 				dto.setDate(rs.getString("date"));
 				dto.setTime(rs.getString("time"));
+				dto.setShift(rs.getString("shift"));
+				dto.setNo(rs.getInt("no"));
 				
 
 				patrol.add(dto);
@@ -71,7 +73,7 @@ public class PatrolDAO {
 	}
 	
 	public void write(PatrolDTO dto){
-		sql = "insert into work_log (photo, date, special, position, id, time) values (?,?,?,?,?,?)";
+		sql = "insert into work_log (photo, date, special, position, id, time,shift) values (?,?,?,?,?,?,?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			
@@ -82,6 +84,7 @@ public class PatrolDAO {
 			psmt.setString(4,dto.getPosition());
 			psmt.setString(5,dto.getId());
 			psmt.setString(6,dto.getTime());
+			psmt.setString(7,dto.getShift());
 		
 	
 			psmt.executeUpdate();
@@ -92,4 +95,53 @@ public class PatrolDAO {
 		}
 		
 	}
+	
+	public int count() {
+		int count = 0;
+		sql = "select count(no) from work_log wl";
+		try {
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt(1);
+		}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		
+		return count;
+	}
+	
+
+
+	public String search(int no) {
+		String time = "";
+		sql = "select time from work_log wl where no = ? ";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1,no);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				time = rs.getString(1);
+			}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		
+		return time;
+	}
+	
+	
 } 
