@@ -26,7 +26,7 @@ public class WorkerController extends HttpServlet {
 		String incFolder = "worker/";
 		String incJsp = request.getRequestURI().substring((request.getContextPath()+"/"+incFolder).length());
 
-		request.setAttribute("incUrl", "/alienProtector/"+incFolder+incJsp+".jsp");
+		request.setAttribute("incUrl", incFolder+incJsp+".jsp");
 		try {
 			WorkerService ws = (WorkerService)Class.forName("worker_p."+incJsp).newInstance();
 			ws.execute(request, response);
@@ -43,8 +43,6 @@ public class WorkerController extends HttpServlet {
 			
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

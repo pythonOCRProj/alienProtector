@@ -9,7 +9,7 @@
 		<div class="worker__img">
 			<!-- 이미지 있을 유무 -->
 			<c:if test="${dto.profileImg == null }">
-				<img src="../profile/" alt="" />
+				<img src="../profile/user.png" alt="" />
 			</c:if>
 			
 			<c:if test="${dto.profileImg != null }">
@@ -40,6 +40,10 @@
 			<p>입사일 : ${dto.joinDate}</p>
 		</div>
 		<div class="worker__row">
+			<p><input type="text" name="pwd" placeholder="비밀번호" /></p>
+			<p><input type="text" name="pwdChk" placeholder="비밀번호 확인" /></p>
+		</div>
+		<div class="worker__row">
 			<p>이름 : ${dto.phone_num}</p>
 			<p>주소 : ${dto.addr}</p>
 		</div>
@@ -50,7 +54,6 @@
 		<div class="worker__btns">
 			<input type="submit" value= "전송"/>
 			<button>목록</button>
-			
 		</div>
 	</div>
 </form>
