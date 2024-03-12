@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<style>
+	table{
+		border: 1px solid gray;			
+		border-collapse: separate;
+		border-spacing: 2px;
+		border-color: gray;
+		margin-bottom: 1rem;
+	}
+	th, td {
+		border: 1px solid gray;
+	}
+</style>
 <section class="master">
 	<h3>출근한 근무자</h3>
 	<table border="">
 		<colgroup>
 			<col style="width: 22%">
- 			<col style="width: 78%;">
+ 			<col style="width: 78%">
+
 		</colgroup>
 		<thead>
 			<tr>
@@ -20,6 +34,7 @@
 		 			<td>${tg.id }</td>
 		 			<td>${tg.goTimeStr }</td>
 		 		</tr>
+
 			</c:forEach>	
 
 		</tbody>
@@ -30,11 +45,13 @@
 	<table border="">
 		<colgroup>
 			<col style="width: 22%">
- 			<col style="width: 78%;">
+ 			<col style="width: 39%">
+ 			<col style="width: 39%">
 		</colgroup>
 		<thead>
 			<tr>
 				<th scope="col">근무자</th>
+				<th scope="col">출근시간</th>
 				<th scope="col">퇴근시간</th>
 			</tr>
 		</thead>
@@ -42,6 +59,7 @@
 			<c:forEach items="${todayLeave }" var="tl">
 				<tr>
 		 			<td>${tl.id }</td>
+		 			<td>${tl.goTimeStr }</td>
 		 			<td>${tl.leaveTimeStr }</td>
 		 		</tr>
 			</c:forEach>	

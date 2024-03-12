@@ -44,7 +44,8 @@ public class DashBoardDAO {
 		CommuteDTO dto = null;
 		
 		sql = "select * from commute "
-				+"where Date(go_time) >= ? ";
+				+"where go_time >= ? and leave_time is null "
+				+"order by go_time";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, today);
@@ -54,6 +55,7 @@ public class DashBoardDAO {
 				dto = new CommuteDTO();
 				dto.setId(rs.getString("id"));
 				dto.setGoTime(rs.getTimestamp("go_time"));
+				dto.setLeaveTime(rs.getTimestamp("leave_time"));
 				
 				res.add(dto);
 			}
@@ -72,7 +74,8 @@ public class DashBoardDAO {
 		CommuteDTO dto = null;
 		
 		sql = "select * from commute "
-				+"where Date(leave_time) >= ? ";
+				+"where Date(leave_time) >= ? "
+				+"order by go_time";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, today);
@@ -81,6 +84,7 @@ public class DashBoardDAO {
 			while(rs.next()) {
 				dto = new CommuteDTO();
 				dto.setId(rs.getString("id"));
+				dto.setGoTime(rs.getTimestamp("go_time"));
 				dto.setLeaveTime(rs.getTimestamp("leave_time"));
 				
 				res.add(dto);
