@@ -38,13 +38,15 @@ public class PatrolDAO {
 	}
 	
 	
-	public ArrayList<PatrolDTO> list(String id){
+	public ArrayList<PatrolDTO> list(String id,int turn){
 		ArrayList<PatrolDTO> patrol = new ArrayList<PatrolDTO>();
-		sql = "select * from work_log wl join commute c on str_to_date(c.go_time , '%Y-%m-%d') = curdate() where wl.`date` = curdate() and  wl.id = ?";
+		sql = "select * from work_log wl join commute c on str_to_date(c.go_time , '%Y-%m-%d') = curdate() "
+				+ "where wl.`date` = curdate() and  wl.id = ? and wl.turn = ? group by no";
 		
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1,id);
+			psmt.setInt(2, turn);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 
@@ -73,7 +75,7 @@ public class PatrolDAO {
 	}
 	
 	public void write(PatrolDTO dto){
-		sql = "insert into work_log (photo, date, special, position, id, time,shift) values (?,?,?,?,?,?,?)";
+		sql = "insert into work_log (photo, date, special, position, id, time,shift, turn) values (?,?,?,?,?,?,?,?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			
@@ -85,7 +87,7 @@ public class PatrolDAO {
 			psmt.setString(5,dto.getId());
 			psmt.setString(6,dto.getTime());
 			psmt.setString(7,dto.getShift());
-		
+			psmt.setInt(8,dto.getTurn());
 	
 			psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -96,41 +98,15 @@ public class PatrolDAO {
 		
 	}
 	
-	public int count() {
-		int count = 0;
-		sql = "select count(no) from work_log wl";
+	public String count() {
+		String time = "";
+		sql = "select time,max(no) from work_log wl";
 		try {
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 		if(rs.next()) {
-			count = rs.getInt(1);
+			time = rs.getString(1);
 		}
-		
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally {
-			close();
-		}
-		
-		return count;
-	}
-	
-
-
-	public String search(int no) {
-		String time = "";
-		sql = "select time from work_log wl where no = ?";
-		try {
-			psmt = con.prepareStatement(sql);
-			psmt.setInt(1,no);
-		
-			rs = psmt.executeQuery();
-			if(rs.next()) {
-				time = rs.getString(1);
-			}
 		
 			
 		} catch (SQLException e) {
@@ -142,6 +118,57 @@ public class PatrolDAO {
 		}
 		
 		return time;
+	}
+	
+
+	public int turnCnt(String id) {
+		int cnt = 0;
+		
+		sql = "select count(position) from work_log wl where wl.id = ? and wl.`date` = curdate()";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1,id);
+			rs = psmt.executeQuery();
+			
+		if(rs.next()) {
+			cnt = rs.getInt(1);
+		}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		
+		return cnt;
+	}
+	public int overlap(String id, String pos, int turn) {
+		int cnt = 0;
+		sql = "select count(position) from work_log wl where wl.id = ? and wl.`date` = curdate() and wl.`position` = ? and turn = ?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1,id);
+			psmt.setString(2,pos);
+			psmt.setInt(3,turn);
+		
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		
+		return cnt;
 	}
 	
 	

@@ -19,34 +19,60 @@ import service_p.PatrolService;
 
 public class PatrolWrite implements PatrolService{
 	public void service(HttpServletRequest request, HttpServletResponse response) {
+		int turn = 0;
 		HttpSession session = request.getSession();
 		WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
-		ArrayList<PatrolDTO> data = new PatrolDAO().list(res.getId());
+		String id = res.getId();
 		ArrayList<Boolean> chk = new ArrayList<Boolean>();
-
+		ArrayList<Boolean> turnChk = new ArrayList<Boolean>();
+		System.out.println(id);
+		for (int i = 0; i < 3; i++) {
+			turnChk.add(false);
+		}
 		
-		for (int i = 0; i < 5; i++) {
-			chk.add(false);
+		int turnCnt = new PatrolDAO().turnCnt(id);	
+		
+		if(turnCnt <= 5) {
+			turn = 1;
+		}else if(turnCnt > 5 && turnCnt <= 10) {
+			turn = 2;
+			
+		}else if(turnCnt > 10) {
+			turn = 3;
+			
 			
 		}
+		
+
+		
+			
+		ArrayList<PatrolDTO> data = new PatrolDAO().list(id,turn);
+
+		for (int i = 0; i < 5; i++) {
+			chk.add(false);
+		}
+	
 		
 		for (PatrolDTO dto : data) {
 			int len = dto.getPosition().length();
 			int no = Integer.parseInt( dto.getPosition().substring(len-2,len-1));
 			chk.set(no-1, true);
-		}
-		System.out.println("---------"+chk.contains(false));
-		if(!chk.contains(false)) {
-			for (int i = 0; i < 5; i++) {
-				chk.set(i,false);
-				
-			}
 			
 		}
-		System.out.println(chk.contains(false));
+		if(turnCnt >= 5) {
+			turnChk.set(0, true);
+		}
+		if(turnCnt >= 10) {
+			turnChk.set(1, true);
+		}
+		if(turnCnt >= 15) {
+			turnChk.set(0, true);
+		}
+		
 		request.setAttribute("data", data);
 		request.setAttribute("pos", chk);
-	
+		request.setAttribute("turn", turnChk);
+
 
 	}
 

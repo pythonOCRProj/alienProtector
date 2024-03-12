@@ -4,8 +4,14 @@ import java.util.Date;
 
 public class PatrolDTO {
 	String photo, special, shoot, id, position, shift, date, time;
-	int no;
+	int no, turn;
 	
+	public int getTurn() {
+		return turn;
+	}
+	public void setTurn(int turn) {
+		this.turn = turn;
+	}
 	public String getPhoto() {
 		return photo;
 	}

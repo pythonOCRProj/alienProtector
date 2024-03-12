@@ -81,6 +81,20 @@
 				</div>
 			</div>
 			</c:forEach>
+			<c:forEach items="${turn}" var="turn">
+			<div class="positon">
+				<div>
+					<c:choose>
+					<c:when test="${turn }">
+						<img src="../img/check.png">
+					</c:when>
+					<c:otherwise>
+				
+					</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			</c:forEach>
 			
 		</div>
 		<div class="box">
