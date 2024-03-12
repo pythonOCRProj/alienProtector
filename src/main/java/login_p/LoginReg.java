@@ -35,21 +35,17 @@ public class LoginReg implements LoginService {
 					request.setAttribute("msg", "관리자 로그인 성공");
 					request.setAttribute("move", "/alienProtector/dashboard");
 					request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
-					res.setAttendTime(dto.getAttendTime());
-					request.getSession().setAttribute("Worker", res);
 				}else if (res.getHire() == 0 ) {
 					request.setAttribute("msg", "접근 권한이 없는 계정입니다. 관리자에게 문의해주세요.");
 					request.setAttribute("move", "/alienProtector/");
 					request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
-					res.setAttendTime(dto.getAttendTime());
-					request.getSession().setAttribute("Worker", res);
 				}else {
 					request.setAttribute("msg", "출근하였습니다. 오늘도 좋은 하루 되세요!");
 					request.setAttribute("move", "/alienProtector/patrol/PatrolWrite");
 					request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
-					res.setAttendTime(dto.getAttendTime());
-					request.getSession().setAttribute("Worker", res);
 				}
+				res.setAttendTime(dto.getAttendTime());
+				request.getSession().setAttribute("Worker", res);
 
 			}
 		}

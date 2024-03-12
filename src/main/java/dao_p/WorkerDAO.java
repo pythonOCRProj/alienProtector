@@ -115,7 +115,7 @@ public class WorkerDAO {
 	public WorkerDTO getWorkerInfo(WorkerDTO dto) {
 		WorkerDTO res = null;
 		
-		sql = "select id, join_date, profile_img, email, phone_num, name, addr, hire  from worker where id = ?";
+		sql = "select id, pwd, join_date, profile_img, email, phone_num, name, addr, hire  from worker where id = ?";
 		
 		
 		try {
@@ -128,10 +128,11 @@ public class WorkerDAO {
 			if(rs.next()) {	
 				res = new WorkerDTO();
 				res.setId(rs.getString("id"));
+				res.setPwd(rs.getString("pwd"));
 				res.setJoinDate(rs.getDate("join_date"));
 				res.setProfileImg(rs.getString("profile_img"));
 				res.setEmail(rs.getString("email"));
-				res.setPhone_num(rs.getString("phone_num"));
+				res.setPhoneNum(rs.getString("phone_num"));
 				res.setName(rs.getString("name"));
 				res.setAddr(rs.getString("addr"));
 				res.setHire(rs.getInt("hire"));
@@ -145,5 +146,34 @@ public class WorkerDAO {
 		}
 		return res;
 	}
+	
+	public int updateWorker(WorkerDTO dto) {
+		int res = 0;
+		
+		sql = "update worker set pwd = ?, phone_num = ?, profile_img = ? where id = ? ";
+		
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getPwd());
+			psmt.setString(2, dto.getPhoneNum());
+			psmt.setString(3, dto.getProfileImg());
+			psmt.setString(4, dto.getId());
+			
+			res = psmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return res;
+	}
+	
 	
 }

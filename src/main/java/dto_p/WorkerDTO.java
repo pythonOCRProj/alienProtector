@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class WorkerDTO {
 	Date joinDate;
-	String id, pwd, profileImg, email, phone_num, name, addr, attendTimeStr;
+	String id, pwd, profileImg, email, phoneNum, name, addr, attendTimeStr;
 	int no, hire;
 	Date attendTime, leaveTime;
 	private String leaveTimeStr;
@@ -95,11 +95,11 @@ public class WorkerDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhone_num() {
-		return phone_num;
+	public String getPhoneNum() {
+		return phoneNum;
 	}
-	public void setPhone_num(String phone_num) {
-		this.phone_num = phone_num;
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
 	}
 	public String getName() {
 		return name;
