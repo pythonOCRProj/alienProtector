@@ -1,6 +1,6 @@
-d
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,12 +11,14 @@ d
 </head>
 <body>
 <!-- 관리자 템플레이트  -->
-	<jsp:include page="components/header.jsp" />
+	<c:if test="${Worker != null }">
+		<jsp:include page="components/header.jsp" />
+	</c:if>
 	
 	<main>
 		<jsp:include page="${incUrl}"/>
 	</main>
 	
-	<jsp:include page="components/footer.jsp" />
+<%-- 	<jsp:include page="components/footer.jsp" /> --%>
 </body>
 </html>
