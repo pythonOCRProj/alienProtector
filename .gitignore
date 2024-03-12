@@ -2,11 +2,11 @@
 .classpath
 
 # Our Disable Function
-images/*.jpg
-images/*.jpeg
-images/*.png
-images/*.bmp
-images/*.svg
+img/*.jpg
+img/*.jpeg
+img/*.png
+img/*.bmp
+img/*.svg
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,eclipse,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,eclipse,java
 # Created by https://www.toptal.com/developers/gitignore/api/dbeaver
