@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script>
 
-	alert("저장디옸")
+	alert("${msg}")
 	location.href="${goUrl}"
 
 </script>

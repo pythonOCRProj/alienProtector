@@ -38,12 +38,13 @@ public class PatrolDAO {
 	}
 	
 	
-	public ArrayList<PatrolDTO> list(){
+	public ArrayList<PatrolDTO> list(String id){
 		ArrayList<PatrolDTO> patrol = new ArrayList<PatrolDTO>();
-		sql = "select * from work_log";
+		sql = "select * from work_log wl join commute c on str_to_date(c.go_time , '%Y-%m-%d') = curdate() where wl.`date` = curdate() and  wl.id = ?";
 		
 		try {
 			psmt = con.prepareStatement(sql);
+			psmt.setString(1,id);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 
@@ -52,6 +53,8 @@ public class PatrolDAO {
 				dto.setId(rs.getString("id"));
 				dto.setSpecial(rs.getString("special"));
 				dto.setPosition(rs.getString("position"));
+				dto.setDate(rs.getString("date"));
+				dto.setTime(rs.getString("time"));
 				
 
 				patrol.add(dto);
@@ -63,8 +66,6 @@ public class PatrolDAO {
 		finally {
 			close();
 		}
-		
-		
 		return patrol;
 		
 	}
@@ -73,7 +74,7 @@ public class PatrolDAO {
 		sql = "insert into work_log (photo, date, special, position, id, time) values (?,?,?,?,?,?)";
 		try {
 			psmt = con.prepareStatement(sql);
-	
+			
 	
 			psmt.setString(1,dto.getPhoto());
 			psmt.setString(2, dto.getDate());

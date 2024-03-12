@@ -6,9 +6,9 @@ try:
     from imutils.perspective import four_point_transform
     from PIL import Image
     from PIL.ExifTags import TAGS
-    photo = 'D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\104.jpg'
+    photo = sys.argv[1]
 
-    img = Image.open('D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\104.jpg')
+    img = Image.open(sys.argv[1])
     time = ''
     info = img.getexif()
     for tag_id in info:
@@ -44,8 +44,8 @@ try:
     # f.writelines(ttt)
     # f.close()
     # #
-    cv2.imshow('bi',edged)
-    cv2.waitKey()
+    # cv2.imshow('bi',edged)
+    # cv2.waitKey()
 
 except Exception as e:
     print(e)
