@@ -39,7 +39,7 @@ public class WorkerModifyReg implements WorkerService{
 						worker.setPwd(pwd);
 					}else if(!pwd.equals(chk)) {
 						request.setAttribute("dto", worker);
-						new RedirectionPage(request, response).movePage("비밀번호와 비밀번호 확인이 맞지 않습니다.", "/alienProtector/worker/WorkerModify");
+						new RedirectionPage(request, response).movePage("비밀번호와 비밀번호 확인이 맞지 않습니다.", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 						return;
 					}
 					
@@ -52,10 +52,12 @@ public class WorkerModifyReg implements WorkerService{
 						worker.setPhoneNum(phone);
 					}else if(!"".equals(phone) && phone != null && !phone.matches(phoneRegex)) {
 						request.setAttribute("dto", worker);
-						new RedirectionPage(request, response).movePage("휴대폰 번호 양식을 확인하세요. ex) 010-0000-0000", "/alienProtector/worker/WorkerModify");
+						new RedirectionPage(request, response).movePage("휴대폰 번호 양식을 확인하세요. ex) 010-0000-0000", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 						return;
 					}
-
+					
+					
+					// 업로드 프로필 유효성 검사
 					Part profile = request.getPart("profile");
 					String profileName = new ProfileUpload(request).fileUpload(profile);
 					String dir = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\profile\\";
@@ -66,7 +68,7 @@ public class WorkerModifyReg implements WorkerService{
 							worker.setProfileImg(profileName);
 						}else if (!profileRegex) {
 							request.setAttribute("dto", worker);
-							new RedirectionPage(request, response).movePage("파일 확장자를 확인하세요. ex) xxx.jpg ", "/alienProtector/worker/WorkerModify");
+							new RedirectionPage(request, response).movePage("파일 확장자를 확인하세요. ex) xxx.jpg ", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 							new File(dir+profileName).delete();
 							return;
 						}
@@ -78,11 +80,11 @@ public class WorkerModifyReg implements WorkerService{
 					request.setAttribute("dto", res);
 					
 					if(isUpdated == 0) {
-						new RedirectionPage(request, response).movePage("근무자 정보 수정 실패, 양식을 확인하세요.", "/alienProtector/worker/WorkerModify");
+						new RedirectionPage(request, response).movePage("근무자 정보 수정 실패, 양식을 확인하세요.", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 						return;
 					}
 
-					new RedirectionPage(request, response).movePage("근무자 정보 수정 완료", "/alienProtector/worker/WorkerModify");
+					new RedirectionPage(request, response).movePage("근무자 정보 수정 완료", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 					
 					
 				} catch (IOException e) {

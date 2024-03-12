@@ -16,7 +16,9 @@ public class WorkerModify implements WorkerService{
 			if(!dto.getId().equals("master")) {
 				new RedirectionPage(request, response).goMain("관리자 권한이 없습니다.");
 			}else {
-				WorkerDTO res = new WorkerDAO().getWorkerInfo(dto);
+				WorkerDTO res = new WorkerDTO();
+				res.setId(request.getParameter("id"));
+				res = new WorkerDAO().getWorkerInfo(res);
 				request.setAttribute("dto", res);
 			}
 		}catch (NullPointerException e) {
