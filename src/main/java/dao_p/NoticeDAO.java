@@ -144,16 +144,13 @@ public class NoticeDAO {
 	
 	public void write(NoticeDTO dto){
 
-		
-		sql = "insert into notice ( title , content ,time,id,img) values (?,?,sysdate(),'master',?)";
+		sql = "insert into notice ( title , content ,time,id,img) values (?,?,sysdate(),'관리자',?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getImg());
 			
-			
-
 			psmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

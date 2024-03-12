@@ -23,9 +23,8 @@ public class NoticeModifyReg implements NoticeService{
 		try {
 			
 			
+			
 			upFileName = new FileUp(request).fileUpload(request.getPart("upfile"));
-			
-			
 			dto.setNo(Integer.parseInt(request.getParameter("no")));
 			dto.setTitle(request.getParameter("title"));
 			dto.setContent(request.getParameter("content"));

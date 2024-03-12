@@ -39,7 +39,7 @@ public class PatrolWrite implements PatrolService{
 		request.setAttribute("data", data);
 		request.setAttribute("pos", chk);
 	
-		
+
 	}
 
 }
