@@ -25,8 +25,5 @@ public class WorkerModify implements WorkerService{
 			System.out.println("Exception (WorkerModify) - dto 값 없음");
 			new RedirectionPage(request, response).goMain("다시 로그인 해주세요.");;
 		}
-		
-		
-	}
-	
+	}	
 }

@@ -5,7 +5,7 @@
 	<div class="headerPatrol">
 		<ul>
 			<li><a href="/alienProtector/patrol/PatrolWrite">순찰등록</a></li>
-			<li><a href="/alienProtector/notice/NoticeList">공지사항</a></li>
+			<li><a href="/alienProtector/notice/NoticePatrolList">공지사항</a></li>
 		</ul>
 	</div>
 	

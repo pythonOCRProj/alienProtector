@@ -39,6 +39,7 @@ public class LoginReg implements LoginService {
 					request.setAttribute("msg", "접근 권한이 없는 계정입니다. 관리자에게 문의해주세요.");
 					request.setAttribute("move", "/alienProtector/");
 					request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
+					return;
 				}else {
 					request.setAttribute("msg", "출근하였습니다. 오늘도 좋은 하루 되세요!");
 					request.setAttribute("move", "/alienProtector/patrol/PatrolWrite");
