@@ -17,8 +17,8 @@
 		</div>
 		<hr>
 		
-		<c:if test="${Data.Img!=null}">
-		<div><img alt="" src="/images/${Data.Img}"></div>
+		<c:if test="${noticeDetail.img!=null}">
+		<div><img alt="" src="/images/${noticeDetail.img}"></div>
 		</c:if>
 		
 		<div>${noticeDetail.content}</div>
@@ -32,7 +32,7 @@
 					<a href="NoticeModify?no=${noticeDetail.no }"> 수정 </a>
 				</div>
 				<div>
-					<a href="NoticeDelete?no=${noticeDelete.no}"> 삭제 </a>
+					<a href="NoticeDelete?no=${noticeDetail.no}"> 삭제 </a>
 				</div>
 		</div>
 	</div>

@@ -102,14 +102,14 @@ public class NoticeDAO {
 	
 	public void noticeModify(NoticeDTO dto) {
 		
-		sql = "update notice set title = ?, time = sysdate(), cnt = ?, content = ?, img = ? where no = ?";
+		sql = "update notice set title = ?, cnt = ?, content = ? where no = ?";
+				//"update notice set title = ?, time = sysdate(), cnt = ?, content = ?, img = ? where no = ?";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getImg());
+			psmt.setInt(2, dto.getCnt());
+			psmt.setString(3, dto.getContent());
 			psmt.setInt(4, dto.getNo());
-			psmt.setInt(5, dto.getCnt());
 			
 			
 			psmt.executeUpdate();
@@ -144,12 +144,13 @@ public class NoticeDAO {
 	public void write(NoticeDTO dto){
 
 		
-		sql = "insert into notice ( title , content ,time,id) values (?,?,sysdate(),'master')";
+		sql = "insert into notice ( title , content ,time,id,img) values (?,?,sysdate(),'master',?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			
+			psmt.setString(3, dto.getImg());
+			//이미지 추가해야함
 			
 
 			psmt.executeUpdate();
@@ -183,7 +184,7 @@ public class NoticeDAO {
 		sql="update notice set "
 				+ "cnt = notice.cnt + 1 "
 				+ "where no = ? ";
-		System.out.println("노티스 카운트 실행 ---------------"+sql);
+		
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setInt(1, bNo);

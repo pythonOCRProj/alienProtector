@@ -18,7 +18,7 @@ function fileDel(){
 }
 </script>
 
-<form name="frm" action="NoticeModifyReg" method="post" enctype="multipart/form-data">
+<form name="frm" action="NoticeModifyReg?no=${ModifyData.no}" method="post" enctype="multipart/form-data">
 	<div>
 		<div>
 			<div>제목</div>
