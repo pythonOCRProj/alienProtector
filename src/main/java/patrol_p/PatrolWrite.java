@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import dao_p.PatrolDAO;
 import dto_p.PatrolDTO;
@@ -22,9 +23,13 @@ public class PatrolWrite implements PatrolService{
 		WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
 		ArrayList<PatrolDTO> data = new PatrolDAO().list(res.getId());
 		ArrayList<Boolean> chk = new ArrayList<Boolean>();
-		
+		ArrayList<Boolean> three = new ArrayList<Boolean>();
 		for (int i = 0; i < 5; i++) {
 			chk.add(false);
+			
+		}
+		for (int i = 0; i < 3; i++) {
+			three.add(false);
 			
 		}
 		
@@ -33,10 +38,16 @@ public class PatrolWrite implements PatrolService{
 			int no = Integer.parseInt( dto.getPosition().substring(len-2,len-1) );
 			chk.set(no-1, true);
 		}
-		
+		if (!chk.contains(false)) {
+			Collections.replaceAll(chk,true,false);
+			int no = 0;
+			three.set(no, true);
+			no++;
+		}
 		
 		request.setAttribute("data", data);
 		request.setAttribute("pos", chk);
+		request.setAttribute("three", three);
 		
 	}
 
