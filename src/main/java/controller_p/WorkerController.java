@@ -2,6 +2,7 @@ package controller_p;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import service_p.WorkerService;
 import java.io.IOException;
 
 @WebServlet("/worker/*")
+@MultipartConfig()
 public class WorkerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
