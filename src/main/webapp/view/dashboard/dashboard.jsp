@@ -73,7 +73,7 @@
 					<td>${tp.position }</td>
 		 			<td>${tp.id }</td>
 					<td>${tp.special }</td>
-			 		<td>09:30:23</td>
+			 		<td>${tp.time }</td>
 		 		</tr>
 			</c:forEach>
 
