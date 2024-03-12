@@ -17,8 +17,9 @@ public class NoticeDelete  implements NoticeService{
 		
 		new NoticeDAO().delete(no);
 		System.out.println("노티스삭제JAVA진입");
-		request.setAttribute("incUrl", "notice/NoticeDelete.jsp");
-		
+		request.setAttribute("incUrl", "components/moveUrl.jsp");
+		request.setAttribute("msg", "삭제되었습니다.");
+		request.setAttribute("move", "NoticeList");
 		
 	}
 	
