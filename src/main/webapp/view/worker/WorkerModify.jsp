@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 전송 버튼 및 비밀번호, 휴대폰 번호 수정할 수 있게 변경 -->
-
 <form action="WorkerModifyReg" method="post" enctype="multipart/form-data">
 	<div class = "worker">
 		<div class="worker__img">
@@ -31,12 +30,13 @@
 					</c:choose>
 				</p>
 				<c:choose>
-					<c:when test="${dto.hire == 1 }">
+					<c:when test="${dto.hire == 1 && dto.id != 'master' }">
 						<button>퇴사</button>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${dto.hire == 0 && dto.id != 'master' }">
 						<button>재입사</button>
-					</c:otherwise>
+					</c:when>
+					
 				</c:choose>
 			</div>		
 			<p>입사일 : ${dto.joinDate}</p>
@@ -55,11 +55,25 @@
 		</div>
 		<div class="worker__btns">
 			<input type="submit" value= "전송"/>
-			<button>목록</button>
+			<a href="/alienProtector/worker/WorkerList">목록</a>
 		</div>
 	</div>
 </form>
 
+<script>
+	$(()=>{
+		$(".worker > .worker__row > .worker__col > button").on("click",function(e){
+			e.preventDefault();
+			const html = $(this).html();
+			if(confirm("정말로 "+html+" 시키겠습니까?")){				
+				window.location.href = "/alienProtector/worker/Returning?id=${dto.id}&s="+html
+			}
+			
+		});
+		
+	})
+
+</script>
 
 
     

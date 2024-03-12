@@ -88,6 +88,7 @@ public class WorkerDAO {
 	}
 	
 	
+	/** 정운만 - 근무자 퇴근처리 합니다*/
 	public int getOutWork(WorkerDTO dto) {
 		int res = 0;
 		
@@ -112,7 +113,7 @@ public class WorkerDAO {
 		return res;
 	}
 	
-	
+	/**정운만 - 근무자의 정보를 얻습니다.*/
 	public WorkerDTO getWorkerInfo(WorkerDTO dto) {
 		WorkerDTO res = null;
 		
@@ -148,6 +149,8 @@ public class WorkerDAO {
 		return res;
 	}
 	
+	//정운만
+	/** 근무자의 정보를 저장합니다.*/
 	public int updateWorker(WorkerDTO dto) {
 		int res = 0;
 		
@@ -175,6 +178,51 @@ public class WorkerDAO {
 		
 		return res;
 	}
+	//정운만
+	/** 재직중인 혹은 퇴사한 근무자 아이디가 있는지 확인합니다.*/
+	public boolean checkHiredWorker(String id) {
+		boolean res = false;
+		
+		sql = "select id from worker where id = ?";
+		
+		try {
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				res = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	public int updateReturning(WorkerDTO dto) {
+		int res = 0;
+		
+		sql = "update worker set hire = ? where id = ?";
+		
+		try {
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, dto.getHire());
+			psmt.setString(2, dto.getId());
+			
+			res = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
 	
 	
 	//회원목록을 list 형식으로 리턴 -박민수

@@ -6,15 +6,9 @@
 	<div class="headerAdmin">
 		<ul>
 			<li><a href="/alienProtector/dashboard/dashboard">대시보드</a></li>
+			<li><a href="/alienProtector/worker/WorkerList">근무자 명단</a></li>
 			<li><a href="/alienProtector/work/WorkList">근무일지</a></li>
-			
-			<c:if test="${Worker.id=='master'}">
 			<li><a href="/alienProtector/notice/NoticeList">공지사항</a></li>
-			</c:if>
-			
-			<c:if test="${Worker.id!='master'}">
-			<li><a href="/alienProtector/notice/NoticePatrolList">공지사항</a></li>
-			</c:if>
 			
 		</ul>
 	</div>
