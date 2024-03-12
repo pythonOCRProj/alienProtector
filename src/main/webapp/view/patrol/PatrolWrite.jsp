@@ -69,18 +69,32 @@
 			</div>
 			<c:forEach items="${pos}" var="pos">
 			<div class="positon">
-				<div>
+				<div class="chk_${pos }">
 					<c:choose>
 					<c:when test="${pos }">
-						확인 완료
+						<img src="../img/check.png">
 					</c:when>
 					<c:otherwise>
-						미등록
+				
 					</c:otherwise>
 					</c:choose>
 				</div>
 			</div>
-		</c:forEach>
+			</c:forEach>
+			<c:forEach items="${three}" var="three">
+			<div class="positon">
+				<div>
+					<c:choose>
+					<c:when test="${three }">
+						<img src="../img/check.png">
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			</c:forEach>
+			
 		</div>
 		<div class="box">
 			<div>

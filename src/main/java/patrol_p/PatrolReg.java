@@ -33,23 +33,30 @@ public class PatrolReg implements PatrolService {
 			PatrolDTO dto = new PatrolDTO();
 			HttpSession session = request.getSession();
 			WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
-			dto.setPosition(pos);
-			dto.setPhoto(file);
-			dto.setId(res.getId());
-			dto.setSpecial(request.getParameter("special"));
-			dto.setDate(pyOcr.date);
+			Date now = new Date();
+			SimpleDateFormat smf = new SimpleDateFormat("yyyy-MM-dd");
 			
-			
-			dto.setTime(pyOcr.time);
-			
-			
-			new PatrolDAO().write(dto);
-			
-			
-			request.setAttribute("incUrl", "components/alert.jsp");
-			request.setAttribute("msg", pos+" 등록이 되었습니다.");
-			request.setAttribute("goUrl", "/alienProtector/patrol/PatrolWrite");
-			
+			if(pyOcr.date == smf.format(now)) {
+				dto.setPosition(pos);
+				dto.setPhoto(file);
+				dto.setId(res.getId());
+				dto.setSpecial(request.getParameter("special"));
+				dto.setDate(pyOcr.date);
+				dto.setTime(pyOcr.time);
+				
+				
+				new PatrolDAO().write(dto);
+				
+				
+				request.setAttribute("incUrl", "components/alert.jsp");
+				request.setAttribute("msg", pos+" 등록이 되었습니다.");
+				request.setAttribute("goUrl", "/alienProtector/patrol/PatrolWrite");
+			}else {
+				request.setAttribute("incUrl", "components/alert.jsp");
+				request.setAttribute("msg", "올바른 날짜가 아닙니다.");
+				request.setAttribute("goUrl", "/alienProtector/patrol/PatrolWrite");
+				
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
