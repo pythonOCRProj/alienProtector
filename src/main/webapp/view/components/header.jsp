@@ -2,17 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
-	<div class="headerSecurity">
+<!-- 	<div class="headerSecurity">
 		<ul>
 			<li><a href="#">#1</a></li>
 			<li><a href="#">공지사항</a></li>
 		</ul>
-	</div>
+	</div> -->
 	
 	<div class="headerAdmin">
 		<ul>
-			<li><a href="#">#1</a></li>
-			<li><a href="#">#2</a></li>
+			<li><a href="/alienProtector/work/WorkList">근무일지</a></li>
+			<li><a href="/alienProtector/notice/NoticeList">공지사항</a></li>
 		</ul>
 	</div>
 	<div class="Log__info">

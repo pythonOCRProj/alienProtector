@@ -14,7 +14,7 @@
 
 			<div class="workList">
 				<h4>${da.date }</h4>
-				<table>
+				<table border="">
 					<colgroup>
 			<%-- 			<col style="width: 78%;">
 						<col style="width: 22%"> --%>
@@ -51,7 +51,7 @@
 		<c:forEach items="${placeList }" var="pl" >
 			<div class="workList">
 				<h4>${pl.position }</h4>
- 				<table>
+ 				<table border="">
 					<colgroup>
 					</colgroup>
 					<thead>
@@ -85,7 +85,7 @@
 			<c:if test="${wl.id != 'master' }">
 			<div class="workList">
 				<h4>${wl.name } (${wl.id })</h4>
- 				<table>
+ 				<table border="">
 					<colgroup>
 					</colgroup>
 					<thead>

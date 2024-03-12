@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <section class="master">
 	<h3>출근한 근무자</h3>
-	<table>
+	<table border="">
 		<colgroup>
 			<col style="width: 22%">
  			<col style="width: 78%;">
@@ -27,7 +27,7 @@
 </section>
 <section class="master">
 	<h3>퇴근한 근무자</h3>
-	<table>
+	<table border="">
 		<colgroup>
 			<col style="width: 22%">
  			<col style="width: 78%;">
@@ -52,7 +52,7 @@
 
 <section class="master">
 	<h3>당일 순찰 상태</h3>
-	<table>
+	<table border="">
 		<colgroup>
 <%-- 			<col style="width: 78%;">
 			<col style="width: 22%"> --%>
