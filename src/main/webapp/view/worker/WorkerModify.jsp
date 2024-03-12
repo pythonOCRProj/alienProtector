@@ -4,7 +4,7 @@
 
 <!-- 전송 버튼 및 비밀번호, 휴대폰 번호 수정할 수 있게 변경 -->
 
-<form action="WorkerModifyReg">
+<form action="WorkerModifyReg" method="post" enctype="multipart/form-data">
 	<div class = "worker">
 		<div class="worker__img">
 			<!-- 이미지 있을 유무 -->
@@ -15,9 +15,11 @@
 			<c:if test="${dto.profileImg != null }">
 				<img src="../profile/${dto.profileImg}" alt="" />
 			</c:if>
+			<input type="file" name="profile"/>
 		</div>
 		<div class="worker__row">
 			<div class="worker__col">
+				<input type="hidden" name="id" value="${dto.id }" />
 				<p>아이디 : ${dto.id} - 
 					<c:choose>
 						<c:when test="${dto.hire == 0 }">
@@ -40,15 +42,15 @@
 			<p>입사일 : ${dto.joinDate}</p>
 		</div>
 		<div class="worker__row">
-			<p><input type="text" name="pwd" placeholder="비밀번호" /></p>
-			<p><input type="text" name="pwdChk" placeholder="비밀번호 확인" /></p>
+			<input type="text" name="pwd" placeholder="비밀번호" />
+			<input type="text" name="pwdChk" placeholder="비밀번호 확인" />
 		</div>
 		<div class="worker__row">
-			<p>이름 : ${dto.phone_num}</p>
+			<p>이름 : ${dto.name}</p>
 			<p>주소 : ${dto.addr}</p>
 		</div>
 		<div class="worker__row">
-			<p>연락 번호 : ${dto.phone_num}</p>
+			<input type="text" name="phone" placeholder="ex) 010-1234-1234" value="${dto.phoneNum}" />
 			<p>이메일 : ${dto.email}</p>
 		</div>
 		<div class="worker__btns">

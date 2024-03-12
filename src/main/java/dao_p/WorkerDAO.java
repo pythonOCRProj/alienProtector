@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -115,7 +116,7 @@ public class WorkerDAO {
 	public WorkerDTO getWorkerInfo(WorkerDTO dto) {
 		WorkerDTO res = null;
 		
-		sql = "select id, join_date, profile_img, email, phone_num, name, addr, hire  from worker where id = ?";
+		sql = "select id, pwd, join_date, profile_img, email, phone_num, name, addr, hire  from worker where id = ?";
 		
 		
 		try {
@@ -128,10 +129,11 @@ public class WorkerDAO {
 			if(rs.next()) {	
 				res = new WorkerDTO();
 				res.setId(rs.getString("id"));
+				res.setPwd(rs.getString("pwd"));
 				res.setJoinDate(rs.getDate("join_date"));
 				res.setProfileImg(rs.getString("profile_img"));
 				res.setEmail(rs.getString("email"));
-				res.setPhone_num(rs.getString("phone_num"));
+				res.setPhoneNum(rs.getString("phone_num"));
 				res.setName(rs.getString("name"));
 				res.setAddr(rs.getString("addr"));
 				res.setHire(rs.getInt("hire"));
@@ -144,6 +146,98 @@ public class WorkerDAO {
 			close();
 		}
 		return res;
+	}
+	
+	public int updateWorker(WorkerDTO dto) {
+		int res = 0;
+		
+		sql = "update worker set pwd = ?, phone_num = ?, profile_img = ? where id = ? ";
+		
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getPwd());
+			psmt.setString(2, dto.getPhoneNum());
+			psmt.setString(3, dto.getProfileImg());
+			psmt.setString(4, dto.getId());
+			
+			res = psmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return res;
+	}
+	
+	
+	//회원목록을 list 형식으로 리턴 -박민수
+	public ArrayList<WorkerDTO> list() {
+		// list객체 인스턴스
+		ArrayList<WorkerDTO> res = new ArrayList<WorkerDTO>();
+		sql = "select * from worker";
+		try {
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+					
+				WorkerDTO dto = new WorkerDTO();
+				dto.setNo(rs.getInt("no"));
+				dto.setId(rs.getString("id"));
+				dto.setPwd(rs.getString("pwd"));
+				dto.setProfileImg(rs.getString("profile_img"));
+				dto.setEmail(rs.getString("email"));
+				dto.setPhoneNum(rs.getString("phone_num"));
+				dto.setName(rs.getString("name"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setJoinDate(rs.getTimestamp("join_date"));
+				dto.setHire(rs.getInt("hire"));
+					
+				res.add(dto);
+			}
+				
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
+	//근무자등록 - 박민수
+	public int join(WorkerDTO dto) {
+				
+		int cnt = 0;
+		
+		sql = "insert into worker(id, pwd, profile_img, email, phone_num, name, addr) values (?,?,?,?,?,?,?)";
+		try {
+			psmt = con.prepareStatement(sql);
+					
+					
+			psmt.setString(1,  dto.getId());
+			psmt.setString(2,  dto.getPwd());
+			psmt.setString(3,  dto.getProfileImg());
+			psmt.setString(4,  dto.getEmail());
+			psmt.setString(5,  dto.getPhoneNum());
+			psmt.setString(6,  dto.getName());
+			psmt.setString(7,  "서울특별시 송파구");
+			psmt.executeUpdate();
+			cnt = psmt.executeUpdate();
+					
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+				
+		return cnt;
+				
 	}
 	
 }

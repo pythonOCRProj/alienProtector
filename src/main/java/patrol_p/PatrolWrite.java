@@ -23,31 +23,22 @@ public class PatrolWrite implements PatrolService{
 		WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
 		ArrayList<PatrolDTO> data = new PatrolDAO().list(res.getId());
 		ArrayList<Boolean> chk = new ArrayList<Boolean>();
-		ArrayList<Boolean> three = new ArrayList<Boolean>();
+
 		for (int i = 0; i < 5; i++) {
 			chk.add(false);
 			
 		}
-		for (int i = 0; i < 3; i++) {
-			three.add(false);
-			
-		}
-		
+	
 		for (PatrolDTO dto : data) {
 			int len = dto.getPosition().length();
-			int no = Integer.parseInt( dto.getPosition().substring(len-2,len-1) );
+			int no = Integer.parseInt( dto.getPosition().substring(len-2,len-1));
 			chk.set(no-1, true);
 		}
-		if (!chk.contains(false)) {
-			Collections.replaceAll(chk,true,false);
-			int no = 0;
-			three.set(no, true);
-			no++;
-		}
+	
 		
 		request.setAttribute("data", data);
 		request.setAttribute("pos", chk);
-		request.setAttribute("three", three);
+	
 		
 	}
 
