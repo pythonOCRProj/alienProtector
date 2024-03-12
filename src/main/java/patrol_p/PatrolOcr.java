@@ -31,38 +31,47 @@ public class PatrolOcr {
 			while((line=br.readLine())!=null) {
 				arr.add(line.trim());
 			}
-			
 			String [] str = arr.get(0).split(",");
-			String [] dateTime = str[1].split(" ");
-			date = dateTime[0].replace(":", "-");
-			time = dateTime[1];
-			System.out.println(date);
-			System.out.println(time);
-			
-			char [] ocr = arr.get(1).toCharArray();  
-			switch(ocr[2]) {
-				case '1':
-					System.out.println("101호");
-					position = "101호";
-					break;
-				case '2':
-					System.out.println("102호");
-					position = "102호";
-					break;
-				case '3':
-					System.out.println("103호");
-					position = "103호";
-					break;
-				case '4':
-					System.out.println("104호");
-					position = "104호";
-					break;
-				case '5':
-					System.out.println("105호");
-					position = "105호";
-					break;
+			if(!str[1].equals("")) {
+				String [] dateTime = str[1].split(" ");
+				
+				date = dateTime[0].replace(":", "-");
+				time = dateTime[1];
+			}else {
+				date = null;
+				time = null;
 			}
-			
+			if(!arr.get(1).equals("")) {
+				char [] ocr = arr.get(1).toCharArray();  
+				switch(ocr[2]) {
+					case '1':
+						System.out.println("101호");
+						position = "101호";
+						break;
+					case '2':
+						System.out.println("102호");
+						position = "102호";
+						break;
+					case '3':
+						System.out.println("103호");
+						position = "103호";
+						break;
+					case '4':
+						System.out.println("104호");
+						position = "104호";
+						break;
+					case '5':
+						System.out.println("105호");
+						position = "105호";
+						break;
+					default:
+						System.out.println("구분못함");
+						position = null;
+						break;
+				}
+			}else {
+				position = null;
+			}
 			
 			
 			br.close();

@@ -39,34 +39,49 @@ public class PatrolReg implements PatrolService {
 			SimpleDateFormat smf = new SimpleDateFormat("yyyy-MM-dd");
 			String nowDate = smf.format(now);
 			
-			int no = new PatrolDAO().count();
-			String lastStr = new PatrolDAO().search(no);
-			
-			
-			SimpleDateFormat smf2 = new SimpleDateFormat("HH:mm:ss");
-		    Calendar last = Calendar.getInstance();
-		    Calendar up = Calendar.getInstance();
-		    
-		    last.setTime(smf2.parse(lastStr));
-		    up.setTime(smf2.parse(pyOcr.time));
-		    
-		    //마지막 찍은 사진 시간 +10
-		    last.add(Calendar.SECOND, 10);
-		    
-		    //현재 올린 사진의 시간이 마지막 찍은 사진의 시간에서 10초 지났는지 판별
-		    int compare = (smf2.format(up.getTime())).compareTo(smf2.format(last.getTime())); 
-	       
-		    System.out.println(compare);
-		    
-			if(pyOcr.date == null || !pyOcr.date.equals(nowDate)){
+//			int no = new PatrolDAO().count();
+//			String lastStr = new PatrolDAO().search(no);
+//			
+//			
+//			SimpleDateFormat smf2 = new SimpleDateFormat("HH:mm:ss");
+//		    Calendar last = Calendar.getInstance();
+//		    Calendar up = Calendar.getInstance();
+//		    
+//		    last.setTime(smf2.parse(lastStr));
+//		    up.setTime(smf2.parse(pyOcr.time));
+//		    
+//		    //마지막 찍은 사진 시간 +10
+//		    last.add(Calendar.SECOND, 10);
+//		    
+//		    //현재 올린 사진의 시간이 마지막 찍은 사진의 시간에서 10초 지났는지 판별
+//		    int compare = (smf2.format(up.getTime())).compareTo(smf2.format(last.getTime())); 
+		 
+		 
+			if(pyOcr.date == null || !pyOcr.date.equals(nowDate) || pyOcr.time == null){
 				new RedirectionPage(request, response).goMain("올바른 날짜가 아닙니다.");
 		
-			}
-			else if(pyOcr.date.equals(nowDate)) {
+			}else if(pyOcr.date.equals(nowDate) && pos != null && pyOcr.time != null) {
+				int no = new PatrolDAO().count();
+				String lastStr = new PatrolDAO().search(no);
+				
+				
+				SimpleDateFormat smf2 = new SimpleDateFormat("HH:mm:ss");
+			    Calendar last = Calendar.getInstance();
+			    Calendar up = Calendar.getInstance();
+			    
+			    last.setTime(smf2.parse(lastStr));
+			    up.setTime(smf2.parse(pyOcr.time));
+			    
+			    //마지막 찍은 사진 시간 +10
+			    last.add(Calendar.SECOND, 10);
+			    
+			    //현재 올린 사진의 시간이 마지막 찍은 사진의 시간에서 10초 지났는지 판별
+			    int compare = (smf2.format(up.getTime())).compareTo(smf2.format(last.getTime())); 
 				if(compare > 0) {
 				
 					String [] sh = pyOcr.time.split(":");
 					int hour = Integer.parseInt(sh[0]);
+					
 					String shift = "";
 					if(hour>=23 || (0<=hour && 7>hour)) {
 						shift = "야간";
@@ -89,11 +104,12 @@ public class PatrolReg implements PatrolService {
 					new PatrolDAO().write(dto);
 					
 					new RedirectionPage(request, response).goMain( pos+" 등록이 되었습니다.");
+				}else {
+						new RedirectionPage(request, response).goMain("올바른 시간이 아닙니다.");
 				}
-				else {
-					new RedirectionPage(request, response).goMain("올바른 시간이 아닙니다.");
-				}
-			}
+			}else if(pos == null) {
+		    	new RedirectionPage(request, response).goMain("올바른 이미지가 아닙니다.");
+		    }
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

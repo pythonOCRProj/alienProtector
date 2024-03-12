@@ -24,18 +24,26 @@ public class PatrolWrite implements PatrolService{
 		ArrayList<PatrolDTO> data = new PatrolDAO().list(res.getId());
 		ArrayList<Boolean> chk = new ArrayList<Boolean>();
 
+		
 		for (int i = 0; i < 5; i++) {
 			chk.add(false);
 			
 		}
-	
+		
 		for (PatrolDTO dto : data) {
 			int len = dto.getPosition().length();
 			int no = Integer.parseInt( dto.getPosition().substring(len-2,len-1));
 			chk.set(no-1, true);
 		}
-	
-		
+		System.out.println("---------"+chk.contains(false));
+		if(!chk.contains(false)) {
+			for (int i = 0; i < 5; i++) {
+				chk.set(i,false);
+				
+			}
+			
+		}
+		System.out.println(chk.contains(false));
 		request.setAttribute("data", data);
 		request.setAttribute("pos", chk);
 	
