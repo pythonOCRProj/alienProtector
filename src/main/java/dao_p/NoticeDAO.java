@@ -102,14 +102,15 @@ public class NoticeDAO {
 	
 	public void noticeModify(NoticeDTO dto) {
 		
-		sql = "update notice set title = ?, cnt = ?, content = ? where no = ?";
-				//"update notice set title = ?, time = sysdate(), cnt = ?, content = ?, img = ? where no = ?";
+		sql = "update notice set title = ?,  content = ?, img = ? where no = ?";
+				
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
-			psmt.setInt(2, dto.getCnt());
-			psmt.setString(3, dto.getContent());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getImg());
 			psmt.setInt(4, dto.getNo());
+			
 			
 			
 			psmt.executeUpdate();
@@ -150,7 +151,7 @@ public class NoticeDAO {
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getImg());
-			//이미지 추가해야함
+			
 			
 
 			psmt.executeUpdate();

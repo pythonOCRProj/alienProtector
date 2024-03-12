@@ -18,6 +18,5 @@ public class NoticeDetail implements NoticeService  {
 		request.setAttribute("noticeDetail", dto);
 		System.out.println("노티스디테일자바 진입");
 		
-		
 	}
 }

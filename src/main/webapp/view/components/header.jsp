@@ -12,11 +12,19 @@
 	<div class="headerAdmin">
 		<ul>
 			<li><a href="/alienProtector/work/WorkList">근무일지</a></li>
+			
+			<c:if test="${Worker.id=='master'}">
 			<li><a href="/alienProtector/notice/NoticeList">공지사항</a></li>
+			</c:if>
+			
+			<c:if test="${Worker.id!='master'}">
+			<li><a href="/alienProtector/notice/NoticePatrolList">공지사항</a></li>
+			</c:if>
+			
 		</ul>
 	</div>
 	<div class="Log__info">
-	<c:if test="${Worker != null }">\		
+	<c:if test="${Worker != null }">		
 		<p>어서오세요 ${Worker.name} 님</p>
 		<a href="/alienProtector/logout/Logout">로그아웃</a>
 	</c:if>

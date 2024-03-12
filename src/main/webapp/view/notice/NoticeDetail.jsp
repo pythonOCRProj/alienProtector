@@ -18,7 +18,7 @@
 		<hr>
 		
 		<c:if test="${noticeDetail.img!=null}">
-		<div><img alt="" src="/images/${noticeDetail.img}"></div>
+		<div><img alt="" src="/alienProtector/img/${noticeDetail.img}"></div>
 		</c:if>
 		
 		<div>${noticeDetail.content}</div>

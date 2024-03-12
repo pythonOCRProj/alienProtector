@@ -14,7 +14,7 @@
 	<c:if test="${Worker != null }">
 		<jsp:include page="components/header.jsp" />
 	</c:if>
-	
+
 	<main>
 		<jsp:include page="${incUrl}"/>
 	</main>
