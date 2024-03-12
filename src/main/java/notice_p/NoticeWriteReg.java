@@ -23,19 +23,19 @@ public class NoticeWriteReg implements NoticeService{
 		String upFileName;
 		
 		try {
+			
+			System.out.println(request.getPart("upfile"));
+			
+			
 			upFileName = new FileUp(request).fileUpload(request.getPart("upfile"));
 			
 			dto.setTitle(request.getParameter("title"));
 			dto.setContent(request.getParameter("content"));
 			dto.setImg(upFileName);
-			System.out.println(upFileName);
-			//System.out.println(dto.getContent());
+		
 			new NoticeDAO().write(dto);
-			
 			int no = new NoticeDAO().newNo();
-
 			new RedirectionPage(request, response).movePage("작성되었습니다","NoticeList" );
-			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
