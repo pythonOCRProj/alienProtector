@@ -27,7 +27,7 @@ public class LogoutController extends HttpServlet {
 		System.out.println(incJsp);
 		request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
 		try {
-			LogoutService ls = (LogoutService)Class.forName("woerker_p."+incJsp).newInstance();
+			LogoutService ls = (LogoutService)Class.forName("logout_p."+incJsp).newInstance();
 			ls.execute(request, response);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
