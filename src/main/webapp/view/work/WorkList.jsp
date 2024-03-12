@@ -14,7 +14,7 @@
 	}
 </style>
 <div class="sortList">
-	<a href="<c:url value="/work/WorkList"/>">시간순</a>
+	<a href="<c:url value="/work/WorkList"/>">날짜별</a>
 	<a href="<c:url value="/work/WorkList?sort=position"/>">근무지역</a>
 	<a href="<c:url value="/work/WorkList?sort=worker"/>">근무자</a>	
 </div>
@@ -42,9 +42,8 @@
 					<tbody>	
 	 					<c:forEach items="${workData }" var="wd">
 	 					<c:if test="${da.date == wd.date }">
-	 					
-							<tr>
-								<td>오전</td>
+							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
+								<td>${wd.shift }</td>
 								<td>${wd.position }</td>
 					 			<td>${wd.id }</td>
 								<td>${wd.special }</td>
@@ -77,8 +76,8 @@
 	 					<c:forEach items="${workData }" var="wd">
 	 					<c:if test="${pl.position == wd.position }">
 	 					
-							<tr>
-								<td>오전</td>
+							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
+								<td>${wd.shift }</td>
 								<td>${wd.special }</td>
 								<td>${wd.date }</td>
 						 		<td>${wd.time }</td>
@@ -112,8 +111,8 @@
 	 					<c:forEach items="${workData }" var="wd">
 	 					<c:if test="${wl.id == wd.id }">
 	 					
-							<tr>
-								<td>오전</td>
+							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
+								<td>${wd.shift }</td>
 								<td>${wd.position }</td>
 								<td>${wd.special }</td>
 								<td>${wd.date }</td>
