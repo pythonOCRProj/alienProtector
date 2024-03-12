@@ -122,10 +122,11 @@ public class PatrolDAO {
 
 	public String search(int no) {
 		String time = "";
-		sql = "select time from work_log wl where no = ? ";
+		sql = "select time from work_log wl where no = ?";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setInt(1,no);
+		
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				time = rs.getString(1);

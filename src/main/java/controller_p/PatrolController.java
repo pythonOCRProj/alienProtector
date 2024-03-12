@@ -41,7 +41,7 @@ public class PatrolController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cate = "patrol/";
 		String service = request.getRequestURI().substring((request.getContextPath()+"/"+cate).length());
-		System.out.println(cate+service);
+//		System.out.println(cate+service);
 		
 		request.setAttribute("incUrl", cate+service+".jsp");
 		try {
