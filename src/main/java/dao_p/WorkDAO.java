@@ -136,6 +136,8 @@ public class WorkDAO {
 			
 			while(rs.next()) {
 				dto = new PatrolDTO();
+				dto.setNo(rs.getInt("no"));
+				dto.setShift(rs.getString("shift"));
 				dto.setId(rs.getString("id"));
 				dto.setPosition(rs.getString("position"));
 				dto.setSpecial(rs.getString("special"));

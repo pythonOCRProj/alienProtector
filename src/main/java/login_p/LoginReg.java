@@ -33,7 +33,7 @@ public class LoginReg implements LoginService {
 
 				if(res.getId().equals("master")) {
 					request.setAttribute("msg", "관리자 로그인 성공");
-					request.setAttribute("move", "/alienProtector/dashboard");
+					request.setAttribute("move", "/alienProtector/dashboard/dashboard");
 					request.setAttribute("incUrl", "/view/components/moveUrl.jsp");
 				}else if (res.getHire() == 0 ) {
 					request.setAttribute("msg", "접근 권한이 없는 계정입니다. 관리자에게 문의해주세요.");
