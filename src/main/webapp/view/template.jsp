@@ -9,16 +9,24 @@
 <script src="../js/jquery-3.7.1.js"></script>
 <link href="../css/style.css" rel="stylesheet">
 </head>
-<body>
+<c:if test="${Worker.id == 'master' }">
+	<body id ="masterTemplate">
 <!-- 관리자 템플레이트  -->
-	<c:if test="${Worker != null }">
 		<jsp:include page="components/header.jsp" />
-	</c:if>
-	
-	<main>
-		<jsp:include page="${incUrl}"/>
-	</main>
+
+</c:if>
+
+<c:if test="${Worker.id != 'master' }">
+	<body id ="patrolTemplate">
+		<c:if test="${Worker != null }">
+			<jsp:include page="components/headerPatrol.jsp" />
+		</c:if>
+		
+</c:if>
+		<main>
+			<jsp:include page="${incUrl}"/>
+		</main>
 	
 <%-- 	<jsp:include page="components/footer.jsp" /> --%>
-</body>
+	</body>
 </html>

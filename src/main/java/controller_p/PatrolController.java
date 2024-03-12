@@ -49,7 +49,7 @@ public class PatrolController extends HttpServlet {
 			PatrolService ser = (PatrolService)Class.forName("patrol_p."+service).newInstance(); //다형
 			ser.service(request, response);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/templateSecurity.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
 			dispatcher.forward(request, response);
 			
 		} catch (Exception e) {
