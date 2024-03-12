@@ -11,10 +11,14 @@ import java.util.Date;
 
 import dao_p.PatrolDAO;
 import dto_p.PatrolDTO;
+import dto_p.WorkerDTO;
 import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 import service_p.PatrolService;
 
 public class PatrolReg implements PatrolService {
@@ -27,23 +31,23 @@ public class PatrolReg implements PatrolService {
 			String pos = pyOcr.ocr(file,request);
 			
 			PatrolDTO dto = new PatrolDTO();
+			HttpSession session = request.getSession();
+			WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
 			dto.setPosition(pos);
 			dto.setPhoto(file);
-			dto.setId("김명주");
+			dto.setId(res.getId());
 			dto.setSpecial(request.getParameter("special"));
 			dto.setDate(pyOcr.date);
 			
-			System.out.println(pyOcr.date);
 			
 			dto.setTime(pyOcr.time);
-			
-			System.out.println(pyOcr.time);
 			
 			
 			new PatrolDAO().write(dto);
 			
 			
 			request.setAttribute("incUrl", "components/alert.jsp");
+			request.setAttribute("msg", pos+" 등록이 되었습니다.");
 			request.setAttribute("goUrl", "/alienProtector/patrol/PatrolWrite");
 			
 		} catch (Exception e) {
