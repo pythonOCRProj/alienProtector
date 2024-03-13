@@ -2,7 +2,36 @@
 
 
 
-main > from > .worker {
+main > form > .worker {
+	margin : 1vh 0;
 	width: 100vw;
-	height: 100vh;
-	}
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.worker > .worker__img > img{
+	width: 70vw;
+	border-radius:  35vw;
+	border: 2px solid #000;
+}
+
+main > form > .worker > .worker__rows > .worker__row{
+	display: flex;
+	width: 90vw;
+	border: 1px solid var(--border-color);
+	padding : 2vw;
+}
+
+main > form > .worker > .worker__rows > .worker__row > .worker__col:first-child{
+	width: 12vw;
+	border-right: 1px solid var(--border-color);
+}
+
+main > form > .worker > .worker__rows > .worker__row > input {
+	width: 90vw;
+	margin : 1vw 0;
+}
