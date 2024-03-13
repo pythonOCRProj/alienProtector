@@ -33,6 +33,7 @@
 @import "./components/header.css";
 @import "./components/footer.css";
 @import "./screens/worker/modify.css";
+@import "./screens/worker/list.css";
 
 /*screens*/
 @import "./screens/patrol/patrolWrite.css";
@@ -64,7 +65,4 @@ body, html {
 	--border-color : #eeeeee; /* 보더색상 */
 	--main-width: 1200px; /*body 사이즈*/
 }
-
-
-
 
