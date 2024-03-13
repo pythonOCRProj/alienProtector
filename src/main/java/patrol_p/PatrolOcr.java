@@ -15,6 +15,11 @@ public class PatrolOcr {
 	public String ocr(String  file, HttpServletRequest request) {
 		
 
+		
+		//path = "C:/CSJ/workspace/alienProtector/alienPython/patrol_python/ocr.py"; //성재
+		//photo = "C:/CSJ/workspace/alienProtector/src/main/webapp/img/"+file;        //성재
+
+
 		// path = "D:/kmj/javaProj/alienProtector/alienPython/patrol_python/ocr.py"; // 명주꺼
 		// photo = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\"+file; // 명주꺼
 		
@@ -24,6 +29,7 @@ public class PatrolOcr {
 
 		path = "C:/woong/workspace/alienProtector/alienPython/patrol_python/ocr.py";
 		photo = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file;
+
 
 		ProcessBuilder pb = new ProcessBuilder("python", path, photo);
 

@@ -89,6 +89,8 @@ public class NoticeDAO {
 				dto.setContent(rs.getString("content"));
 				dto.setImg(rs.getString("img"));
 				dto.setCnt(rs.getInt("cnt"));
+				dto.setId(rs.getString("id"));
+		
 				
 			}
 		} catch (SQLException e) {

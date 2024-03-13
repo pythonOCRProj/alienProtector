@@ -45,9 +45,11 @@
 				<textarea name="content" rows="8" cols="168">${ModifyData.content }</textarea>
 			</div>
 		</div>
+		<c:if test="${Worker.id=='master'}">
 		<div>
 			<input type="submit" value="수정" /> <a href="NoticeList">취소</a>
 		</div>
+		</c:if>
 	</div>
 </form>
 

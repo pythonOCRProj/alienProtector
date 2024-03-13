@@ -3,7 +3,9 @@ package notice_p;
 import java.io.IOException;
 
 import dao_p.NoticeDAO;
+
 import dto_p.NoticeDTO;
+import dto_p.WorkerDTO;
 import etc_p.FileUp;
 import etc_p.RedirectionPage;
 import jakarta.servlet.ServletException;
@@ -23,7 +25,7 @@ public class NoticeModifyReg implements NoticeService{
 		try {
 			NoticeDTO dto = new NoticeDTO();
 			dto.setNo(Integer.parseInt(request.getParameter("no")));
-		
+			WorkerDTO login = (WorkerDTO)request.getSession().getAttribute("Worker");
 			
 			
 			if(request.getParameter("title").equals("")||request.getParameter("content").equals("")) {
@@ -33,7 +35,9 @@ public class NoticeModifyReg implements NoticeService{
 				dto.setNo(Integer.parseInt(request.getParameter("no")));
 				dto.setTitle(request.getParameter("title"));
 				dto.setContent(request.getParameter("content"));
+				dto.setId(login.getId());
 				dto.setImg(upFileName);
+				
 				
 				new NoticeDAO().noticeModify(dto);
 				request.setAttribute("ModifyData", dto);
