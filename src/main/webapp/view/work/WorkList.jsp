@@ -33,6 +33,7 @@
 					<thead>
 						<tr>
 							<th scope="col">근무조</th>
+							<th scope="col">회차</th>
 							<th scope="col">근무지역</th>
 							<th scope="col">특이사항</th>
 							<th scope="col">시간</th>
@@ -44,6 +45,7 @@
 	 					<c:if test="${da.date == wd.date }">
 							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
 								<td>${wd.shift }</td>
+								<td>${wd.turn }</td>
 								<td>${wd.position }</td>
 								<td>${wd.special }</td>
 						 		<td>${wd.time }</td>
@@ -67,6 +69,7 @@
 					<thead>
 						<tr>
 							<th scope="col">근무조</th>
+							<th scope="col">회차</th>
 							<th scope="col">특이사항</th>
 							<th scope="col">날짜</th>
 							<th scope="col">시간</th>
@@ -79,6 +82,7 @@
 	 					
 							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
 								<td>${wd.shift }</td>
+								<td>${wd.turn }</td>
 								<td>${wd.special }</td>
 								<td>${wd.date }</td>
 						 		<td>${wd.time }</td>
@@ -102,6 +106,7 @@
 					<thead>
 						<tr>
 							<th scope="col">근무조</th>
+							<th scope="col">회차</th>
 							<th scope="col">근무지역</th>
 							<th scope="col">특이사항</th>
 							<th scope="col">날짜</th>
@@ -114,6 +119,7 @@
 	 					
 							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
 								<td>${wd.shift }</td>
+								<td>${wd.turn }</td>
 								<td>${wd.position }</td>
 								<td>${wd.special }</td>
 								<td>${wd.date }</td>

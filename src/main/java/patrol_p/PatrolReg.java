@@ -77,13 +77,15 @@ public class PatrolReg implements PatrolService {
 			    last.setTime(smf2.parse(lastStr));
 			    up.setTime(smf2.parse(pyOcr.time));
 			    
-			    //마지막 찍은 사진 시간 +10
-			    last.add(Calendar.SECOND, 10);
+			    //마지막 찍은 사진 시간 +20
+			    last.add(Calendar.SECOND, 20);
 			    
 			    //현재 올린 사진의 시간이 마지막 찍은 사진의 시간에서 10초 지났는지 판별
 			    int compare = (smf2.format(up.getTime())).compareTo(smf2.format(last.getTime())); 
-			    
-				if(compare > 0) {
+			    System.out.println("---------"+compare);
+			    System.out.println("현재---------"+smf2.format(up.getTime()));
+			    System.out.println("라스트---------"+smf2.format(last.getTime()));
+				if(compare >= 0) {
 				
 					String [] sh = pyOcr.time.split(":");
 					int hour = Integer.parseInt(sh[0]);
@@ -106,26 +108,21 @@ public class PatrolReg implements PatrolService {
 					dto.setTime(pyOcr.time);
 					dto.setShift(shift);
 					dto.setTurn(turn);
-//					if(turnCnt >= 5 && turnCnt < 10) {
-//						dto.setTurn(2);
-//					}else if(turnCnt >= 10) {
-//						dto.setTurn(3);
-//					}else {
-//						dto.setTurn(1);
-//					}
-					
+
 					new PatrolDAO().write(dto);
 					new RedirectionPage(request, response).goMain( pos+" 등록이 되었습니다.");
 					
-					}else {
-							new RedirectionPage(request, response).goMain("올바른 시간이 아닙니다.");
 					}
-			}else if(pos == null) {
-		    	new RedirectionPage(request, response).goMain("올바른 이미지가 아닙니다.");
-		    }
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+					else {
+						new RedirectionPage(request, response).goMain("올바른 시간이 아닙니다.");
+					}
+				}
+				else if(pos == null) {
+					new RedirectionPage(request, response).goMain("올바른 이미지가 아닙니다.");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 		} 
 
 	}
