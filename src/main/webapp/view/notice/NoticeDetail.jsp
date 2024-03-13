@@ -30,9 +30,9 @@
 				<a href="NoticeList">목록으로 </a>
 			</div>
 			
-			<c:if test="${noticeDetail.id=='master'}">
+			<c:if test="${Worker.id=='master'}">
 				<div>
-					<input type="submit" value="수정" />
+					<a href="NoticeModify?no=${noticeDetail.no}"> 수정 </a>
 				</div>
 				<div>
 				<a href="NoticeDelete?no=${noticeDetail.no}"> 삭제 </a>
