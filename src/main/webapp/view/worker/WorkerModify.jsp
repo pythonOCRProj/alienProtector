@@ -16,42 +16,65 @@
 			</c:if>
 			<input type="file" name="profile"/>
 		</div>
-		<div class="worker__row">
-			<div class="worker__col">
+		<div class="worker__rows">
+			<div class="worker__row">
 				<input type="hidden" name="id" value="${dto.id }" />
-				<p>아이디 : ${dto.id} - 
-					<c:choose>
-						<c:when test="${dto.hire == 0 }">
-							[ 퇴사자 ]
-						</c:when>
-						<c:otherwise>
-							[ 재직자 ]
-						</c:otherwise>
-					</c:choose>
-				</p>
-				<c:choose>
-					<c:when test="${dto.hire == 1 && dto.id != 'master' }">
-						<button>퇴사</button>
-					</c:when>
-					<c:when test="${dto.hire == 0 && dto.id != 'master' }">
-						<button>재입사</button>
-					</c:when>
-					
-				</c:choose>
-			</div>		
-			<p>입사일 : ${dto.joinDate}</p>
+
+				<p class="worker__col">아이디</p>
+				<div class="worker__col">
+					${dto.id} - 
+						<c:choose>
+							<c:when test="${dto.hire == 0 }">
+								[ 퇴사자 ]
+							</c:when>
+							<c:otherwise>
+								[ 재직자 ]
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${dto.hire == 1 && dto.id != 'master' }">
+								<button>퇴사</button>
+							</c:when>
+							<c:when test="${dto.hire == 0 && dto.id != 'master' }">
+								<button>재입사</button>
+							</c:when>
+							
+						</c:choose>
+				</div>																		
+			</div>
+			
+			<div class="worker__row">
+				<p class="worker__col">입사일</p>
+				<p class="worker__col">${dto.joinDate}</p>
+			</div>
+			
 		</div>
-		<div class="worker__row">
-			<input type="text" name="pwd" placeholder="비밀번호" />
-			<input type="text" name="pwdChk" placeholder="비밀번호 확인" />
+		<div class="worker__rows">
+			<div class="worker__row">
+				<input type="text" name="pwd" placeholder="비밀번호" />
+			</div>
+			<div class="worker__row">
+				<input type="text" name="pwdChk" placeholder="비밀번호 확인" />
+			</div>
 		</div>
-		<div class="worker__row">
-			<p>이름 : ${dto.name}</p>
-			<p>주소 : ${dto.addr}</p>
+		<div class="worker__rows">
+			<div class="worker__row">
+				<p class="worker__col">이름</p>
+				<p class="worker__col">${dto.name}</p>
+			</div>
+			<div class="worker__row">
+				<p class="worker__col">주소</p>
+				<p class="worker__col">${dto.addr }</p>
+			</div>
 		</div>
-		<div class="worker__row">
-			<input type="text" name="phone" placeholder="ex) 010-1234-1234" value="${dto.phoneNum}" />
-			<p>이메일 : ${dto.email}</p>
+		<div class="worker__rows">
+			<div class="worker__row">
+				<input type="text" name="phone" placeholder="ex) 010-1234-1234" value="${dto.phoneNum}" />
+			</div>
+			<div class="worker__row">
+				<p class="worker__col">이메일</p>
+				<p class="worker__col">${dto.email }</p>
+			</div>
 		</div>
 		<div class="worker__btns">
 			<input type="submit" value= "전송"/>
@@ -62,7 +85,7 @@
 
 <script>
 	$(()=>{
-		$(".worker > .worker__row > .worker__col > button").on("click",function(e){
+		$(".worker > .worker__rows > .worker__col > button").on("click",function(e){
 			e.preventDefault();
 			const html = $(this).html();
 			if(confirm("정말로 "+html+" 시키겠습니까?")){				
