@@ -78,6 +78,7 @@
 		<thead>
 			<tr>
 				<th scope="col">근무조</th>
+				<th scope="col">회차</th>
 				<th scope="col">근무지역</th>
 				<th scope="col">특이사항</th>
 				<th scope="col">시간</th>
@@ -88,6 +89,7 @@
 			<c:forEach items="${todayPatrol }" var="tp">
 				<tr>
 					<td>${tp.shift }</td>
+					<td>${tp.turn }</td>
 					<td>${tp.position }</td>
 					<td>${tp.special }</td>
 			 		<td>${tp.time }</td>

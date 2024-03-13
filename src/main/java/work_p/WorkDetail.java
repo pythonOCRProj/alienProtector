@@ -10,11 +10,11 @@ public class WorkDetail implements WorkService {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("WorkDetail");
 		int no = Integer.parseInt(request.getParameter("no"));
 		PatrolDTO dto = new WorkDAO().workDetail(no);
 		
 		request.setAttribute("workDetail", dto);
-
 	}
 
 }

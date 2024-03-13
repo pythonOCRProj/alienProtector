@@ -147,6 +147,7 @@ public class WorkDAO {
 				dto.setDate(rs.getString("p.date"));
 				dto.setTime(rs.getString("p.time"));
 				dto.setName(rs.getString("w.name"));
+				dto.setTurn(rs.getInt("p.turn"));
 				
 				res.add(dto);
 				
@@ -187,6 +188,7 @@ public class WorkDAO {
 				dto.setDate(rs.getString("p.date"));
 				dto.setTime(rs.getString("p.time"));
 				dto.setName(rs.getString("w.name"));
+				dto.setTurn(rs.getInt("p.turn"));
 				
 			}
 		} catch (SQLException e) {

@@ -262,7 +262,7 @@ public class WorkerDAO {
 				
 		int cnt = 0;
 		
-		sql = "insert into worker(id, pwd, profile_img, email, phone_num, name, addr) values (?,?,?,?,?,?,?)";
+		sql = "insert into worker(id, pwd, profile_img, email, phone_num, name, addr,join_date) values (?,?,?,?,?,?,?,sysdate())";
 		try {
 			psmt = con.prepareStatement(sql);
 					
@@ -274,7 +274,6 @@ public class WorkerDAO {
 			psmt.setString(5,  dto.getPhoneNum());
 			psmt.setString(6,  dto.getName());
 			psmt.setString(7,  dto.getAddr());
-			psmt.executeUpdate();
 			cnt = psmt.executeUpdate();
 					
 			

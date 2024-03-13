@@ -124,6 +124,7 @@ public class DashBoardDAO {
 				dto.setTime(rs.getString("p.time"));
 				dto.setShift(rs.getString("p.Shift"));
 				dto.setName(rs.getString("w.name"));
+				dto.setTurn(rs.getInt("p.turn"));
 				
 				res.add(dto);
 			}
