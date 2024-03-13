@@ -26,6 +26,7 @@ public class DashUtills {
 	public DashUtills(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
+		System.out.println("DashUtills");
 	}
 	public void getTodayGo() {		
 		today.add(Calendar.DATE, -1);

@@ -15,13 +15,7 @@ public class WorkList implements WorkService {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-//		String sort = request.getParameter("sort");
-//		
-//		if(sort == null) {
-//			
-//		}
-//		if(sort == "worker") {
-//		}
+		System.out.println("WorkList");
 		ArrayList<PatrolDTO> dateArr = new WorkDAO().dateList();
 		request.setAttribute("dateArr", dateArr);
 		ArrayList<WorkerDTO> workerList = new WorkDAO().workerList();
