@@ -7,12 +7,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import etc_p.RedirectionPage;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class PatrolOcr {
 	String photo, path, position, date, time;
 	
-	public String ocr(String  file, HttpServletRequest request) {
+	public String ocr(String  file, HttpServletRequest request, HttpServletResponse response) {
 		
 
 		
@@ -20,15 +22,15 @@ public class PatrolOcr {
 		//photo = "C:/CSJ/workspace/alienProtector/src/main/webapp/img/"+file;        //성재
 
 
-		// path = "D:/kmj/javaProj/alienProtector/alienPython/patrol_python/ocr.py"; // 명주꺼
-		// photo = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\"+file; // 명주꺼
+		 path = "D:/kmj/javaProj/alienProtector/alienPython/patrol_python/ocr.py"; // 명주꺼
+		 photo = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\"+file; // 명주꺼
 		
 		// path = "C:\\gunwoopark\\workspace\\alienProtector\\alienPython\\patrol_python\\ocr.py"; // 건우꺼
 		// photo = "C:\\gunwoopark\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file; // 건우꺼
 		
 
-		path = "C:/woong/workspace/alienProtector/alienPython/patrol_python/ocr.py";
-		photo = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file;
+//		path = "C:/woong/workspace/alienProtector/alienPython/patrol_python/ocr.py";
+//		photo = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file;
 
 
 		ProcessBuilder pb = new ProcessBuilder("python", path, photo);
@@ -36,17 +38,20 @@ public class PatrolOcr {
 		try {
 			Process process = pb.start();
 			
-			// 실행중에 print()로 출력하는 내용 가져오기
 			
 			InputStreamReader isr = new InputStreamReader(process.getInputStream(), "ms949");
 			BufferedReader br = new BufferedReader(isr);
 			
 			String line = null;
 			ArrayList<String> arr = new ArrayList<String>();
+			
 			while((line=br.readLine())!=null) {
 				arr.add(line.trim());
 			}
+			// 메타데이터 시간
 			String [] str = arr.get(0).split(",");
+			
+			
 			if(!str[1].equals("")) {
 				String [] dateTime = str[1].split(" ");
 				
@@ -56,6 +61,9 @@ public class PatrolOcr {
 				date = null;
 				time = null;
 			}
+			
+			
+			// 장소 판별
 			if(!arr.get(1).equals("")) {
 				char [] ocr = arr.get(1).toCharArray();  
 				switch(ocr[2]) {
@@ -92,10 +100,9 @@ public class PatrolOcr {
 			br.close();
 			isr.close();
 			int exitCode = process.waitFor();
-			System.out.println("종료 코드 : " + exitCode);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			new RedirectionPage(request, response).goMain("형식 오류입니다.");
 			e.printStackTrace();
 		}
 		return position;

@@ -6,24 +6,62 @@
 	*{
 		margin:0;
 		padding:0;
-	}
-	.big{
-		width:1200px; 
-		height:1000px; 
-		border:1px solid #000; 
 		
 	}
-	.box{
-		margin-left:200px;
-		margin-top:100px;
+	.big{
+		max_width:360px;
+		width:100%; 
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.time{
+		margin-top:50px;
+		width:95%;
 		border:1px solid #f0f;
-		width:800px;
-		height:200px;
-	
+		height:150px;
+	}
+	 .turn{
+	 	max_hight:100px;
+		margin-top:50px;
+		width:95%;
+		border:1px solid #f0f;
+		height:100px;
+	 }
+	.info{
+		width:22%;
+		height:100%;
+		border:1px solid #0ff;
+		float:left;
+	}
+	.turnChk{
+		width:26%;
+		height:100%;
+		border:1px solid #0ff;
+		float:left;
+	}
+	.box{
+		margin-top:50px;
+		width:95%;
+		border:1px solid #f0f;
+		height:750px;
 	}
 	.positon{
-		width:150px;
-		height:100px;
+		width:100%;
+		height:150px;
+		border:1px solid #0ff;
+	
+	}
+	.po{
+		width:25%;
+		height:150px;
+		border:1px solid #0ff;
+		float:left;
+	}
+	.po_time{
+		width:75%;
+		height:150px;
 		border:1px solid #0ff;
 		float:left;
 	}
@@ -51,24 +89,48 @@
 <body>
 <form action="PatrolReg" method="post" enctype="multipart/form-data">
 	<div class="big">
+		<div class="time">
+			<h1>시간</h1>
+		</div>
+		<div class="turn">
+			<div class="info">회차</div>
+			<c:forEach items="${turn}" var="turn">
+			<div class="turnChk">
+				<div>
+					<c:choose>
+					<c:when test="${turn }">
+						<img src="../img/check.png">
+					</c:when>
+					<c:otherwise></c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			</c:forEach>
+		
+		</div>
 		<div class="box">
 			<div class="positon">
-				<div>101호</div>
+				<div class="po">101호</div>
+				<div class="po_time">102호</div>
 			</div>
 			<div class="positon">
-				<div>102호</div>
+				<div class="po">101호</div>
+				<div class="po_time">102호</div>
 			</div>
 			<div class="positon">
-				<div>103호</div>
+				<div class="po">101호</div>
+				<div class="po_time">102호</div>
 			</div>
 			<div class="positon">
-				<div>104호</div>
+				<div class="po">101호</div>
+				<div class="po_time">102호</div>
 			</div>
 			<div class="positon">
-				<div>105호</div>
+				<div class="po">101호</div>
+				<div class="po_time">102호</div>
 			</div>
 			<c:forEach items="${pos}" var="pos">
-			<div class="positon">
+			<div class="zz">
 				<div class="chk_${pos }">
 					<c:choose>
 					<c:when test="${pos }">
@@ -81,20 +143,7 @@
 				</div>
 			</div>
 			</c:forEach>
-			<c:forEach items="${turn}" var="turn">
-			<div class="positon">
-				<div>
-					<c:choose>
-					<c:when test="${turn }">
-						<img src="../img/check.png">
-					</c:when>
-					<c:otherwise>
-				
-					</c:otherwise>
-					</c:choose>
-				</div>
-			</div>
-			</c:forEach>
+			
 			
 		</div>
 		<div class="box">

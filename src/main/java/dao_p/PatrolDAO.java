@@ -98,11 +98,14 @@ public class PatrolDAO {
 		
 	}
 	
-	public String count() {
+	public String count(String id) {
 		String time = "";
-		sql = "select (select max(no) from work_log) as max_no ,date,time from work_log order by date desc ,time desc limit 0,1";
+		sql = "select (select max(no) from work_log) as max_no ,date,time from work_log wl "
+				+ "where wl.id  = ? and wl.`date` = curdate()  "
+				+ "order by date desc ,time desc limit 0,1";
 		try {
 			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 		if(rs.next()) {
 			time = rs.getString(3);
