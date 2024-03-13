@@ -146,7 +146,7 @@ public class NoticeDAO {
 	
 	public void write(NoticeDTO dto){
 
-		sql = "insert into notice ( title , content ,time,id,img) values (?,?,sysdate(),'관리자',?)";
+		sql = "insert into notice ( title , content ,time,id,img) values (?,?,sysdate(),'master',?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());

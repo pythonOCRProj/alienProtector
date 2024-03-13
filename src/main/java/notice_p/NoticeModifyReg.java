@@ -23,6 +23,8 @@ public class NoticeModifyReg implements NoticeService{
 		
 		String upFileName;
 		try {
+			
+			
 			NoticeDTO dto = new NoticeDTO();
 			dto.setNo(Integer.parseInt(request.getParameter("no")));
 			WorkerDTO login = (WorkerDTO)request.getSession().getAttribute("Worker");
