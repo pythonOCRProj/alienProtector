@@ -273,7 +273,7 @@ public class WorkerDAO {
 			psmt.setString(4,  dto.getEmail());
 			psmt.setString(5,  dto.getPhoneNum());
 			psmt.setString(6,  dto.getName());
-			psmt.setString(7,  "서울특별시 송파구");
+			psmt.setString(7,  dto.getAddr());
 			psmt.executeUpdate();
 			cnt = psmt.executeUpdate();
 					

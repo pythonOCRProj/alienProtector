@@ -3,19 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<script src="<c:url value='/js/address.js' />"></script>
-	<!-- name="userInfo" -->
-	<form action="WorkerJoinComple" onsubmit="return checkValue()" method="post">
+	<form action="WorkerJoinComple" method="post" enctype="multipart/form-data">
 		<table border="">
 			<tr>
 				<td>아이디</td>
 				<td>
-					<!-- 중복체크후 아이디못바꾸게하기 onkeydown -->
-					<input type="text" name="id" onkeydown="inputIdChk()">
-					<!-- 중복확인 클릭시 중복확인창 띄움 -->
-					<input type="button" value="중복확인" onclick="openIdChk()" >
-					<!-- 중복체크 판단여부 -->
-					<input type="hidden" name="idDuplication" value="idUncheck">
+					<input type="text" name="id">
 				</td>
 			</tr>
 			<tr>
@@ -23,21 +16,9 @@
 				<td><input type="password" name="pwd" /></td>
 			</tr>
 			<tr>
-				<td>비밀번호 확인</td>
-				<td>
-					<input type="password" name="passwordcheck">
-				</td>
-			</tr>
-			<tr>
 				<td>이메일</td>
 				<td>
 					<input type="text" name="email" />
-					<select name="email2">
-						<option>naver.com</option>
-						<option>daum.net</option>
-						<option>gmail.com</option>
-						<option>nate.com</option>
-					</select>
 				</td>
 			</tr>
 			<tr>
@@ -55,16 +36,14 @@
 			<tr>
 				<td>주소</td>
 				<td>
-					<input type="text" 	name="addr1" id="sample6_postcode" 		placeholder="우편번호">
-					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" 	name="addr2" id="sample6_address" 		placeholder="주소"><br>
-					<input type="text" 	name="addr3" id="sample6_detailAddress" placeholder="상세주소">
-					<input type="text"  name="addr4" id="sample6_extraAddress"  placeholder="참고항목">
+					<input type="text" name="addr" />
 				</td>
 			</tr>
 			<tr>
 				<td>프로필사진</td>
-				<td><input type="text" name="profile_img" /></td>
+				<td>
+					<td><input type="file" name="profile_img" size="200" /></td>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
