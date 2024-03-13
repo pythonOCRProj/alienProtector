@@ -2,22 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
-table {
-    width: 100%;
-    border: 1px solid #444444;
-  }
-th {
-	 background-color: green;
-} 
-  
-td{
-    border: 1px solid #444444;
-  
-}
 
-tr:nth-child(2n+0){background-color: tomato;}
-</style>
 <table class="workerlist">
 	<tr>
 	    <th>번호</th>
