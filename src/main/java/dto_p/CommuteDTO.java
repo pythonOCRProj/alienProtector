@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CommuteDTO {
-	String id;
+	String id, name;
 	Date goTime, leaveTime;
 	
 	
@@ -36,6 +36,12 @@ public class CommuteDTO {
 	}
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getId() {
 		return id;
 	}

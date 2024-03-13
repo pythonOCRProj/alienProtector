@@ -34,9 +34,9 @@
 						<tr>
 							<th scope="col">근무조</th>
 							<th scope="col">근무지역</th>
-							<th scope="col">근무자</th>
 							<th scope="col">특이사항</th>
 							<th scope="col">시간</th>
+							<th scope="col">근무자</th>
 						</tr>
 					</thead>
 					<tbody>	
@@ -45,9 +45,9 @@
 							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
 								<td>${wd.shift }</td>
 								<td>${wd.position }</td>
-					 			<td>${wd.id }</td>
 								<td>${wd.special }</td>
 						 		<td>${wd.time }</td>
+					 			<td>${wd.name }(${wd.id })</td>
 					 		</tr>
 	 					</c:if>
 						</c:forEach>
@@ -70,6 +70,7 @@
 							<th scope="col">특이사항</th>
 							<th scope="col">날짜</th>
 							<th scope="col">시간</th>
+							<th scope="col">근무자</th>
 						</tr>
 					</thead>
 					<tbody>	
@@ -81,6 +82,7 @@
 								<td>${wd.special }</td>
 								<td>${wd.date }</td>
 						 		<td>${wd.time }</td>
+								<td>${wd.name }(${wd.id })</td>
 					 		</tr>
 	 					</c:if>
 						</c:forEach>
@@ -92,7 +94,6 @@
 	</c:if>
 	<c:if test="${param.sort == 'worker' }">
 		<c:forEach items="${workerList }" var="wl" >
-			<c:if test="${wl.id != 'master' }">
 			<div class="workList">
 				<h4>${wl.name } (${wl.id })</h4>
  				<table border="">
@@ -124,7 +125,6 @@
 					</tbody>
 				</table>
 			</div>
-			</c:if>
 		</c:forEach>
 	</c:if>
 

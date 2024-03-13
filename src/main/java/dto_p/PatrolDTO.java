@@ -3,9 +3,16 @@ package dto_p;
 import java.util.Date;
 
 public class PatrolDTO {
-	String photo, special, shoot, id, position, shift, date, time;
+	String photo, special, shoot, id, position, shift, date, time, name;
 	int no;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getPhoto() {
 		return photo;
 	}
