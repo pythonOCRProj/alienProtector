@@ -32,6 +32,7 @@
 /*components*/
 @import "./components/header.css";
 @import "./components/footer.css";
+@import "./screens/worker/modify.css";
 
 /*screens*/
 
@@ -48,7 +49,9 @@
 	object-fit: cover;
 	color: var(--text-title-color);
 }
-
+body, html {
+	width: 100%;
+}
 
 :root{
 	--main-color: #82b4f0; /* 메인색 */
