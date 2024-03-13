@@ -287,4 +287,28 @@ public class WorkerDAO {
 				
 	}
 	
+	public boolean hire(String id) {
+		boolean res = false;
+		
+		sql = "select hire from worker where id = ? and hire = 1";
+		
+		try {
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				res = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	
 }
