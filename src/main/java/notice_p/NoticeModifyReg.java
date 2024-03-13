@@ -17,26 +17,29 @@ public class NoticeModifyReg implements NoticeService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 	
-		NoticeDTO dto = new NoticeDTO();
+		
 		
 		String upFileName;
 		try {
-			
-			
-			
-			upFileName = new FileUp(request).fileUpload(request.getPart("upfile"));
+			NoticeDTO dto = new NoticeDTO();
 			dto.setNo(Integer.parseInt(request.getParameter("no")));
-			dto.setTitle(request.getParameter("title"));
-			dto.setContent(request.getParameter("content"));
-			dto.setImg(upFileName);
+		
 			
 			
-			new NoticeDAO().noticeModify(dto);
-
-			
-			request.setAttribute("ModifyData", dto);
-			
-			new RedirectionPage(request, response).movePage("수정되었습니다.", "NoticeList");
+			if(request.getParameter("title").equals("")||request.getParameter("content").equals("")) {
+				new RedirectionPage(request, response).movePage("제목과 내용은 필수입력사항입니다.", "NoticeModify?no="+dto.getNo());
+			}else {
+				upFileName = new FileUp(request).fileUpload(request.getPart("upfile"));
+				dto.setNo(Integer.parseInt(request.getParameter("no")));
+				dto.setTitle(request.getParameter("title"));
+				dto.setContent(request.getParameter("content"));
+				dto.setImg(upFileName);
+				
+				new NoticeDAO().noticeModify(dto);
+				request.setAttribute("ModifyData", dto);
+				
+				new RedirectionPage(request, response).movePage("수정되었습니다.", "NoticeList");
+			}
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

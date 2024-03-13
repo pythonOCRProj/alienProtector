@@ -30,9 +30,10 @@
 		<c:forEach items="${noticeData }" var="dto">
 			<div class="Notice__listinfo">
 
-				<div>
-					[${dto.no }]<a href="NoticeDetail?no=${dto.no }">${dto.title}</a>
-				</div>
+				<a href="NoticeDetail?no=${dto.no }">
+					<div>[${dto.no }]</div>
+					<div>${dto.title}</div>
+				</a>
 
 				<div class="Notice__info">
 					<div>작성자:: ${ dto.id }</div>
