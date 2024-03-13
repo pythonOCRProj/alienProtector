@@ -51,12 +51,12 @@
 
 
 :root{
-	--main-color: #82b4f0; /* 메인색 */
-	--main-btn-color : #154783; /* 버튼 메인색*/
-	--main-blur-color : #d4e7fd; /* 연한 메인색 */
-	--main-location-color : #4586d4; /*이동 링크 메인색*/
-	--text-title-color : #333333; /* 텍스트 진한색 (글 제목) */
-	--text-cont-color : #898989; /* 텍스트 보통색 (글 내용) */
+	--main-color: #A25757; /* 메인색 */
+	--main-btn-color : #CB4848; /* 버튼 메인색*/
+	--main-blur-color : #775454; /* 연한 메인색 */
+	--main-location-color : #4D4343; /*이동 링크 메인색*/
+	--text-title-color : #331E1E; /* 텍스트 진한색 (글 제목) */
+	--text-cont-color : #332727; /* 텍스트 보통색 (글 내용) */
 	--text-sub-color : #b0b0b0; /* 텍스트 연한색 */ 
 	--border-color : #eeeeee; /* 보더색상 */
 	--main-width: 1200px; /*body 사이즈*/
