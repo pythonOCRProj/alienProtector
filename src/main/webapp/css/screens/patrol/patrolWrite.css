@@ -1,1 +1,58 @@
 @charset "UTF-8";
+
+   .patrol{
+      max_width:360px;
+      width:100%; 
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+   .patrol_time{
+      margin-top:50px;
+      width:95%;
+      border:1px solid #f0f;
+      height:150px;
+   }
+    .patrol_turn{
+       max_hight:100px;
+      margin-top:50px;
+      width:95%;
+      border:1px solid #f0f;
+      height:100px;
+    }
+   .patrol_title{
+      width:22%;
+      height:100%;
+      border:1px solid #0ff;
+      float:left;
+   }
+   .patrol_turnChk{
+      width:26%;
+      height:100%;
+      border:1px solid #0ff;
+      float:left;
+   }
+   .patrol_file{
+      margin-top:50px;
+      width:95%;
+      height:750px;
+   }
+   .patrol_box{
+      width:100%;
+      height:150px;
+      border:1px solid #0ff;
+   
+   }
+   .patrol_position{
+      width:25%;
+      height:150px;
+      border:1px solid #0ff;
+      float:left;
+   }
+   .patrol_now{
+      width:75%;
+      height:150px;
+      border:1px solid #0ff;
+      float:left;
+   }
