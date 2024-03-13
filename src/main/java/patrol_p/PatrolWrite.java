@@ -34,6 +34,8 @@ public class PatrolWrite implements PatrolService{
 		
 		if(turnCnt <= 5) {
 			turn = 1;
+			
+		
 		}else if(turnCnt > 5 && turnCnt <= 10) {
 			turn = 2;
 			
@@ -66,7 +68,7 @@ public class PatrolWrite implements PatrolService{
 			turnChk.set(1, true);
 		}
 		if(turnCnt >= 15) {
-			turnChk.set(0, true);
+			turnChk.set(2, true);
 		}
 		
 		request.setAttribute("data", data);

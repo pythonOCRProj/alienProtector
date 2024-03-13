@@ -100,12 +100,12 @@ public class PatrolDAO {
 	
 	public String count() {
 		String time = "";
-		sql = "select time,max(no) from work_log wl";
+		sql = "select (select max(no) from work_log) as max_no ,date,time from work_log order by date desc ,time desc limit 0,1";
 		try {
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 		if(rs.next()) {
-			time = rs.getString(1);
+			time = rs.getString(3);
 		}
 		
 			

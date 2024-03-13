@@ -13,8 +13,9 @@ public class FileUp {
 	public FileUp(HttpServletRequest request) {		
 		dir = request.getServletContext().getRealPath("img/");	
 
-		dir = "C:\\CSJ\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //성재
+//		dir = "C:\\CSJ\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //성재
 //		dir = "C:\\gunwoopark\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //건우
+		dir = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\";
 
 	}
 	
