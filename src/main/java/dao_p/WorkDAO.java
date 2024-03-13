@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto_p.CommuteDTO;
+import dto_p.NoticeDTO;
 import dto_p.PatrolDTO;
 import dto_p.PlaceDTO;
 import dto_p.WorkerDTO;
@@ -71,6 +72,7 @@ public class WorkDAO {
 		WorkerDTO dto = null;
 		
 		sql = "select name, id, no from worker "
+				+"where id != 'master' "
 				+"order by no";
 		try {
 			psmt = con.prepareStatement(sql);
@@ -128,21 +130,24 @@ public class WorkDAO {
 		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
 		PatrolDTO dto = null;
 		
-		sql = "select * from work_log "
-				+"order by date, time";
+		sql = "select p.*, w.name from work_log as p join worker as w "
+				+"on p.id = w.id "
+				+"order by p.date, p.time";
 		try {
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				dto = new PatrolDTO();
-				dto.setNo(rs.getInt("no"));
-				dto.setShift(rs.getString("shift"));
-				dto.setId(rs.getString("id"));
-				dto.setPosition(rs.getString("position"));
-				dto.setSpecial(rs.getString("special"));
-				dto.setDate(rs.getString("date"));
-				dto.setTime(rs.getString("time"));
+				dto.setNo(rs.getInt("p.no"));
+				dto.setShift(rs.getString("p.shift"));
+				dto.setId(rs.getString("p.id"));
+				dto.setPosition(rs.getString("p.position"));
+				dto.setSpecial(rs.getString("p.special"));
+				dto.setDate(rs.getString("p.date"));
+				dto.setTime(rs.getString("p.time"));
+				dto.setName(rs.getString("w.name"));
+				
 				res.add(dto);
 				
 			}
@@ -156,4 +161,42 @@ public class WorkDAO {
 		
 		return res;
 	}
+	
+	
+	public PatrolDTO workDetail(int no) {
+		PatrolDTO dto = null;
+		
+		sql =  "select p.*, w.name from work_log as p join worker as w "
+				+"on p.id = w.id "
+				+"where p.no = ?";
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, no);
+			
+			rs = psmt.executeQuery();
+
+			if(rs.next()) {
+				dto = new PatrolDTO();
+				dto.setNo(rs.getInt("p.no"));
+				dto.setShift(rs.getString("p.shift"));
+				dto.setPhoto(rs.getString("p.photo"));
+				dto.setId(rs.getString("p.id"));
+				dto.setPosition(rs.getString("p.position"));
+				dto.setSpecial(rs.getString("p.special"));
+				dto.setDate(rs.getString("p.date"));
+				dto.setTime(rs.getString("p.time"));
+				dto.setName(rs.getString("w.name"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return dto;
+	}
 }
+
+
