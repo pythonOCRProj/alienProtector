@@ -7,7 +7,7 @@ import service_p.WorkerService;
 public class WorkerJoinForm implements WorkerService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		System.out.println("근무자등록");
+		
 		
 	}
 }
