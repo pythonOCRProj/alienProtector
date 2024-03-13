@@ -2,6 +2,7 @@ package worker_p;
 
 import dao_p.WorkerDAO;
 import dto_p.WorkerDTO;
+import etc_p.RedirectionPage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service_p.WorkerService;
@@ -19,14 +20,12 @@ public class WorkerJoinComple implements WorkerService {
 		dto.setName(request.getParameter("name"));
 		dto.setAddr(request.getParameter("addr"));
 
-		new WorkerDAO().join(dto);
-		
 		int cnt = new WorkerDAO().join(dto);
 		System.out.println("회원가입입니다:"+cnt);
-				
-		request.setAttribute("incUrl", "components/alert.jsp");
-		request.setAttribute("msg","근무자 등록 완료");
-		request.setAttribute("goUrl", "WorkerList");
+		
+		
+		new RedirectionPage(request, response).movePage("근무자 등록 완료", "/alienProtector/worker/WorkerList");
+		
 		
 	}
 }

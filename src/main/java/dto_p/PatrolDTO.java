@@ -14,7 +14,7 @@ public class PatrolDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public int getTurn() {
 		return turn;
 	}
