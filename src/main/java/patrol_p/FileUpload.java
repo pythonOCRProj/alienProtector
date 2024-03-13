@@ -11,6 +11,7 @@ String directory;
 	public FileUpload(HttpServletRequest request) {
 		directory = request.getServletContext().getRealPath("img/");
 		directory = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\";//추후 수정 필요
+		//directory = "C:\\CSJ\\workspace\\alienProtector\\src\\main\\webapp\\img\\";성재
 	}	
 	
 	public String uploadFile(Part file) throws Exception {

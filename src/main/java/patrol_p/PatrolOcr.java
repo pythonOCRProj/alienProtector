@@ -16,6 +16,9 @@ public class PatrolOcr {
 		
 		path = "D:/kmj/javaProj/alienProtector/alienPython/patrol_python/ocr.py";
 		photo = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\"+file;
+		
+		//path = "C:/CSJ/workspace/alienProtector/alienPython/patrol_python/ocr.py"; //성재
+		//photo = "C:/CSJ/workspace/alienProtector/src/main/webapp/img/"+file;        //성재
 		ProcessBuilder pb = new ProcessBuilder("python", path, photo);
 
 		try {
