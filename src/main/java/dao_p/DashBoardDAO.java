@@ -43,7 +43,8 @@ public class DashBoardDAO {
 		ArrayList<CommuteDTO> res = new ArrayList<CommuteDTO>();
 		CommuteDTO dto = null;
 		
-		sql = "select * from commute "
+		sql = "select c.*, w.name from commute as c join worker as w "
+				+"on c.id = w.id "
 				+"where go_time >= ? and leave_time is null "
 				+"order by go_time";
 		try {
@@ -53,8 +54,9 @@ public class DashBoardDAO {
 			
 			while(rs.next()) {
 				dto = new CommuteDTO();
-				dto.setId(rs.getString("id"));
-				dto.setGoTime(rs.getTimestamp("go_time"));
+				dto.setId(rs.getString("c.id"));
+				dto.setName(rs.getString("w.name"));
+				dto.setGoTime(rs.getTimestamp("c.go_time"));
 				dto.setLeaveTime(rs.getTimestamp("leave_time"));
 				
 				res.add(dto);
@@ -73,7 +75,8 @@ public class DashBoardDAO {
 		ArrayList<CommuteDTO> res = new ArrayList<CommuteDTO>();
 		CommuteDTO dto = null;
 		
-		sql = "select * from commute "
+		sql = "select c.*, w.name from commute as c join worker as w "
+				+"on c.id = w.id "
 				+"where Date(leave_time) >= ? "
 				+"order by go_time";
 		try {
@@ -83,9 +86,10 @@ public class DashBoardDAO {
 			
 			while(rs.next()) {
 				dto = new CommuteDTO();
-				dto.setId(rs.getString("id"));
-				dto.setGoTime(rs.getTimestamp("go_time"));
-				dto.setLeaveTime(rs.getTimestamp("leave_time"));
+				dto.setId(rs.getString("c.id"));
+				dto.setName(rs.getString("w.name"));
+				dto.setGoTime(rs.getTimestamp("c.go_time"));
+				dto.setLeaveTime(rs.getTimestamp("c.leave_time"));
 				
 				res.add(dto);
 			}
@@ -103,7 +107,8 @@ public class DashBoardDAO {
 		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
 		PatrolDTO dto = null;
 		
-		sql = "select * from work_log "
+		sql = "select p.*, w.name from work_log as p join worker as w "
+				+"on p.id = w.id "
 				+"where Date(date) >= ? "
 				+"order by time";
 		try {
@@ -113,10 +118,12 @@ public class DashBoardDAO {
 			
 			while(rs.next()) {
 				dto = new PatrolDTO();
-				dto.setId(rs.getString("id"));
-				dto.setSpecial(rs.getString("special"));
-				dto.setPosition(rs.getString("position"));
-				dto.setTime(rs.getString("time"));
+				dto.setId(rs.getString("p.id"));
+				dto.setSpecial(rs.getString("p.special"));
+				dto.setPosition(rs.getString("p.position"));
+				dto.setTime(rs.getString("p.time"));
+				dto.setShift(rs.getString("p.Shift"));
+				dto.setName(rs.getString("w.name"));
 				
 				res.add(dto);
 			}

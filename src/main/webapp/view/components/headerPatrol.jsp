@@ -11,7 +11,7 @@
 	
 
 	<div class="Log__info">
-	<c:if test="${Worker != null }">\		
+	<c:if test="${Worker != null }">		
 		<p>어서오세요 ${Worker.name} 님</p>
 		<a href="/alienProtector/logout/Logout">로그아웃</a>
 	</c:if>

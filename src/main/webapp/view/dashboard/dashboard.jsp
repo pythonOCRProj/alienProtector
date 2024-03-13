@@ -31,7 +31,7 @@
 		<tbody>
 			<c:forEach items="${todayGo }" var="tg">
 				<tr>
-		 			<td>${tg.id }</td>
+		 			<td>${tg.name }(${tg.id })</td>
 		 			<td>${tg.goTimeStr }</td>
 		 		</tr>
 
@@ -58,7 +58,7 @@
 		<tbody>
 			<c:forEach items="${todayLeave }" var="tl">
 				<tr>
-		 			<td>${tl.id }</td>
+		 			<td>${tl.name }(${tl.id })</td>
 		 			<td>${tl.goTimeStr }</td>
 		 			<td>${tl.leaveTimeStr }</td>
 		 		</tr>
@@ -79,19 +79,19 @@
 			<tr>
 				<th scope="col">근무조</th>
 				<th scope="col">근무지역</th>
-				<th scope="col">근무자</th>
 				<th scope="col">특이사항</th>
 				<th scope="col">시간</th>
+				<th scope="col">근무자</th>
 			</tr>
 		</thead>
 		<tbody>	
 			<c:forEach items="${todayPatrol }" var="tp">
 				<tr>
-					<td>오전</td>
+					<td>${tp.shift }</td>
 					<td>${tp.position }</td>
-		 			<td>${tp.id }</td>
 					<td>${tp.special }</td>
 			 		<td>${tp.time }</td>
+		 			<td>${tp.name }(${tp.id })</td>
 		 		</tr>
 			</c:forEach>
 

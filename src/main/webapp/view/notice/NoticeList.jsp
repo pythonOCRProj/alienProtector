@@ -29,11 +29,10 @@
 	<div class="Notice__listWrap">
 		<c:forEach items="${noticeData }" var="dto">
 			<div class="Notice__listinfo">
-
-				<div>
-					[${dto.no }]<a href="NoticeDetail?no=${dto.no }">${dto.title}</a>
-				</div>
-
+				<a href="NoticeDetail?no=${dto.no }">
+					<div>[${dto.no }]</div>
+					<div>${dto.title}</div>
+				</a>
 				<div class="Notice__info">
 					<div>작성자:: ${ dto.id }</div>
 					<div>등록일시: ${dto.time}</div>
@@ -45,6 +44,6 @@
 	</div>
 </div>
 
-	<input type="button" value="글쓰기" onclick="location.href='NoticeWriteForm'"
-		class="Notice__button">
+<input type="button" value="글쓰기"
+	onclick="location.href='NoticeWriteForm'">
 

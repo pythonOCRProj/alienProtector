@@ -14,8 +14,10 @@ public class PatrolOcr {
 	
 	public String ocr(String  file, HttpServletRequest request) {
 		
-		path = "D:/kmj/javaProj/alienProtector/alienPython/patrol_python/ocr.py";
-		photo = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\"+file;
+		//path = "D:/kmj/javaProj/alienProtector/alienPython/patrol_python/ocr.py";
+		path = "C:/woong/workspace/alienProtector/alienPython/patrol_python/ocr.py";
+		//photo = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\"+file;
+		photo = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file;
 		ProcessBuilder pb = new ProcessBuilder("python", path, photo);
 
 		try {
