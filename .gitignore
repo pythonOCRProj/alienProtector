@@ -2,6 +2,9 @@
 .classpath
 
 # Our Disable Function
+src/main/webapp/img/*
+img/*
+/img/*
 img/*.jpg
 img/*.jpeg
 img/*.png
