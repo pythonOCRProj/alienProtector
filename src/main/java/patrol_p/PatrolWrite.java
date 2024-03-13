@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import dao_p.PatrolDAO;
+import dao_p.WorkDAO;
 import dto_p.PatrolDTO;
+import dto_p.PlaceDTO;
 import dto_p.WorkerDTO;
 import etc_p.RedirectionPage;
 import jakarta.servlet.ServletRequest;
@@ -71,8 +73,11 @@ public class PatrolWrite implements PatrolService{
 			if(turnCnt >= 15) {
 				turnChk.set(2, true);
 			}
+			ArrayList<PlaceDTO> place = new WorkDAO().placeList(); 
+			
 			
 			request.setAttribute("data", data);
+			request.setAttribute("place", place);
 			request.setAttribute("pos", chk);
 			request.setAttribute("turn", turnChk);
 		}catch(NullPointerException e) {
