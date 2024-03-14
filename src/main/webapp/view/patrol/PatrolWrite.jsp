@@ -68,8 +68,8 @@ function timmer() {
             	<c:choose>
             		<c:when test="${pla.position == da.position }">
             		<div class="patrol_now">
-						<b>촬영 시간</b> ${da.time }  <br/>
-						<b>등록 시간</b> ${da.nowStr } 
+						<div class="patrol_nowsub"><b>촬영 시간</b></div> <div class="patrol_nowtime">${da.time } </div>
+						<div class="patrol_nowsub"><b>등록 시간</b></div> <div class="patrol_nowtime">${da.nowStr }</div> 
 					</div>	
             		</c:when>
             		<c:otherwise>
@@ -80,23 +80,23 @@ function timmer() {
          </c:forEach>
       </div>
       <div class="patrol_btn">
-         <div class="patrol_filebtn">
-            <input type="file" name="photo">
-         </div>
+          <input type="file" name="photo">
       </div>
       <div class="patrol_special">
          <div class="patrol_radio">
-         	특이사항
-            <input type="radio" name="chk" value="no" checked>없음
-            <input type="radio" name="chk" value="yes">있음
+         	<div class="patrol_spectitle">특이사항</div>
+         	<div class="patrol_radioselect">
+            	<input type="radio" name="chk" value="no" checked>없음
+            	<input type="radio" name="chk" value="yes">있음
+         	</div>
          </div>
          <div class="patrol_text">
             <textarea name="special" readonly="readonly" >특이사항 없음</textarea>
          </div>
+      </div>
          <div class="patrol_submit">
             <input type="submit" value="등록">
          </div>
-      </div>
    </div>
 </form>
 </body>
