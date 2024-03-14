@@ -4,23 +4,35 @@
 <script>
 
 </script>
-	<form action="WorkerJoinComple" method="post" enctype="multipart/form-data">
+	<form action="WorkerJoinReg" method="post" enctype="multipart/form-data">
 		<table border="">
 			<tr>
 				<td>아이디</td>
 				<td>
 					<input type="text" name="id" Placeholder="아이디를 입력해 주세요">
+					<input type="button" name="idcheck" value="중복확인">
 				</td>
-				<td><input type="button" name="idcheck" value="중복확인"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td colspan="2"><input type="password" name="pwd" /></td>
+				<td><input type="password" name="pwd" Placeholder="비밀번호를 입력해 주세요"/></td>
+			</tr>
+			<tr>
+				<td>비밀번호 확인</td>
+				<td><input type="password" name="pwdchk" Placeholder="비밀번호와 같은 값을 입력해주세요"/></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
 				<td>
-					<input type="text" name="email" />
+					<input type="text" name="email" />@
+					<inptu type="text" naem="email2" />
+					<select name="email2">
+						<option>직접입력</option>
+						<option>naver.com</option>
+						<option>daum.net</option>
+						<option>gmail.com</option>
+						<option>nate.com</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -39,13 +51,9 @@
 				<td>주소</td>
 				<td colspan="2">
 					<input type="text" 	name="addr" id="sample6_postcode" 		placeholder="우편번호">
-					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td colspan="2">
-					<input type="text" 	name="addr" id="sample6_address" 		placeholder="주소">
+					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+	
+					<input type="text" 	name="addr" id="sample6_address" 		placeholder="주소"><br>
 				
 					<input type="text" 	name="addr" id="sample6_detailAddress" placeholder="상세주소">
 					<input type="text"  name="addr" id="sample6_extraAddress"  placeholder="참고항목">
@@ -58,9 +66,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td>
 					<input type="submit" value="등록" />
-					<a href='<c:url value="/worker/WorkerList" />'>이전화면</a>
+				</td>
+				<td>
+					<input type="button" value="취소" onClick="location.href='<c:url value="/worker/WorkerList" />' " />
 				</td>
 			</tr>
 		</table>

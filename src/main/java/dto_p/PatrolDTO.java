@@ -1,13 +1,34 @@
 package dto_p;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PatrolDTO {
 
 	String photo, special, shoot, id, position, shift, date, time, name;
 	int no, turn;
+	Date now;
+	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 	
+	public String getNowStr() {
+		return sdf.format(now);
+	}
+	public void setNowStr(String now) {
+		try {
+			this.now = sdf.parse(now);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
+	public Date getNow() {
+		return now;
+	}
+	public void setNow(Date now) {
+		this.now = now;
+	}
 	public String getName() {
 		return name;
 	}

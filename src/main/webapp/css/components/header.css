@@ -1,6 +1,50 @@
 @charset "UTF-8";
 
-header {
-	border: 1px solid gray;
-	background-color: #eee;
+header{
+	width: 100vw;
+	background-color: var(--bg-color);
+	position: fixed;
+	top: 0;
+	left: 0;
+	border-bottom: 2px solid var(--text-title-color);
 }
+.header {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+}
+#patrolTemplate header {
+	max-width: 360px;
+}
+
+.Log__info {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+.log__info p{}
+.log__info a {}
+
+.headerAdmin ,
+.headerPatrol {
+	width: 100%;
+}
+
+.headerAdmin ul,
+.headerPatrol ul {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.headerAdmin ul li,
+.headerPatrol ul li {}
+
+.headerAdmin ul li a,
+.headerPatrol ul li a {}
