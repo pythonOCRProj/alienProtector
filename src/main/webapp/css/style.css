@@ -49,20 +49,63 @@
 	box-sizing: border-box;
 	object-fit: cover;
 	color: var(--text-title-color);
+
 }
-body, html {
+body{
 	width: 100%;
+	border: 1px solid blue;
+	padding-top: 80px;
+}
+#masterTemplate {
+	max-width: var(--main-width);
+	margin: 0 auto;
+}
+#patrolTemplate{
+	max-width: 360px;
+	margin: 0 auto;
 }
 
 :root{
-	--main-color: #A25757; /* 메인색 */
-	--main-btn-color : #CB4848; /* 버튼 메인색*/
-	--main-blur-color : #775454; /* 연한 메인색 */
-	--main-location-color : #4D4343; /*이동 링크 메인색*/
-	--text-title-color : #331E1E; /* 텍스트 진한색 (글 제목) */
-	--text-cont-color : #332727; /* 텍스트 보통색 (글 내용) */
-	--text-sub-color : #b0b0b0; /* 텍스트 연한색 */ 
+	--main-color: #D94A4A; /* 메인색 */
+	--main-blur-color : #FFE4DF; /* 연한 메인색 */
+	--text-title-color : #0d0d0d; /* 텍스트 진한색 (글 제목) */
+	--text-cont-color : #333333; /* 텍스트 보통색 (글 내용) */
+	--text-sub-color : #8c8c87; /* 텍스트 연한색 */ 
 	--border-color : #eeeeee; /* 보더색상 */
+	--bg-color : #f2f2f2; /*배경색상*/
 	--main-width: 1200px; /*body 사이즈*/
+	--mobile-width: 360px; /*mobile 사이즈*/
 }
 
+table {
+	border-collapse: collapse;
+	width: 100%;
+	color: #333;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	margin: auto;
+	margin-bottom: 80px;
+}
+
+th {
+	background-color: var(--main-color);
+	color: var(--bg-color);
+	font-weight: bold;
+	padding: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+td {
+	background-color: #fff;
+	padding: 10px;
+	font-weight: 500;
+}
+
+table tr:nth-child(even) td {
+	background-color: var(--bg-color);
+}
