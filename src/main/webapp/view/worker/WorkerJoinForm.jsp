@@ -24,8 +24,8 @@
 			<tr>
 				<td>이메일</td>
 				<td>
-					<input class="select_email" name="email" type="text" />@
-					<input class="select_email" name="email2" />
+					<input class="select_email" name="email" id="domain-txt" type="text" />@
+					<input class="select_email" name="email2" id="domain-list" />
 					<select name="email3">
 						<option value="type">직접입력</option>
 						<option value="google.com">google.com</option>
@@ -50,13 +50,13 @@
 			<tr>
 				<td>주소</td>
 				<td colspan="2">
-					<input type="text" 	name="addr" id="sample6_postcode" 		placeholder="우편번호">
+					<input type="text" 	name="addr1" id="sample6_postcode" 		placeholder="우편번호">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 	
-					<input type="text" 	name="addr" id="sample6_address" 		placeholder="주소"><br>
+					<input type="text" 	name="addr2" id="sample6_address" 		placeholder="주소"><br>
 				
-					<input type="text" 	name="addr" id="sample6_detailAddress" placeholder="상세주소">
-					<input type="text"  name="addr" id="sample6_extraAddress"  placeholder="참고항목">
+					<input type="text" 	name="addr3" id="sample6_detailAddress" placeholder="상세주소">
+					<input type="text"  name="addr4" id="sample6_extraAddress"  placeholder="참고항목">
 				</td>
 			</tr>
 			<tr>
