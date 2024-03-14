@@ -7,7 +7,6 @@
 
 	<hr>
 	<div class="Notice_listinfo">
-		<div class="Notice_no">글번호</div>
 		<div class="Notice_title">제목</div>
 		<div class="Notice_date">등록일시</div>
 		<div class="Notice_cnt">조회수</div>
@@ -17,7 +16,6 @@
 	<c:forEach items="${noticeData }" var="dto">
 		<a href="NoticeDetail?no=${dto.no }">
 			<div class="Notice_info">
-				<div class="Notice_no">[${dto.no }]</div>
 				<div class="Notice_title">${dto.title}</div>
 				<div class="Notice_date">${dto.time}</div>
 				<div class="Notice_cnt">${dto.cnt }</div>

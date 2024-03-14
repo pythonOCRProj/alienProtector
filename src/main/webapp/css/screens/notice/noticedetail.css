@@ -31,3 +31,9 @@
 	margin: 20px;
 	
 }
+
+.notice_underbar{
+	display: flex;
+	justify-content: flex-end;
+	
+}
