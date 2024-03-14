@@ -57,6 +57,7 @@ public class NoticeDAO {
 				dto.setImg(rs.getString("img"));
 				dto.setTitle(rs.getString("title"));
 				dto.setTime(rs.getTimestamp("time"));
+				//dto.setTimeStr(rs.getDate("times"));
 				
 				res.add(dto);
 			}
@@ -90,6 +91,7 @@ public class NoticeDAO {
 				dto.setImg(rs.getString("img"));
 				dto.setCnt(rs.getInt("cnt"));
 				dto.setId(rs.getString("id"));
+				
 		
 				
 			}
@@ -112,9 +114,7 @@ public class NoticeDAO {
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getImg());
 			psmt.setInt(4, dto.getNo());
-			
-			
-			
+
 			psmt.executeUpdate();
 
 		} catch (SQLException e) {

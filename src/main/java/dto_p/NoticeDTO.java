@@ -51,13 +51,13 @@ public class NoticeDTO {
 		this.time = time;
 	}
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	public String getnTimeStr() {
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	public String getTimeStr() {
 		return sdf.format(time);
 	}
-	public void setnTimeStr(String nTime) {
+	public void setTimeStr(String time) {
 		try {
-			this.time = sdf.parse(nTime);
+			this.time = sdf.parse(time);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

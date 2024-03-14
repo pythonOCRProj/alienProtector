@@ -17,13 +17,12 @@
 		<a href="NoticeDetail?no=${dto.no }">
 			<div class="Notice_info">
 				<div class="Notice_title">${dto.title}</div>
-				<div class="Notice_date">${dto.time}</div>
+				<div class="Notice_date">${dto.timeStr}</div>
 				<div class="Notice_cnt">${dto.cnt }</div>
 			</div>
 		</a>
 		<hr>
 	</c:forEach>
-</div>
 </div>
 
 <input type="button" value="글쓰기"
