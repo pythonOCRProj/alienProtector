@@ -30,17 +30,22 @@ public class PatrolWrite implements PatrolService{
 			HttpSession session = request.getSession();
 			WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
 			String id = res.getId();
-			ArrayList<Boolean> chk = new ArrayList<Boolean>();
-			ArrayList<Boolean> turnChk = new ArrayList<Boolean>();
+			
 			Date date = new Date();
 			SimpleDateFormat smf = new SimpleDateFormat("yyyy-MM-dd");
 			String day = smf.format(date);
+			
+			
+			//회차 정보 체크 리스트
+			ArrayList<Boolean> turnChk = new ArrayList<Boolean>();
+			
+			
 			for (int i = 0; i < 3; i++) {
 				turnChk.add(false);
 			}
 			
-			int turnCnt = new PatrolDAO().turnCnt(id);	
 			
+			int turnCnt = new PatrolDAO().turnCnt(id);	
 			if(turnCnt <= 5) {
 				turn = 1;
 				
@@ -53,21 +58,7 @@ public class PatrolWrite implements PatrolService{
 				
 				
 			}
-
-				
-			ArrayList<PatrolDTO> data = new PatrolDAO().list(id,turn);
-	
-			for (int i = 0; i < 5; i++) {
-				chk.add(false);
-			}
 		
-			
-			for (PatrolDTO dto : data) {
-				int len = dto.getPosition().length();
-				int no = Integer.parseInt( dto.getPosition().substring(len-2,len-1));
-				chk.set(no-1, true);
-				
-			}
 			if(turnCnt >= 5) {
 				turnChk.set(0, true);
 			}
@@ -77,16 +68,17 @@ public class PatrolWrite implements PatrolService{
 			if(turnCnt >= 15) {
 				turnChk.set(2, true);
 			}
+			
+			ArrayList<PatrolDTO> data = new PatrolDAO().list(id,turn);
 			ArrayList<PlaceDTO> place = new WorkDAO().placeList(); 
 			
 			
 			request.setAttribute("data", data);
 			request.setAttribute("place", place);
-			request.setAttribute("pos", chk);
 			request.setAttribute("turn", turnChk);
 			request.setAttribute("day", day);
 		}catch(NullPointerException e) {
-			new RedirectionPage(request, response).goMain("다시 로그인 해주세요.");
+			new RedirectionPage(request, response).goMain("로그인 해주세요.");
 		}
 
 	}

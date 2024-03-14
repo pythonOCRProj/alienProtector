@@ -22,9 +22,20 @@
 
 function timmer() {
  
-     var now = new Date();         
-     var nowTime =now.getHours() + ":" + now.getMinutes() + ":" + 
-	     now.getSeconds();
+     var now = new Date();  
+     var second = now.getSeconds();
+     var hours = now.getHours();
+     var minutes = now.getMinutes();
+     if(second < 10 ){
+    	 second = "0" + second;
+     }
+     if(hours <10){
+    	 hours = "0" + hours;
+     }
+     if(minutes < 10){
+    	 minutes  = "0" + minutes;
+     }
+     var nowTime =hours + ":" + minutes + ":" + second;
 
      document.getElementById("patrol_time").innerHTML = nowTime;
      setTimeout("timmer()",1000);
@@ -41,12 +52,14 @@ function timmer() {
 <form action="PatrolReg" method="post" enctype="multipart/form-data">
    <div class="patrol">
       <div class="patrol_timebox">
-       	<div class="patrol_day"><b>${day }</b></div>
-       	<div class="patrol_time" id="patrol_time"></div>
+      	<div class="patrol_time" id="patrol_time"></div>
+       	<div class="patrol_day">${day }</div>
       </div>
       <div class="patrol_turn">
-         <div class="patrol_title">회차</div>
-         <c:forEach items="${turn}" var="turn">
+      <c:forEach items="${turn}" var="turn" varStatus="i">
+      <div class="patrol_turnbox">
+         <div class="patrol_title">${i.index+1 } 회차</div>
+
          <div class="patrol_turnChk">
             <div>
                <c:choose>
@@ -57,13 +70,14 @@ function timmer() {
                </c:choose>
             </div>
          </div>
+         </div>
          </c:forEach>
       
       </div>
       <div class="patrol_file">
       <c:forEach items="${place }" var="pla">
          <div class="patrol_box">
-            <div class="patrol_position">${pla.position }</div>
+            <div class="patrol_position"><b>${pla.position }</b></div>
             <c:forEach items="${data }" var="da">
             	<c:choose>
             		<c:when test="${pla.position == da.position }">
