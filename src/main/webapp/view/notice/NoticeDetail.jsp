@@ -27,7 +27,7 @@
 
 
 
-	<div>
+	<div class="notice_underbar">
 		<div>
 			<a href="NoticeList">목록으로 </a>
 		</div>

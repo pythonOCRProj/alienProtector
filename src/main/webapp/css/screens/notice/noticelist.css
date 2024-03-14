@@ -25,27 +25,20 @@
 	margin: 10px 0px 0px 0px;
 }
 
+
 .Notice_title {
+	width: 60%;
+	text-align: center;
 	color: var(--text-title-color);
 }
 
-.Notice_no {
-	width: 5%;
-	text-align: center;
-}
-
-.Notice_title {
-	width: 70%;
-	text-align: center;
-}
-
 .Notice_date {
-	width: 20%;
+	width: 27%;
 	text-align: center;
 }
 
 .Notice_cnt {
-	width: 5%;
+	width: 13%;
 	text-align: center;
 }
 
