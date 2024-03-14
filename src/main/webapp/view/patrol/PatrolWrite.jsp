@@ -16,17 +16,22 @@
       }) 
  })
    
+ window.onload = function() {                
+              timmer();
+              }
+
+function timmer() {
  
- function timmer(){
-	 
-	 var time = new Date();
-	 var h = get.Hours();
-	 console.log(h);
-	
-	 document.getElementById("patrol_time").innerHTML = h;
-	 
- }
-   
+     var now = new Date();         
+     var nowTime =now.getHours() + ":" + now.getMinutes() + ":" + 
+	     now.getSeconds();
+
+     document.getElementById("patrol_time").innerHTML = nowTime;
+     setTimeout("timmer()",1000);
+}
+
+
+
 </script>
 <html>
 <head>
@@ -37,7 +42,7 @@
    <div class="patrol">
       <div class="patrol_timebox">
        	<div class="patrol_day"><b>${day }</b></div>
-       	<div class="patrol_time" id="patrol_time"><b>시계</b></div>
+       	<div class="patrol_time" id="patrol_time"></div>
       </div>
       <div class="patrol_turn">
          <div class="patrol_title">회차</div>

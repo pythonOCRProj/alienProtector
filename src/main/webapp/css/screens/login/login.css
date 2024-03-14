@@ -1,1 +1,8 @@
 @charset "UTF-8";
+
+.join__big{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
