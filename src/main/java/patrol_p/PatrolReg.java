@@ -123,6 +123,7 @@ public class PatrolReg implements PatrolService {
 						dto.setShift(shift);
 						dto.setTurn(turn);
 						
+						
 						new PatrolDAO().write(dto);
 						new RedirectionPage(request, response).goMain( pos+" 등록이 되었습니다.");
 						boolean aa = new WorkerDAO().hire(res.getId());
