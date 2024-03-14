@@ -24,26 +24,26 @@
 			<tr>
 				<td>이메일</td>
 				<td>
-					<input type="text" name="email" />@
-					<inptu type="text" naem="email2" />
-					<select name="email2">
-						<option>직접입력</option>
-						<option>naver.com</option>
-						<option>daum.net</option>
-						<option>gmail.com</option>
-						<option>nate.com</option>
+					<input class="select_email" name="email" type="text" />@
+					<input class="select_email" name="email2" />
+					<select name="email3">
+						<option value="type">직접입력</option>
+						<option value="google.com">google.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="nate.com">nate.com</option>
+						<option value="daum.net">daum.net</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>휴대폰번호</td>
-				<td colspan="2">
+				<td>
 					<input type="text" name="phone_num" />
 				</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td colspan="2">
+				<td>
 					<input type="text" name="name" />
 				</td>
 			</tr>
