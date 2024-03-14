@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <form action="LoginReg" method="post">
 	<div class="join__big">    
-		<div class="loogin__top">
+		<div class="login__top">
 			<h1>로그인</h1>
 			<div class="join__chklist">
 				<input class="login__write--input" type="text" placeholder="아이디" name="id"/>
