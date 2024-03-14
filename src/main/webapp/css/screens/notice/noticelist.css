@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.Notice_listinfo {
+	width: 100%;
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.Notice_info {
+	width: 100%;
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.Notice_box {
+	width: 100%;
+}
+
+.Notice_listWrap {
+	width: 100%;
+	border: 1px solid rgb(192, 192, 192);
+	margin: 10px 0px 0px 0px;
+}
+
+.Notice_title {
+	color: var(--text-title-color);
+}
+
+.Notice_no {
+	width: 5%;
+	text-align: center;
+}
+
+.Notice_title {
+	width: 70%;
+	text-align: center;
+}
+
+.Notice_date {
+	width: 20%;
+	text-align: center;
+}
+
+.Notice_cnt {
+	width: 5%;
+	text-align: center;
+}
+
+.Notice_head {
+	font-size: 30px;
+	text-align: center;
+}

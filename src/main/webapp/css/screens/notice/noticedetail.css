@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+
+
+.noticeDetail_Wrap{
+		padding: 40px 0 65px;
+}
+
+.noticeDetail_info{
+	border: 1px solid var(--border-color);
+	height: 70px;
+}
+.noticeDetail_info > div:first-of-type{
+	margin: 17px 25px 10px;
+}
+.noticeDetail_info > div > div:first-of-type{
+	font-size: 15px;
+	margin-bottom: 5px;
+	color: var(--text-title-color);
+}
+
+.noticeDetail_date{
+	
+	font-size: 14px;
+}
+.noticeDetail_Img > img{
+	width: 100%;
+	
+}
+.noticeDetail_content{
+	margin: 20px;
+	
+}
