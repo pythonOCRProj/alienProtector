@@ -23,11 +23,7 @@ public class NoticeModifyReg implements NoticeService{
 		
 		String upFileName;
 		try {
-			NoticeDTO wdto = (NoticeDTO)request.getSession().getAttribute("Worker");
-			
-			if(!wdto.getId().equals("master")) {
-				new RedirectionPage(request, response).goMain("관리자 권한이 없습니다.");
-			}else {
+		
 
 				NoticeDTO dto = new NoticeDTO();
 				dto.setNo(Integer.parseInt(request.getParameter("no")));
@@ -49,7 +45,7 @@ public class NoticeModifyReg implements NoticeService{
 					
 					new RedirectionPage(request, response).movePage("수정되었습니다.", "NoticeList");
 				}
-			}
+			
 			
 			
 		} catch (IOException e) {

@@ -32,11 +32,14 @@
 /*components*/
 @import "./components/header.css";
 @import "./components/footer.css";
-@import "./screens/worker/modify.css";
-@import "./screens/worker/list.css";
+
 
 /*screens*/
 @import "./screens/patrol/patrolWrite.css";
+@import "./screens/worker/modify.css";
+@import "./screens/worker/list.css";
+@import "./screens/notice/noticelist.css";
+@import "./screens/notice/noticedetail.css";
 
 
 /* 이 아래는 모든 곳에서 공통되는 css를 적용합니다.
@@ -65,4 +68,6 @@ body, html {
 	--border-color : #eeeeee; /* 보더색상 */
 	--main-width: 1200px; /*body 사이즈*/
 }
+
+
 
