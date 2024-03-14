@@ -58,6 +58,8 @@ body{
 	width: 100%;
 	border: 1px solid blue;
 	padding-top: 80px;
+	position: relative;
+	background-color: var(--bg-color);
 }
 #masterTemplate {
 	max-width: var(--main-width);
