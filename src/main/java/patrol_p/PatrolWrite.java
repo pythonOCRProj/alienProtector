@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 
 import dao_p.PatrolDAO;
 import dao_p.WorkDAO;
@@ -30,7 +32,9 @@ public class PatrolWrite implements PatrolService{
 			String id = res.getId();
 			ArrayList<Boolean> chk = new ArrayList<Boolean>();
 			ArrayList<Boolean> turnChk = new ArrayList<Boolean>();
-			System.out.println(id);
+			Date date = new Date();
+			SimpleDateFormat smf = new SimpleDateFormat("yyyy-MM-dd");
+			String day = smf.format(date);
 			for (int i = 0; i < 3; i++) {
 				turnChk.add(false);
 			}
@@ -80,6 +84,7 @@ public class PatrolWrite implements PatrolService{
 			request.setAttribute("place", place);
 			request.setAttribute("pos", chk);
 			request.setAttribute("turn", turnChk);
+			request.setAttribute("day", day);
 		}catch(NullPointerException e) {
 			new RedirectionPage(request, response).goMain("다시 로그인 해주세요.");
 		}

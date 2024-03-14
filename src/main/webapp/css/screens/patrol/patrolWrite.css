@@ -8,51 +8,86 @@
       justify-content: center;
       align-items: center;
    }
-   .patrol_time{
+   .patrol_timebox{
       margin-top:50px;
       width:95%;
-      border:1px solid #f0f;
       height:150px;
    }
+   .patrol_day, .patrol_time{
+	  font-size: xx-large;
+	  text-align: center;
+	  line-height: 50px;
+   }
     .patrol_turn{
-       max_hight:100px;
+      height: 60px;
       margin-top:50px;
       width:95%;
-      border:1px solid #f0f;
-      height:100px;
+     
     }
    .patrol_title{
-      width:22%;
-      height:100%;
-      border:1px solid #0ff;
+      width:25%;
+      height:100%; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
       float:left;
+      background-color: rgb(209, 209, 209);
    }
    .patrol_turnChk{
-      width:26%;
+      width:25%;
       height:100%;
-      border:1px solid #0ff;
       float:left;
+      background-color: rgb(228, 228, 228);
+ 
+   }
+   .patrol_turnChk>div>img{
+	  margin:auto;
    }
    .patrol_file{
       margin-top:50px;
       width:95%;
-      height:750px;
+      height:500px;
+      background-color: rgb(228, 228, 228);
    }
    .patrol_box{
       width:100%;
-      height:150px;
-      border:1px solid #0ff;
-   
+      height:100px;
+ 	  border:1px solid #000;
    }
    .patrol_position{
       width:25%;
-      height:150px;
-      border:1px solid #0ff;
+      height:100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border:1px solid #000;
+      background-color: rgb(209, 209, 209);
       float:left;
    }
    .patrol_now{
       width:75%;
-      height:150px;
-      border:1px solid #0ff;
+      height:100px;
+      line-height: 50px;
       float:left;
    }
+   
+   .patrol_btn, .patrol_special{
+	   width:100%;
+	   height:100px;
+   }
+   .patrol_filebtn, .patrol_radio, .patrol_text, .patrol_submit{
+	  display: flex;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      height:100%;
+   }
+   .patrol_radio{
+	  height:30%;
+   }
+  textarea{
+	  width:70%;
+      height:100%;
+	  
+  }
+   

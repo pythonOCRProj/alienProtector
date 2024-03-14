@@ -16,6 +16,16 @@
       }) 
  })
    
+ 
+ function timmer(){
+	 
+	 var time = new Date();
+	 var h = get.Hours();
+	 console.log(h);
+	
+	 document.getElementById("patrol_time").innerHTML = h;
+	 
+ }
    
 </script>
 <html>
@@ -25,8 +35,9 @@
 <body>
 <form action="PatrolReg" method="post" enctype="multipart/form-data">
    <div class="patrol">
-      <div class="patrol_time">
-         <h1>시간</h1>
+      <div class="patrol_timebox">
+       	<div class="patrol_day"><b>${day }</b></div>
+       	<div class="patrol_time" id="patrol_time"><b>시계</b></div>
       </div>
       <div class="patrol_turn">
          <div class="patrol_title">회차</div>
@@ -45,38 +56,39 @@
       
       </div>
       <div class="patrol_file">
-      <c:forEach items="${place }" var="ppp">
+      <c:forEach items="${place }" var="pla">
          <div class="patrol_box">
-            <div class="patrol_position">${ppp.position }</div>
-            <c:forEach items="${data }" var="ddd">
+            <div class="patrol_position">${pla.position }</div>
+            <c:forEach items="${data }" var="da">
             	<c:choose>
-            		<c:when test="${ppp.position == ddd.position }">
-						야야야야야야야야야          
+            		<c:when test="${pla.position == da.position }">
+            		<div class="patrol_now">
+						<b>촬영 시간</b> ${da.time }  <br/>
+						<b>등록 시간</b> ${da.nowStr } 
+					</div>	
             		</c:when>
             		<c:otherwise>
-            			웅오ㅗㅇㄴㅇ몽놩
             		</c:otherwise>
             	</c:choose>
             </c:forEach>
-           
          </div>
          </c:forEach>
-        
       </div>
-      <div class="box">
-         <div>
+      <div class="patrol_btn">
+         <div class="patrol_filebtn">
             <input type="file" name="photo">
          </div>
       </div>
-      <div class="box">
-         <div>특이사항
+      <div class="patrol_special">
+         <div class="patrol_radio">
+         	특이사항
             <input type="radio" name="chk" value="no" checked>없음
             <input type="radio" name="chk" value="yes">있음
          </div>
-         <div>
-            <textarea rows="5" cols="100" name="special" readonly="readonly" >특이사항 없음</textarea>
+         <div class="patrol_text">
+            <textarea name="special" readonly="readonly" >특이사항 없음</textarea>
          </div>
-         <div>
+         <div class="patrol_submit">
             <input type="submit" value="등록">
          </div>
       </div>

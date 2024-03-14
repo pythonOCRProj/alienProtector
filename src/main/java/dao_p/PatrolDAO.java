@@ -59,6 +59,7 @@ public class PatrolDAO {
 				dto.setTime(rs.getString("time"));
 				dto.setShift(rs.getString("shift"));
 				dto.setNo(rs.getInt("no"));
+				dto.setNow(rs.getTimestamp("now"));
 				
 
 				patrol.add(dto);
