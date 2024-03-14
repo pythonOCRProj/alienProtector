@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
-	table{
-		border: 1px solid gray;			
-		border-collapse: separate;
-		border-spacing: 2px;
-		border-color: gray;
-		margin-bottom: 1rem;
-	}
-	th, td {
-		border: 1px solid gray;
-	}
-</style>
+
 <div class="sortList">
 	<a href="<c:url value="/work/WorkList"/>">날짜별</a>
 	<a href="<c:url value="/work/WorkList?sort=position"/>">근무지역</a>

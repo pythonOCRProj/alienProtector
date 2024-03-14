@@ -2,18 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<style>
-	table{
-		border: 1px solid gray;			
-		border-collapse: separate;
-		border-spacing: 2px;
-		border-color: gray;
-		margin-bottom: 1rem;
-	}
-	th, td {
-		border: 1px solid gray;
-	}
-</style>
+
+
 <section class="master">
 	<h3>출근한 근무자</h3>
 	<table border="">
