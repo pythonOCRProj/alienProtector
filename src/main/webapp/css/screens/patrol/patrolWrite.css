@@ -1,121 +1,118 @@
 @charset "UTF-8";
 
-   .patrol{
-      max_width:360px;
-      width:100%; 
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+.patrol{
+ 	max_width:360px;
+	width:100%; 
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+ }
+.patrol_timebox{
+	width:95%;
+}
+.patrol_day, .patrol_time{
+	font-size: xx-large;
+	text-align: center;
+	font-weight: 700;
+	line-height: 40px;
+}
+.patrol_day{
+  	font-size: large;
+  	font-weight:400;
+}
+.patrol_turn{
+    margin-top: 50px;
+    width: 95%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.patrol_turnbox{
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.patrol_title{
+    min-width: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(209, 209, 209);
+}
+.patrol_turnChk{
+    min-width: 80px;
+    min-height: 50px;
+    background-color: rgb(228, 228, 228);
+}
+.patrol_turnChk>div>img{
+	margin:auto;
+}
+.patrol_file{
+    margin-top:50px;
+    width:95%;
+}
+.patrol_box{
+    width:100%;
+    min-height:100px;
+    display: flex;
+    border-bottom:1px solid var(--border-color)
+}
+.patrol_position{
+    width:25%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7ab0e0;
+    color: var(--text-title-color);
+}
+.patrol_now{
+    width:75%;
+    line-height: 50px;
+    float:left;
+    color: var(--text-title-color);
+	background-color: #fff;
    }
-   .patrol_timebox{
-      margin-top:50px;
-      width:95%;
-   }
-   .patrol_day, .patrol_time{
-	  font-size: xx-large;
-	  text-align: center;
-	  line-height: 50px;
-   }
-    .patrol_turn{
-      margin-top:50px;
-      width:95%;
-      display: flex;
-      justify-content: center;
-    
-    }
-   .patrol_title{
-      width:25%;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgb(209, 209, 209);
-   }
-   .patrol_turnChk{
-      width:25%;
-      float:left;
-      background-color: rgb(228, 228, 228);
- 
-   }
-   .patrol_turnChk>div>img{
-	  margin:auto;
-   }
-   .patrol_file{
-      margin-top:50px;
-      width:95%;
-      background-color: rgb(228, 228, 228);
-      
-   }
-   .patrol_box{
-      width:100%;
-      min-height:100px;
-      border: 1px solid #fff;
-      display: flex;
-		
-   }
-   .patrol_position{
-      width:25%;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgb(209, 209, 209);
-      color: var(--text-title-color);
-   }
-   .patrol_now{
-      width:75%;
-      line-height: 50px;
-      float:left;
-      color: var(--text-title-color);
-   }
-   .patrol_nowsub{
-	   margin-left: 10px;
-	   width:30%;
-	   float:left;
-	  
-   }
-   .patrol_nowtime{
-	    width:50%;
-	    color: var(--text-sub-color);
-	    float:left;
-   }
-   .patrol_btn{
-		width:100%;
-		margin:15px;
-		display: flex;
-	    justify-content: center;
-	    align-items: center;
-   }
-   .patrol_special{
-	   width:95%;
-	   display: flex;
-	   flex-direction: column;
-	   justify-content: center;
-	   align-items: center;
-	   
-	   
-   }
-   .patrol_radio {
-	   width: 100%;
-	   display: flex;
-	   margin: 15px;
-   }
-
-   .patrol_radioselect{
-	   margin-left: 15px;
-   }
-   .patrol_text{
-      width:100%;
-   }
-
-  textarea{
-	  width:100%;
-	  
-  }
-  .patrol_submit{
-	  margin:10px;
-  }
+.patrol_nowsub{
+    margin-left: 10px;
+	width:30%;
+	float:left;
+}
+.patrol_nowtime{
+	width:50%;
+	color: var(--text-sub-color);
+	float:left;
+}
+.patrol_btn{
+	width:100%;
+	margin:15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.patrol_special{
+    width:95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.patrol_radio {
+	width: 100%;
+	display: flex;
+	margin: 15px;
+}
+.patrol_text{
+    width:100%;
+}
+textarea{
+	width:100%;
+}
+.patrol_submit{
+	margin:10px;
+}
   
  
    

@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <form action="LoginReg" method="post">
 	<div class="join__big">    
+		<div class="join_mark">
+			<img src="../img/mark.png">
+		</div>
 		<div class="login__top">
 			<h1>로그인</h1>
 			<div class="join__chklist">
