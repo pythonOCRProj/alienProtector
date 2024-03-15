@@ -198,6 +198,8 @@ public class WorkerDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		
 		return res;
@@ -218,6 +220,8 @@ public class WorkerDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		
 		return res;
@@ -304,6 +308,8 @@ public class WorkerDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		
 		return res;
