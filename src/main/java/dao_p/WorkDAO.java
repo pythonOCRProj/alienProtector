@@ -39,19 +39,19 @@ public class WorkDAO {
 	}
 	
 	
-	public ArrayList<PatrolDTO> dateList(){
+	public ArrayList<PatrolDTO> shiftList(){
 		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
 		PatrolDTO dto = null;
 		
-		sql = "select date from work_log group by date "
-				+"order by date desc";
+		sql = "select shift from work_log group by shift "
+				+"order by shift desc";
 		try {
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				dto = new PatrolDTO();
-				dto.setDate(rs.getString("date"));
+				dto.setShift(rs.getString("shift"));
 				
 				res.add(dto);
 				
@@ -126,15 +126,18 @@ public class WorkDAO {
 	}
 	
 	
-	public ArrayList<PatrolDTO> workData(){
+	public ArrayList<PatrolDTO> workData(String start, String end){
 		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
 		PatrolDTO dto = null;
 		
 		sql = "select p.*, w.name from work_log as p join worker as w "
 				+"on p.id = w.id "
+				+"where Date(p.date) between ? and ? "
 				+"order by p.date, p.time";
 		try {
 			psmt = con.prepareStatement(sql);
+			psmt.setString(1,start);
+			psmt.setString(2,end);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {

@@ -47,6 +47,7 @@ function timmer() {
      }
      var nowTime =hours + ":" + minutes + ":" + second;
 
+
      document.getElementById("patrol_time").innerHTML = nowTime;
      setTimeout("timmer()",1000);
 }

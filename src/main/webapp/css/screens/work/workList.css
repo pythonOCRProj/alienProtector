@@ -1,1 +1,34 @@
 @charset "UTF-8";
+
+.sortList {
+	margin: 2rem auto;
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+	
+}
+
+.sortList a {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-sub-color);
+}
+
+.dateBox {
+	text-align:end;
+}
+.dateBox .btn {
+	margin-left: .5rem;
+}
+
+.workSection {
+	width: 92%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.workListBox {
+	margin: 2rem auto;
+}
+.workListBox .workList {}
+.workListBox .workList h4{}

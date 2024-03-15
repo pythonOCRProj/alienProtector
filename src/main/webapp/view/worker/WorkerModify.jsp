@@ -85,7 +85,7 @@
 
 <script>
 	$(()=>{
-		$(".worker > .worker__rows > .worker__col > button").on("click",function(e){
+		$(".worker__col > button").on("click",function(e){
 			e.preventDefault();
 			const html = $(this).html();
 			if(confirm("정말로 "+html+" 시키겠습니까?")){				

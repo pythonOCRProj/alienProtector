@@ -6,7 +6,8 @@ header{
 	position: fixed;
 	top: 0;
 	left: 0;
-	border-bottom: 2px solid var(--text-title-color);
+	border-bottom: 2px solid var(--main-dark-color);
+	padding: .5rem.1rem;
 }
 .header {
 	width: 100%;
@@ -16,8 +17,8 @@ header{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 1rem;
-	padding: 1rem;
+	gap: .7rem;
+
 }
 #patrolTemplate header {
 	max-width: 360px;
@@ -28,9 +29,14 @@ header{
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
+	gap: .8rem;
 }
-.log__info p{}
-.log__info a {}
+.Log__info p{
+	font-size: .8rem;
+	color: var(--text-sub-color);
+}
+
 
 .headerAdmin ,
 .headerPatrol {
@@ -48,4 +54,8 @@ header{
 .headerPatrol ul li {}
 
 .headerAdmin ul li a,
-.headerPatrol ul li a {}
+.headerPatrol ul li a {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-title-color);
+}
