@@ -69,7 +69,7 @@
 			<tr>
 				<th scope="col">근무조</th>
 				<th scope="col">회차</th>
-				<th scope="col">근무지역</th>
+				<th scope="col">순찰구역</th>
 				<th scope="col">특이사항</th>
 				<th scope="col">시간</th>
 				<th scope="col">근무자</th>
