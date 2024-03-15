@@ -19,6 +19,7 @@
 </form>
 	<div class="workListBox">
 	<c:if test="${param.sort == null || param.sort == 'shift'}">
+		<h3>근무조</h3>
 		<c:forEach items="${shiftList }" var="sl" >
 
 			<div class="workList">
@@ -58,6 +59,7 @@
 		</c:forEach>
 	</c:if>
 	<c:if test="${param.sort == 'position' }">
+		<h3>근무지</h3>
 		<c:forEach items="${placeList }" var="pl" >
 			<div class="workList">
 				<h4>${pl.position }</h4>
@@ -94,41 +96,80 @@
 			</div>
 		</c:forEach>
 	</c:if>
-	<c:if test="${param.sort == 'worker' }">
+	<c:if test="${param.sort == 'worker'}">
+	<h3>근무자 - 재직자</h3>
 		<c:forEach items="${workerList }" var="wl" >
-			<div class="workList">
-				<h4>${wl.name } (${wl.id })</h4>
- 				<table border="">
-					<colgroup>
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">근무조</th>
-							<th scope="col">회차</th>
-							<th scope="col">근무지역</th>
-							<th scope="col">특이사항</th>
-							<th scope="col">날짜</th>
-							<th scope="col">시간</th>
-						</tr>
-					</thead>
-					<tbody>	
-	 					<c:forEach items="${workData }" var="wd">
-	 					<c:if test="${wl.id == wd.id }">
-	 					
-							<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
-								<td>${wd.shift }</td>
-								<td>${wd.turn }</td>
-								<td>${wd.position }</td>
-								<td>${wd.special }</td>
-								<td>${wd.date }</td>
-						 		<td>${wd.time }</td>
-					 		</tr>
-	 					</c:if>
-						</c:forEach>
-			
-					</tbody>
-				</table>
-			</div>
+			<c:if test="${wl.hire == 1 }">
+				<div class="workList">
+					<h4>${wl.name } (${wl.id })</h4>
+	 				<table border="">
+						<colgroup>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">근무조</th>
+								<th scope="col">회차</th>
+								<th scope="col">근무지역</th>
+								<th scope="col">특이사항</th>
+								<th scope="col">날짜</th>
+								<th scope="col">시간</th>
+							</tr>
+						</thead>
+						<tbody>	
+		 					<c:forEach items="${workData }" var="wd">
+		 					<c:if test="${wl.id == wd.id }">		 					
+								<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
+									<td>${wd.shift }</td>
+									<td>${wd.turn }</td>
+									<td>${wd.position }</td>
+									<td>${wd.special }</td>
+									<td>${wd.date }</td>
+							 		<td>${wd.time }</td>
+						 		</tr>
+		 					</c:if>
+							</c:forEach>
+				
+						</tbody>
+					</table>
+				</div>
+			</c:if>
+		</c:forEach>
+		<h3>근무자 - 퇴직자</h3>
+		<c:forEach items="${workerList }" var="wl" >
+			<c:if test="${wl.hire == 0 }">
+				<div class="workList">
+					<h4>${wl.name } (${wl.id })</h4>
+	 				<table border="">
+						<colgroup>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">근무조</th>
+								<th scope="col">회차</th>
+								<th scope="col">근무지역</th>
+								<th scope="col">특이사항</th>
+								<th scope="col">날짜</th>
+								<th scope="col">시간</th>
+							</tr>
+						</thead>
+						<tbody>	
+		 					<c:forEach items="${workData }" var="wd">
+		 					<c:if test="${wl.id == wd.id }">		 					
+								<tr onclick="location.href='<c:url value="/work/WorkDetail?no=${wd.no }" />'" style="cursor:pointer;">
+									<td>${wd.shift }</td>
+									<td>${wd.turn }</td>
+									<td>${wd.position }</td>
+									<td>${wd.special }</td>
+									<td>${wd.date }</td>
+							 		<td>${wd.time }</td>
+						 		</tr>
+		 					</c:if>
+							</c:forEach>
+				
+						</tbody>
+					</table>
+				</div>
+			</c:if>
 		</c:forEach>
 	</c:if>
 
