@@ -21,8 +21,8 @@
 		</div>
 		<hr>
 		<c:if test="${noticeDetail.img!=null}">
-			<div class="noticeDetail_Img">
-				<img alt="" src="/alienProtector/img/${noticeDetail.img}">
+			<div class="noticeModify_Img">
+				<img alt="" src="/alienProtector/img/${noticeDetail.img}" class="noticeModify_Img">
 			</div>
 		</c:if>
 		<div class="noticeDetail_content">
@@ -35,22 +35,22 @@
 	<div class="notice_underbar">
 	<c:if test="${Worker.id=='master'}">
 		<div>
-			<input type="button" value="목록" onclick="location.href='NoticeList'">
+			<input type="button" value="목록" onclick="location.href='NoticeList'" class="btn">
 		</div>
 	</c:if>
 	<c:if test="${Worker.id!='master'}">
 		<div>
-			<input type="button" value="목록" onclick="location.href='NoticePatrolList'">
+			<input type="button" value="목록" onclick="location.href='NoticePatrolList'" class="btn">
 		</div>
 	</c:if>
 	
 		<c:if test="${Worker.id=='master'}">
-			<div>
+			<div >
 				<input type="button" value="수정"
-					onclick="location.href='NoticeModify?no=${noticeDetail.no}'">
+					onclick="location.href='NoticeModify?no=${noticeDetail.no}'" class="btn">
 			</div>
 			<div>
-				<input type="button" value="삭제" onclick="del(${noticeDetail.no})">
+				<input type="button" value="삭제"  onclick="del(${noticeDetail.no})" class="btn">
 			</div>
 	</div>
 	</c:if>
