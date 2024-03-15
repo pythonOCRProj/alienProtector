@@ -41,6 +41,7 @@
 @import "./screens/notice/noticelist.css";
 @import "./screens/notice/noticedetail.css";
 @import "./screens/login/login.css";
+@import "./screens/work/workList.css";
 
 
 /* 이 아래는 모든 곳에서 공통되는 css를 적용합니다.
@@ -69,10 +70,12 @@ body{
 #patrolTemplate{
 	max-width: 360px;
 	margin: 0 auto;
+	font-size: 14px;
 }
 
 :root{
 	--main-color: #D94A4A; /* 메인색 */
+	--main-dark-color: #630000;
 	--main-blur-color : #FFE4DF; /* 연한 메인색 */
 	--text-title-color : #0d0d0d; /* 텍스트 진한색 (글 제목) */
 	--text-cont-color : #333333; /* 텍스트 보통색 (글 내용) */
@@ -83,7 +86,7 @@ body{
 	--mobile-width: 360px; /*mobile 사이즈*/
 }
 
-table {
+table, .table {
 	border-collapse: collapse;
 	width: 100%;
 	color: #333;
@@ -97,7 +100,7 @@ table {
 	margin-bottom: 80px;
 }
 
-th {
+th, .th {
 	background-color: var(--main-color);
 	color: var(--bg-color);
 	font-weight: bold;
@@ -106,13 +109,27 @@ th {
 	letter-spacing: 1px;
 }
 
-td {
+td, .td {
 	background-color: #fff;
 	padding: 10px;
 	font-weight: 500;
 }
 
-table tr:nth-child(even) td {
+table tr:nth-child(even) td,
+.table .tr:nth-child(even) .td {
 	background-color: var(--bg-color);
+}
+
+.btn {
+	display: innline-block;
+    padding: 0 0.8rem;
+    line-height: 2em;
+	font-size: .8rem;
+	font-weight: 700;
+	background-color: var(--main-color);
+	color: var(--main-blur-color);
+	border-radius: 20px;
+	border: none;
+	cursor: pointer;
 }
 

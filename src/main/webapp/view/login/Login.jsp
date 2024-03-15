@@ -11,7 +11,7 @@
 				<input class="login__write--input" type="password" placeholder="비밀번호" name="pwd"/>
 			</div>
 			<div>
-				<input type="submit" value="로그인"  class="login_button"/>
+				<input type="submit" value="로그인"  class="login_button btn"/>
 			</div>
 		</div>
 	</div>

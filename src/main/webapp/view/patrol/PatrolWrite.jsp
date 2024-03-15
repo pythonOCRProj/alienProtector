@@ -22,9 +22,14 @@
 
 function timmer() {
  
-     var now = new Date();         
-     var nowTime =now.getHours() + ":" + now.getMinutes() + ":" + 
-	     now.getSeconds();
+     var now = new Date(); 
+     
+     var h = now.getHours();
+     var m = now.getMinutes()
+     var s = now.getSeconds();
+ 	 var nowTime = h < 10 ? "0"+h : h +":"+ m < 10 ? "0"+m : m + ":"+ s <10 > "0"+s: s;    
+/*      var nowTime =now.getHours() + ":" + now.getMinutes() + ":" + 
+	     now.getSeconds(); */
 
      document.getElementById("patrol_time").innerHTML = nowTime;
      setTimeout("timmer()",1000);
