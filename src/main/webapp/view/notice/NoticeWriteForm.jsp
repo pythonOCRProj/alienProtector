@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
 	pageEncoding="UTF-8"%>
 <form action="NoticeWriteReg" method="post"
 	enctype="multipart/form-data">
+
 
 	<div>
 		<div class="noticeModify_titleWrap">
@@ -32,7 +34,9 @@
 				value="작성" class="btn" /> <input type="button" value="취소"
 				onclick="location.href='NoticeList'" class="btn">
 
+
 		</div>
 	</div>
 </form>
+
 

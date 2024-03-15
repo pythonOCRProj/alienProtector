@@ -13,6 +13,10 @@
     font-weight: 400;
     color: var(--text-sub-color);
 }
+.sortList a.active {
+	color: var(--main-dark-color);
+	font-weight: bold;
+}
 
 .dateBox {
 	text-align:end;
@@ -29,6 +33,14 @@
 
 .workListBox {
 	margin: 2rem auto;
+}
+
+.workListBox h3 {
+	font-weight: 700;
+	color: var(--text-title-color);
+	font-size: 2rem;
+	margin: 4rem auto; 
+	text-align: center;
 }
 .workListBox .workList {}
 .workListBox .workList h4{}
