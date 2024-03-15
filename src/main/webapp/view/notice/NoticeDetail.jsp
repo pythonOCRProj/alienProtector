@@ -33,10 +33,17 @@
 
 
 	<div class="notice_underbar">
+	<c:if test="${Worker.id=='master'}">
 		<div>
 			<input type="button" value="목록" onclick="location.href='NoticeList'">
 		</div>
-
+	</c:if>
+	<c:if test="${Worker.id!='master'}">
+		<div>
+			<input type="button" value="목록" onclick="location.href='NoticePatrolList'">
+		</div>
+	</c:if>
+	
 		<c:if test="${Worker.id=='master'}">
 			<div>
 				<input type="button" value="수정"
