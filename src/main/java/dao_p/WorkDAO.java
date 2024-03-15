@@ -71,7 +71,7 @@ public class WorkDAO {
 		ArrayList<WorkerDTO> res = new ArrayList<WorkerDTO>();
 		WorkerDTO dto = null;
 		
-		sql = "select name, id, no from worker "
+		sql = "select name, id, no, hire from worker "
 				+"where id != 'master' "
 				+"order by no";
 		try {
@@ -83,6 +83,7 @@ public class WorkDAO {
 				dto.setName(rs.getString("name"));
 				dto.setId(rs.getString("id"));
 				dto.setNo(rs.getInt("no"));
+				dto.setHire(rs.getInt("hire"));
 				
 				res.add(dto);
 				
