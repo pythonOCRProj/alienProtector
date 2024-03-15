@@ -26,9 +26,8 @@
 			</div>
 		</div>
 		<div>
-			<div>파일</div>
+			<div>첨부파일</div>
 			<div>
-				<div>첨부파일</div>
 				<div>
 					<img alt="" src="/alienProtector/img/${ModifyData.img }">
 				</div>
