@@ -233,7 +233,7 @@ public class WorkerDAO {
 	public ArrayList<WorkerDTO> list() {
 		// list객체 인스턴스
 		ArrayList<WorkerDTO> res = new ArrayList<WorkerDTO>();
-		sql = "select * from worker";
+		sql = "select * from worker order by join_date asc ";
 		try {
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();

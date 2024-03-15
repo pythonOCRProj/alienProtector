@@ -14,7 +14,7 @@
 	<tr>
 	    <td>${no.index+1}</td>
 		<td><a href='<c:url value="/worker/WorkerModify?id=${ dto.id }"/>' >${dto.id }</a></td>
-		<td>${dto.joinDate }</td>
+		<td>${dto.joinDateStr.substring(0,10) }</td>
 		<td>${dto.email }</td>
 		<td>${dto.phoneNum }</td>
 		<td>${dto.name }</td>
