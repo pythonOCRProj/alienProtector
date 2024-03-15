@@ -32,6 +32,16 @@ public class WorkerJoinFormReg implements WorkerService {
 				try {
 					
 					String pwdchk = request.getParameter("pwdchk");
+					
+					String addr1 = request.getParameter("addr1");
+					String addr2 = request.getParameter("addr2");
+					String addr3 = request.getParameter("addr3");
+					String addr4 = request.getParameter("addr4");
+					System.out.println(addr1);
+					System.out.println(addr2);
+					System.out.println(addr3);
+					System.out.println(addr4);
+					String addr =  addr2 + addr3 + addr4;
 						
 					//비밀번호 유효성 검사
 					// 비밀번호가 공백이아니거나 눌값이아니거나 비밀번호와 비밀번호확인이다르거나 
@@ -53,7 +63,7 @@ public class WorkerJoinFormReg implements WorkerService {
 						//name
 						worker.setName(request.getParameter("name"));
 						//addr
-						worker.setAddr(request.getParameter("addr"));
+						worker.setAddr(addr);
 						
 						new WorkerDAO().join(worker);
 						new RedirectionPage(request, response).movePage("근무자 등록 완료", "WorkerList");		
