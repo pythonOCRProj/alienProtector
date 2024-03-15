@@ -12,13 +12,15 @@ public class NoticeDetail implements NoticeService  {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		
 		int no = Integer.parseInt(request.getParameter("no"));
+
 		new NoticeDAO().noticeCnt(no);
 		NoticeDTO dto = new NoticeDAO().detail(no);
 		
 		System.out.println(dto.getId());
 		request.setAttribute("noticeDetail", dto);
-		System.out.println("노티스디테일자바 진입");
+		
 		
 	}
 }

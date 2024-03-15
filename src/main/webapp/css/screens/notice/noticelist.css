@@ -2,9 +2,16 @@
 
 .Notice_listinfo {
 	width: 100%;
-	margin: 10px;
+
 	display: flex;
 	justify-content: flex-start;
+	background-color: var(--main-color);
+	color: var(--bg-color);
+	font-weight: bold;
+	padding: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	border-radius: 10px 10px 0px 0px;
 
 }
 
@@ -29,21 +36,33 @@
 .Notice_title {
 	width: 55%;
 	text-align: center;
-	color: var(--text-title-color);
+	color: var(--bg-color);
 }
 
 .Notice_date {
 	width: 25%;
-	text-align: center;
+	color: var(--bg-color);
 }
 
 .Notice_cnt {
 	width: 15%;
-	text-align: right;
+	color: var(--bg-color);
 }
+
+.Notice_title2 {
+	width: 55%;
+	text-align: center;
+
+}
+
+.Notice_date2 {
+	width: 25%;
+
+}
+
 .Notice_cnt2 {
 	width: 15%;
-	text-align: center;
+	
 }
 
 .Notice_head {
