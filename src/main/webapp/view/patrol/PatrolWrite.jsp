@@ -13,7 +13,17 @@
          else{
             $("textarea[name='special']").attr("readonly",true).val("특이사항 없음")
          }
-      }) 
+      })
+      
+    $(".patrol_turnbox:nth-of-type(1)").on("click",function(){
+    	location.href="PatrolWrite?click=1";
+    })
+     $(".patrol_turnbox:nth-of-type(2)").on("click",function(){
+    	 location.href="PatrolWrite?click=2";
+    })
+     $(".patrol_turnbox:nth-of-type(3)").on("click",function(){
+    	 location.href="PatrolWrite?click=3";
+    })
  })
    
  window.onload = function() {                
@@ -40,6 +50,7 @@ function timmer() {
      document.getElementById("patrol_time").innerHTML = nowTime;
      setTimeout("timmer()",1000);
 }
+
 
 
 

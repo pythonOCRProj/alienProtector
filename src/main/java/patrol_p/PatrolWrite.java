@@ -26,6 +26,7 @@ public class PatrolWrite implements PatrolService{
 	public void service(HttpServletRequest request, HttpServletResponse response) {
 		
 		try {
+			System.out.println("왔따");
 			int turn = 0;
 			HttpSession session = request.getSession();
 			WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
@@ -69,10 +70,16 @@ public class PatrolWrite implements PatrolService{
 				turnChk.set(2, true);
 			}
 			
+			
+			
+			
 			ArrayList<PatrolDTO> data = new PatrolDAO().list(id,turn);
 			ArrayList<PlaceDTO> place = new WorkDAO().placeList(); 
 			
-			
+			if(request.getParameter("click")!=null) {
+				int turnClick =Integer.parseInt(request.getParameter("click"));	
+				data = new PatrolDAO().list(id,turnClick);
+			}
 			request.setAttribute("data", data);
 			request.setAttribute("place", place);
 			request.setAttribute("turn", turnChk);
