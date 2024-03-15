@@ -2,13 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script>
+	window.onload = function(){
+		sort()
 
+		
+		
+	}
+	function sort(){			
+		var sortOn = '${params.sort}';
+		var sortOnTarget = document.getElementById(sortOn+'Sort');
+		if(sortOn == null){
+			sortOn = 'shift';
+		}
+/* 		console.log(sortOn)
+		console.log(sortOnTarget) */
+		sortOnTarget.classList.add('active')
+		
+	}
+</script>
 
 <section class="workSection">
 <div class="sortList">
-	<a href="<c:url value="/work/WorkList"/>">근무조</a>
-	<a href="<c:url value="/work/WorkList?sort=position"/>">근무지역</a>
-	<a href="<c:url value="/work/WorkList?sort=worker"/>">근무자</a>
+	<a href="<c:url value="/work/WorkList"/>" id="shiftSort">근무조</a>
+	<a href="<c:url value="/work/WorkList?sort=position"/>" id="positionSort">순찰구역</a>
+	<a href="<c:url value="/work/WorkList?sort=worker"/>" id="workerSort">근무자</a>
 </div>
 <form action="" >
 	<div class="dateBox">
@@ -32,7 +50,7 @@
 					<thead>
 						<tr>
 							<th scope="col">회차</th>
-							<th scope="col">근무지역</th>
+							<th scope="col">순찰구역</th>
 							<th scope="col">특이사항</th>
 							<th scope="col">날짜</th>
 							<th scope="col">시간</th>
@@ -59,7 +77,7 @@
 		</c:forEach>
 	</c:if>
 	<c:if test="${param.sort == 'position' }">
-		<h3>근무지</h3>
+		<h3>순찰구역</h3>
 		<c:forEach items="${placeList }" var="pl" >
 			<div class="workList">
 				<h4>${pl.position }</h4>
@@ -109,7 +127,7 @@
 							<tr>
 								<th scope="col">근무조</th>
 								<th scope="col">회차</th>
-								<th scope="col">근무지역</th>
+								<th scope="col">순찰구역</th>
 								<th scope="col">특이사항</th>
 								<th scope="col">날짜</th>
 								<th scope="col">시간</th>
@@ -146,7 +164,7 @@
 							<tr>
 								<th scope="col">근무조</th>
 								<th scope="col">회차</th>
-								<th scope="col">근무지역</th>
+								<th scope="col">순찰구역</th>
 								<th scope="col">특이사항</th>
 								<th scope="col">날짜</th>
 								<th scope="col">시간</th>
