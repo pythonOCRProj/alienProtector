@@ -27,7 +27,7 @@
 			</div>
 		</div>
 
-		<div class="noticeModify_fileWrap">
+		<div class="noticeModify_titleWrap">
 			<div class="noticeModify_title2">첨부파일</div>
 
 			<div class="noticeModify_Img">
@@ -37,20 +37,21 @@
 		</div>
 
 
-		<div class="">
-			<input type="file" name="upfile" />
+		<div class="noticeModify_titleWrap">
+			<div class="noticeModify_title2">파일</div>
+			<div><input type="file" name="upfile" class="noticeContent_width2" /></div>
 		</div>
 
-		<div class="noticeModify_content">
-			<div class="noticeModify_title">내용</div>
+		<div class="noticeModify_titleWrap">
+			<div class="noticeModify_title2">내용</div>
 
-			<div class="noticeModify_con">
+			<div class="noticeModify_Img">
 				<textarea name="content" rows="8" cols="168">${ModifyData.content }</textarea>
 			</div>
 		</div>
 		<c:if test="${Worker.id=='master'}">
 			<div class="Notice_under">
-				<input type="submit" value="수정" /> <input type="button" value="취소"
+				<input type="submit" value="수정" class="btn"/> <input type="button" value="취소" class="btn"
 					onclick="location.href='NoticeList'">
 			</div>
 		</c:if>
