@@ -32,8 +32,12 @@ public class WorkerModifyReg implements WorkerService{
 				String phone = request.getParameter("phone");
 				
 				try {
-					/*체크 해야할 상황, 업로드 파일이 없고 현재 이미지가 있을 때, 업로드 파일이 있을 때
-					 * ,비밀번호와 확인이 같을 때, 비밀번호가 비었을 때, 연락처 양식이 틀리거나 없을 때, 수정되었을 때.*/
+					
+					//아이디 유효성검사
+					
+					
+					
+					
 					//비밀번호 유효성 검사
 					if(!"".equals(pwd) && pwd != null && pwd.equals(chk)) {
 						worker.setPwd(pwd);
