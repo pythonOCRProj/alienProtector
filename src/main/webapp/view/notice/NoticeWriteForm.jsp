@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <form action="NoticeWriteReg" method="post" enctype="multipart/form-data">
    <div class="notice">
       <div>
@@ -34,4 +35,3 @@
          </div>
    </div>   
 </form> 
-
