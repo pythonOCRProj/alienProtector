@@ -3,7 +3,7 @@
 
 
 .noticeDetail_Wrap{
-		padding: 40px 0 65px;
+		padding: 0px 0 65px;
 }
 
 .noticeDetail_info{
@@ -25,6 +25,7 @@
 }
 .noticeDetail_Img > img{
 	width: 100%;
+	
 	
 }
 .noticeDetail_content{

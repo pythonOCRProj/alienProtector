@@ -24,7 +24,7 @@
 		<hr>
 	</c:forEach>
 </div>
-
+<div class="Notice_under">
 <input type="button" value="글쓰기"
-	onclick="location.href='NoticeWriteForm'" >
-
+	onclick="location.href='NoticeWriteForm'"  >
+</div>

@@ -40,7 +40,7 @@
 @import "./screens/worker/list.css";
 @import "./screens/notice/noticelist.css";
 @import "./screens/notice/noticedetail.css";
-@import "./screens/notice/noticeWriteForm.css";
+@import "./screens/notice/noticeModify.css";
 @import "./screens/login/login.css";
 @import "./screens/work/workList.css";
 

@@ -19,35 +19,40 @@
 <form name="frm" action="NoticeModifyReg?no=${ModifyData.no}"
 	method="post" enctype="multipart/form-data">
 	<div>
-		<div>
-			<div>제목</div>
+		<div class="noticeModify_titleWrap">
+			<div class="noticeModify_title2">제목</div>
 			<div>
-				<input type="text" name="title" value=${ModifyData.title } />
-			</div>
-		</div>
-		<div>
-			<div>첨부파일</div>
-			<div>
-				<div>
-					<img alt="" src="/alienProtector/img/${ModifyData.img }">
-				</div>
-				<div>
-					<input type="file" name="upfile" />
-				</div>
+				<input type="text" name="title" value=${ModifyData.title }
+					class="noticeContent_width" />
 			</div>
 		</div>
 
-		<div>
-			<div>내용</div>
+		<div class="noticeModify_fileWrap">
+			<div class="noticeModify_title2">첨부파일</div>
 
-			<div>
+			<div class="noticeModify_Img">
+				<img alt="" src="/alienProtector/img/${ModifyData.img }"
+					class="noticeModify_Img">
+			</div>
+		</div>
+
+
+		<div class="">
+			<input type="file" name="upfile" />
+		</div>
+
+		<div class="noticeModify_content">
+			<div class="noticeModify_title">내용</div>
+
+			<div class="noticeModify_con">
 				<textarea name="content" rows="8" cols="168">${ModifyData.content }</textarea>
 			</div>
 		</div>
 		<c:if test="${Worker.id=='master'}">
-		<div>
-			<input type="submit" value="수정" /> <a href="NoticeList">취소</a>
-		</div>
+			<div class="Notice_under">
+				<input type="submit" value="수정" /> <input type="button" value="취소"
+					onclick="location.href='NoticeList'">
+			</div>
 		</c:if>
 	</div>
 </form>
