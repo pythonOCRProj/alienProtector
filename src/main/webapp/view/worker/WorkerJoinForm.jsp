@@ -8,6 +8,7 @@
 				<td>아이디</td>
 				<td>
 					<input type="text" name="id" Placeholder="아이디를 입력해 주세요">
+					<button type="button">중복체크</button>
 				</td>
 			</tr>
 			<tr>
@@ -27,13 +28,13 @@
 			<tr>
 				<td>휴대폰번호</td>
 				<td>
-					<input type="number" name="phone_num" />
+					<input type="text" name="phone_num" Placeholder="-는 제외하고 숫자만 입력해주세요" />
 				</td>
 			</tr>
 			<tr>
 				<td>이름</td>
 				<td>
-					<input type="text" name="name" />
+					<input type="text" name="name" Placeholder="한글만 2~4글자 입력해주세요" />
 				</td>
 			</tr>
 			<tr>
