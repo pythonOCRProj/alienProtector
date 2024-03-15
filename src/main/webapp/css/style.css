@@ -43,6 +43,7 @@
 @import "./screens/notice/noticeWriteForm.css";
 @import "./screens/login/login.css";
 @import "./screens/work/workList.css";
+@import "./screens/notice/noticeWrite.css";
 
 
 /* 이 아래는 모든 곳에서 공통되는 css를 적용합니다.

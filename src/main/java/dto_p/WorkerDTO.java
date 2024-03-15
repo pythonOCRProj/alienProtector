@@ -11,7 +11,6 @@ public class WorkerDTO {
 	Date attendTime, leaveTime;
 	private String leaveTimeStr;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
 
 	public Date getAttendTime() {
 		return attendTime;

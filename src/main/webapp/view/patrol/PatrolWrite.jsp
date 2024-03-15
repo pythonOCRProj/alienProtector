@@ -89,7 +89,7 @@ function timmer() {
       <div class="patrol_file">
       <c:forEach items="${place }" var="pla">
          <div class="patrol_box">
-            <div class="patrol_position"><b>${pla.position }</b></div>
+            <div class="patrol_position">${pla.position }</div>
             <c:forEach items="${data }" var="da">
             	<c:choose>
             		<c:when test="${pla.position == da.position }">
@@ -106,7 +106,7 @@ function timmer() {
          </c:forEach>
       </div>
       <div class="patrol_btn">
-          <input type="file" name="photo">
+          <input type="file"  name="photo">
       </div>
       <div class="patrol_special">
          <div class="patrol_radio">
@@ -121,7 +121,7 @@ function timmer() {
          </div>
       </div>
          <div class="patrol_submit">
-            <input type="submit" value="등록">
+            <input type="submit" class="btn" id="sumitBtn" value="등록">
          </div>
    </div>
 </form>
