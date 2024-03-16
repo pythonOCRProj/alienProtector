@@ -82,7 +82,7 @@ body{
 	--text-title-color : #0d0d0d; /* 텍스트 진한색 (글 제목) */
 	--text-cont-color : #333333; /* 텍스트 보통색 (글 내용) */
 	--text-sub-color : #8c8c87; /* 텍스트 연한색 */ 
-	--border-color : #eeeeee; /* 보더색상 */
+	--border-color : #d7d7d7; /* 보더색상 */
 	--bg-color : #f2f2f2; /*배경색상*/
 	--main-width: 1200px; /*body 사이즈*/
 	--mobile-width: 360px; /*mobile 사이즈*/
@@ -99,7 +99,7 @@ table, .table {
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	margin: auto;
-	margin-bottom: 80px;
+/*	margin-bottom: 80px;*/
 }
 
 th, .th {
