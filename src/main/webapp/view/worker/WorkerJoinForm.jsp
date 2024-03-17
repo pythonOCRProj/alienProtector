@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-	<form action="WorkerJoinFormReg" method="post" enctype="multipart/form-data">
+<script>
+function idCheck(){
+	  //새창 만들기
+	  window.open("IdCheckForm", "idchang", "width=400, height=350");
+	}
+</script>
+	<form action="WorkerJoinFormReg" method="post" name="parform" enctype="multipart/form-data">
 		<table border="">
 			<tr>
 				<td>아이디</td>
 				<td>
-					<input type="text" name="id" Placeholder="아이디를 입력해 주세요">
-					<button type="button">중복체크</button>
+					<input type="text" name="id" Placeholder="아이디를 입력해 주세요" onkeydown="inputIdChk()">
+					<input type="button" value="ID중복확인" onclick="idCheck()">
 				</td>
+				<!-- 중복 체크 여부 
+				<input type="hidden" name="idcheck" value="iduncheck" />
+				-->
 			</tr>
 			<tr>
 				<td>비밀번호</td>

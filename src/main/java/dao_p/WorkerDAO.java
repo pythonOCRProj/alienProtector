@@ -290,13 +290,25 @@ public class WorkerDAO {
 				
 	}
 	
-	//아이디 중복체크를 위한 함수
-	public int idcheck(String id) {
-		
-		sql = "select * from worker where id = ?";
-		
-		psmt.setString(1, id);
-		
+	//아이디 중복체크를 위한 함수 - 박민수
+	public int duplecateID(String id){
+		int cnt=0;
+	    try{
+	    	//아이디 중복 확인
+	    	sql = "select count(id) as cnt from worker where id = ?";
+	       	
+	    	psmt = con.prepareStatement(sql);
+	    	
+	        psmt.setString(1, id);
+	        
+	        ResultSet rs=psmt.executeQuery();
+	        if(rs.next()){
+	        	cnt=rs.getInt("cnt");
+	        }
+	    }catch(Exception e){
+	     	System.out.println("아이디 중복 확인 실패 : " + e);
+	    }
+		return cnt;
 	}
 	
 	
