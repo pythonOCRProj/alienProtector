@@ -14,6 +14,7 @@ public class NoticePatrolList implements NoticeService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		
+		
 		ArrayList<NoticeDTO> listData = new NoticeDAO().list();
 		request.setAttribute("noticeData", listData);
 	}
