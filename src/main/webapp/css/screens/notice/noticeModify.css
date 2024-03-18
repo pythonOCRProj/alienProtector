@@ -22,7 +22,13 @@
 	align-content: space-around;
 }
 
-.noticeModify_titleWrap,
+.noticeModify_titleWrap{
+	display: flex;
+	width: 100%;
+	border-bottom: 1px solid var(--border-color);
+	
+
+}
 .noticeModify_fileWrap {
 	display: flex;
 	width: 100%;
@@ -96,5 +102,5 @@
 }
 
 .noticeModify_Img {
-	width: 75%;
+	width: 100%;
 }

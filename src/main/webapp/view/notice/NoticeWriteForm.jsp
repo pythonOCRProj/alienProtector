@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 
 	pageEncoding="UTF-8"%>
+	
 <form action="NoticeWriteReg" method="post"
 	enctype="multipart/form-data">
 
 
-	<div>
+	<div class="noticeDetial_magin">
 		<div class="noticeModify_titleWrap">
 			<div class="noticeModify_title2">제목</div>
 			<div>
