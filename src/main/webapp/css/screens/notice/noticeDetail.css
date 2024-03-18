@@ -3,7 +3,7 @@
 
 
 .noticeDetail_Wrap{
-		padding: 0px 0 65px;
+		margin: 100px 200px;
 }
 
 .noticeDetail_info{
@@ -36,5 +36,9 @@
 .notice_underbar{
 	display: flex;
 	justify-content: flex-end;
-	
+	gap: 5px;
+	margin: 10px;
+}
+.noticeDetial_magin{
+	margin: 30px 0px 0px 0px ;
 }

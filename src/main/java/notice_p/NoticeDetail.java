@@ -18,7 +18,7 @@ public class NoticeDetail implements NoticeService  {
 		new NoticeDAO().noticeCnt(no);
 		NoticeDTO dto = new NoticeDAO().detail(no);
 		
-		System.out.println(dto.getId());
+//		System.out.println(dto.getId());
 		request.setAttribute("noticeDetail", dto);
 		
 		
