@@ -33,10 +33,10 @@
 						</c:choose>
 						<c:choose>
 							<c:when test="${dto.hire == 1 && dto.id != 'master' }">
-								<button>퇴사</button>
+								<button class="retire">퇴사</button>
 							</c:when>
 							<c:when test="${dto.hire == 0 && dto.id != 'master' }">
-								<button>재입사</button>
+								<button class="rework">재입사</button>
 							</c:when>
 							
 						</c:choose>
@@ -77,8 +77,8 @@
 			</div>
 		</div>
 		<div class="worker__btns">
-			<input type="submit" value= "전송"/>
-			<a href="/alienProtector/worker/WorkerList">목록</a>
+			<input class="worker__sum-btn" type="submit" value= "전송"/>
+			<a class="worker__sum-btn worker__basic-btn" href="/alienProtector/worker/WorkerList">목록</a>
 		</div>
 	</div>
 </form>
