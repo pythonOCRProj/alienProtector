@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 @import "reset.css";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 /*
 	css 적용 규칙,
 	Bolck이름__Element이름
@@ -38,12 +37,14 @@
 @import "./screens/patrol/patrolWrite.css";
 @import "./screens/worker/modify.css";
 @import "./screens/worker/list.css";
-@import "./screens/notice/noticelist.css";
-@import "./screens/notice/noticedetail.css";
 @import "./screens/notice/noticeModify.css";
+@import "./screens/notice/noticeWrite.css";
+@import "./screens/notice/noticeList.css";
+@import "./screens/notice/noticeDetail.css";
 @import "./screens/login/login.css";
 @import "./screens/work/workList.css";
-@import "./screens/notice/noticeWrite.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 
 /* 이 아래는 모든 곳에서 공통되는 css를 적용합니다.
