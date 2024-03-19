@@ -200,5 +200,23 @@ public class NoticeDAO {
 		}
 	}
 	
+	public void fileDelete(int No) {
+		
+		sql = "update notice set img = null where no = ?";  
+	
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, No);
+			psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+	}
+	
 	
 }
