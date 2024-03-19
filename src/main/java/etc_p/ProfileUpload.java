@@ -13,8 +13,8 @@ public class ProfileUpload {
 	public ProfileUpload(HttpServletRequest request) {		
 		dir = request.getServletContext().getRealPath("img/");	
 
-		dir = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\profile\\";
-
+//		dir = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\profile\\";
+		dir = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\profile\\";
 	}
 	
 	/** 파일 올리기 : new FileUp(request).fileUpload(request.getPart("upFile"));

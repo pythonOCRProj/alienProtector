@@ -16,6 +16,7 @@ import dao_p.WorkerDAO;
 import dto_p.PatrolDTO;
 import dto_p.WorkerDTO;
 import etc_p.FileUp;
+import etc_p.ProfileUpload;
 import etc_p.RedirectionPage;
 import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 import jakarta.servlet.ServletException;
@@ -69,12 +70,14 @@ public class PatrolReg implements PatrolService {
 				if(chk >= 1) {
 					
 					new RedirectionPage(request, response).goMain("이미 등록된 장소입니다.");
+					new FileUp(request).fileDelete(file);
 				}
 				
 				// 등록된 사진이 당일에 찍은게 아닐 때
 				else if(pyOcr.date == null || !pyOcr.date.equals(nowDate) || pyOcr.time == null){
 					
 					new RedirectionPage(request, response).goMain("당일 등록 날짜가 아닙니다.");
+					new FileUp(request).fileDelete(file);
 			
 				// 등록된 사진이 정상일 때
 				}else if(pyOcr.date.equals(nowDate) && pos != null && pyOcr.time != null) {
@@ -132,10 +135,12 @@ public class PatrolReg implements PatrolService {
 					else {
 						
 						new RedirectionPage(request, response).goMain("올바른 시간이 아닙니다.");
+						new FileUp(request).fileDelete(file);
 					}
 				
 				}else if(pos == null) {
 					new RedirectionPage(request, response).goMain("올바른 이미지가 아닙니다.");
+					new FileUp(request).fileDelete(file);
 				}
 			}else {
 				request.getSession().invalidate();
