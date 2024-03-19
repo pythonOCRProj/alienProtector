@@ -45,8 +45,9 @@ public class DashBoardDAO {
 		
 		sql = "select c.*, w.name from commute as c join worker as w "
 				+"on c.id = w.id "
-				+"where go_time >= ? and leave_time is null "
-				+"order by go_time";
+				+"where go_time >= ? and leave_time is null and c.id != 'master' "
+				+"group by c.id "
+				+"order by go_time desc";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, today);
@@ -56,7 +57,7 @@ public class DashBoardDAO {
 				dto = new CommuteDTO();
 				dto.setId(rs.getString("c.id"));
 				dto.setName(rs.getString("w.name"));
-				dto.setGoTime(rs.getTimestamp("c.go_time"));
+				dto.setGoTime(rs.getTimestamp("go_time"));
 				dto.setLeaveTime(rs.getTimestamp("leave_time"));
 				
 				res.add(dto);
@@ -77,8 +78,8 @@ public class DashBoardDAO {
 		
 		sql = "select c.*, w.name from commute as c join worker as w "
 				+"on c.id = w.id "
-				+"where Date(leave_time) >= ? "
-				+"order by go_time";
+				+"where Date(leave_time) >= ? and c.id != 'master' "
+				+"order by go_time desc";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, today);
@@ -110,7 +111,7 @@ public class DashBoardDAO {
 		sql = "select p.*, w.name from work_log as p join worker as w "
 				+"on p.id = w.id "
 				+"where Date(date) >= ? "
-				+"order by time";
+				+"order by time desc";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, today);

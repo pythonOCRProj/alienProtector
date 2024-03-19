@@ -49,6 +49,9 @@
 
 }
 .workListBox .workList .workListTitle{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	cursor: pointer;	
 	padding: 0 1rem;
 	height: 58px;
@@ -60,14 +63,41 @@
 .workListBox .workList .workListTitle h4 {
 	color: var(--bg-color);
 	line-height: 56px;
+	min-width:230px;
 	transition: .3s ease-in;
 }
+.workListBox .workList .workListTitle .moreBtn {
+	width: 20px;
+	height:20px;
+	position: relative;
+}
+.workListBox .workList .workListTitle .moreBtn > div {
+	width: 100%;
+	border-bottom: 3px solid var(--bg-color);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-50%, -50%);
+	transition: .3s ease-in;
+}
+.workListBox .workList .workListTitle .moreBtn > .moreH {
+	transform: translate(-50%, -50%) rotate(90deg);
+
+}
+.workListBox .workList.active .workListTitle .moreBtn > div{
+	border-color: var(--main-title-color);
+}
+.workListBox .workList.active .workListTitle .moreBtn > .moreH{
+	transform: translate(-50%, -50%) rotate(0deg);
+}
+
 .workListBox .workList.active .workListTitle {
 	background-color: var(--border-color);
 	border:1px solid var(--border-color);
 }
 .workListBox .workList.active .workListTitle h4 {
 	color: var(--text-title-color);
+
 }
 
 
@@ -79,7 +109,45 @@
 	border-top: 0px;
 	/*transition: .3s ease-in;*/
 }
-.workListBox .workList.active .workTable{
+.workListBox .workList.active .workTable.shift{
+	display: block;
+}
 
+
+
+
+.workListBox .workList .workListTitle .workSincerity{
+	width: 50%;
+	height: 40px;
+	position: relative;
+	z-index: 2;
+}
+.workListBox .workList .workListTitle .workSincerity::before{
+	content:'';
+	display: block;
+	width: 100%;
+	height: 40px;
+	background-color: var(--text-title-color);
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
+}
+
+.workListBox .workList .workListTitle .workSincerity .workSincerity__text {
+	line-height: 40px;
+	position:relative;
+	padding-left: 1rem;
+	z-index:3;
+}
+.workListBox .workList .workListTitle .workSincerity .workSincerity__text span {
+	color:var(--bg-color);
+}
+.workListBox .workList .workListTitle .workSincerity .workSincerity__bar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 40px;
+	background-color: #0FA958;
 }
 

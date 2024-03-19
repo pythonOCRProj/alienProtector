@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 
 <script src="../js/jquery-3.7.1.js"></script>
+<script src="../js/clock.js"></script>
 <script>
  $(function(){
     $("input[name='chk']").on("click",function(){
@@ -25,36 +26,6 @@
     	 location.href="PatrolWrite?click=3";
     })
  })
-   
- window.onload = function() {                
-              timmer();
-              }
-
-function timmer() {
- 
-     var now = new Date();  
-     var second = now.getSeconds();
-     var hours = now.getHours();
-     var minutes = now.getMinutes();
-     if(second < 10 ){
-    	 second = "0" + second;
-     }
-     if(hours <10){
-    	 hours = "0" + hours;
-     }
-     if(minutes < 10){
-    	 minutes  = "0" + minutes;
-     }
-     var nowTime =hours + ":" + minutes + ":" + second;
-
-
-     document.getElementById("patrol_time").innerHTML = nowTime;
-     setTimeout("timmer()",1000);
-}
-
-
-
-
 </script>
 <html>
 <head>
@@ -64,7 +35,7 @@ function timmer() {
 <form action="PatrolReg" method="post" enctype="multipart/form-data">
    <div class="patrol">
       <div class="patrol_timebox">
-      	<div class="patrol_time" id="patrol_time"></div>
+      	<div class="patrol_time" id="clock"></div>
        	<div class="patrol_day">${day }</div>
       </div>
       <div class="patrol_turn">

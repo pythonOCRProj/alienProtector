@@ -131,10 +131,10 @@ public class WorkDAO {
 		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
 		PatrolDTO dto = null;
 		
-		sql = "select p.*, w.name from work_log as p join worker as w "
+		sql = "select p.*, w.name, w.hire from work_log as p join worker as w "
 				+"on p.id = w.id "
 				+"where Date(p.date) between ? and ? "
-				+"order by p.date, p.time";
+				+"order by p.date desc, p.time desc";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1,start);
@@ -152,6 +152,7 @@ public class WorkDAO {
 				dto.setTime(rs.getString("p.time"));
 				dto.setName(rs.getString("w.name"));
 				dto.setTurn(rs.getInt("p.turn"));
+				
 				
 				res.add(dto);
 				
@@ -203,6 +204,80 @@ public class WorkDAO {
 		}
 		return dto;
 	}
+	
+	
+	/**
+	 * 근무자별로 조회 날짜 기간에 근무한 근무자 리스트와 각 근무자들의 근무일수 구하기
+	 * */
+	public ArrayList<CommuteDTO> commuteList(String start, String end){
+		ArrayList<CommuteDTO> res = new ArrayList<CommuteDTO>();
+		CommuteDTO dto = null;
+		
+		sql = "select c.*, count(leave_time) cnt, w.name, w.hire "
+				+ "from commute as c join worker as w on c.id = w.id  "
+				+ "where c.id != 'master' and Date(c.leave_time) between ? and ? group by c.id "
+				+ "order by max(c.leave_time) desc";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1,start);
+			psmt.setString(2,end);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new CommuteDTO();
+				dto.setId(rs.getString("c.id"));
+				dto.setName(rs.getString("w.name"));
+				dto.setCnt(rs.getInt("cnt"));
+				dto.setHire(rs.getInt("w.hire"));
+				
+				res.add(dto);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+
+		
+		return res;
+		
+	}
+	
+	public ArrayList<PatrolDTO> workCnt(String start, String end){
+		ArrayList<PatrolDTO> res = new ArrayList<PatrolDTO>();
+		PatrolDTO dto = null;
+		
+		sql = "select *,count(*) pcnt from work_log "
+				+"where Date(date) between ? and ? "
+				+"group by id";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1,start);
+			psmt.setString(2,end);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new PatrolDTO();
+				dto.setId(rs.getString("id"));
+				dto.setPcnt(rs.getInt("pcnt"));
+				
+				res.add(dto);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+
+		
+		return res;
+	}
+	
+	
 }
 
 

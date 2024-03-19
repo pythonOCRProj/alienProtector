@@ -42,6 +42,7 @@
 @import "./screens/notice/noticeList.css";
 @import "./screens/notice/noticeDetail.css";
 @import "./screens/login/login.css";
+@import "./screens/dashboard/dashboard.css";
 @import "./screens/work/workList.css";
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
@@ -61,7 +62,7 @@
 }
 body{
 	width: 100%;
-	padding-top: 80px;
+	padding-top: 74px;
 	position: relative;
 	background-color: var(--bg-color);
 }
