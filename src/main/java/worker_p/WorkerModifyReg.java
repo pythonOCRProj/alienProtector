@@ -26,16 +26,14 @@ public class WorkerModifyReg implements WorkerService{
 				WorkerDTO worker = new WorkerDTO();
 				worker.setId(request.getParameter("id"));
 				worker =  new WorkerDAO().getWorkerInfo(worker);
+				String beforeImg = worker.getProfileImg();
 				
+				String email = request.getParameter("email");
 				String pwd = request.getParameter("pwd");
 				String chk = request.getParameter("pwdChk");
 				String phone = request.getParameter("phone");
 				
 				try {
-					
-					//아이디 유효성검사
-					
-					
 					
 					
 					//비밀번호 유효성 검사
@@ -54,7 +52,7 @@ public class WorkerModifyReg implements WorkerService{
 					boolean phoneChk = (!"".equals(phone) && phone != null && phone.matches(phoneRegex));
 					if(phoneChk) {
 						worker.setPhoneNum(phone);
-					}else if(!"".equals(phone) && phone != null && !phone.matches(phoneRegex)) {
+					}else if(!"".equals(phone) || phone != null || !phone.matches(phoneRegex)) {
 						request.setAttribute("dto", worker);
 						new RedirectionPage(request, response).movePage("휴대폰 번호 양식을 확인하세요. ex) 010-0000-0000", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 						return;
@@ -78,6 +76,13 @@ public class WorkerModifyReg implements WorkerService{
 						}
 					}
 					
+					//이메일 유효성 검사
+					String emailReg = "^[a-zA-Z0-9]{3,}@[a-zA-Z0-9.-]{2,}\\.[a-zA-Z]{2,}$";
+					if(!email.matches(emailReg)) {
+						new RedirectionPage(request, response).movePage("이메일 양식이 맞지 않습니다.", "/alienProtector/worker/WorkerModify?id="+worker.getId());
+						return;
+					}
+					worker.setEmail(email);
 					
 					int isUpdated = new WorkerDAO().updateWorker(worker);
 					WorkerDTO res = new WorkerDAO().getWorkerInfo(worker);
@@ -87,7 +92,7 @@ public class WorkerModifyReg implements WorkerService{
 						new RedirectionPage(request, response).movePage("근무자 정보 수정 실패, 양식을 확인하세요.", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 						return;
 					}
-
+					new File(dir+beforeImg).delete();
 					new RedirectionPage(request, response).movePage("근무자 정보 수정 완료", "/alienProtector/worker/WorkerModify?id="+worker.getId());
 					
 					
