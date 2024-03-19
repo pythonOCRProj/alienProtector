@@ -16,12 +16,31 @@
 %>
 
 	<script>
+		<!--
     	function apply(id){
             // 중복확인 id를 부모창에 적용시키기
+            //중복체크 값을 idUncheck를 idCheck값으로 변경
+            //opener.document.parform.idDuplication.value=idCheck;
             // 부모창 opener
             opener.document.parform.id.value=id;
             window.close(); //창닫기
         }//apply () end
+        -->
+        
+        <!-- 
+        function sendCheckValue() {
+        	opener.document.parform.idDuplication.value="idCheck";
+        	if(opener != null) {
+        		opener.idchang = null;
+        		self.close();
+        	}	
+        }
+        -->
+        function apply(id) {
+        	//opener.document.parform.idDuplication.value=idCheck;
+        	opener.document.parform.id.value=id;
+            window.close(); //창닫기
+        }
     </script>
  <%
  	}else{

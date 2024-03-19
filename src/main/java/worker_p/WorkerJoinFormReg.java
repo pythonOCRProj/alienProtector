@@ -26,8 +26,6 @@ public class WorkerJoinFormReg implements WorkerService {
 			}else {
 		
 				WorkerDTO worker = new WorkerDTO();
-			
-				//String upFileName;
 		
 				try {
 					
@@ -42,14 +40,23 @@ public class WorkerJoinFormReg implements WorkerService {
 					System.out.println(addr3);
 					System.out.println(addr4);
 					String addr =  addr2 + addr3 + addr4;
-						
+					//아이디 유효성 검사
+					//아이디가 공백이거나 null이거나~
+					/*
+					if(request.getParameter("id").equals("") || request.getParameter("id")==null ) {
+						new RedirectionPage(request, response).movePage("id를 확인해주세요.","WorkerJoinForm");
 					//비밀번호 유효성 검사
-					// 비밀번호가 공백이아니거나 눌값이아니거나 비밀번호와 비밀번호확인이다르거나 
+					// 비밀번호가 공백이아니거나 눌값이아니거나 비밀번호와 비밀번호확인이다르거나
+					} else
+					*/ 
 					if(request.getParameter("pwd").equals("") || request.getParameter("pwd")==null || !(request.getParameter("pwd").equals(pwdchk)) ) {
 						new RedirectionPage(request, response).movePage("비밀번호를 확인해주세요.","WorkerJoinForm");
-					
+					// 이름확인
 					} else if(request.getParameter("name").equals("") || request.getParameter("name")==null) {
 						new RedirectionPage(request, response).movePage("이름을 확인해주세요.","WorkerJoinForm");
+					// 전화번호 확인
+					} else if(request.getParameter("phone_num").equals("") || request.getParameter("phone_num")==null){
+						new RedirectionPage(request, response).movePage("전화번호를 확인해주세요.","WorkerJoinForm");
 					} else {
 						//upFileName = new FileUp(request).fileUpload(request.getPart("upfile"));
 						System.out.println(request.getParameter("pwd"));

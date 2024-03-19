@@ -1,13 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
+<script type="text/javascript">
 function idCheck(){
 	  //새창 만들기
 	  window.open("IdCheckForm", "idchang", "width=400, height=350");
+}
+
+function checkValue() {
+	 
+	//var form = document.parform;
+	
+	
+	if(document.parform.idDuplication.value != "idChcek") {
+		alert("아이디 중복체크를해주세요.")
+		return false;
 	}
+	
+}
+
+//function inputIdChk() {
+//	document.parform.idDuplication.value ="idUncheck";
+//}
 </script>
-	<form action="WorkerJoinFormReg" method="post" name="parform" enctype="multipart/form-data">
+	<form action="WorkerJoinFormReg" method="post" name="parform" enctype="multipart/form-data" onsubmit="return checkValue()">
 		<table border="">
 			<tr>
 				<td>아이디</td>
@@ -15,9 +31,9 @@ function idCheck(){
 					<input type="text" name="id" Placeholder="아이디를 입력해 주세요" onkeydown="inputIdChk()">
 					<input type="button" value="ID중복확인" onclick="idCheck()">
 				</td>
-				<!-- 중복 체크 여부 
-				<input type="hidden" name="idcheck" value="iduncheck" />
-				-->
+				<!--  중복 체크 여부  -->
+				<input type="hidden" name="idDuplication" value="idUncheck" />
+				
 			</tr>
 			<tr>
 				<td>비밀번호</td>
@@ -36,7 +52,7 @@ function idCheck(){
 			<tr>
 				<td>휴대폰번호</td>
 				<td>
-					<input type="text" name="phone_num" Placeholder="-는 제외하고 숫자만 입력해주세요" />
+					<input type="text" name="phone_num" oninput="autoHyphen(this)" maxlength="13"  Placeholder="-는 제외하고 숫자만 입력해주세요" />
 				</td>
 			</tr>
 			<tr>
@@ -59,7 +75,7 @@ function idCheck(){
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" value="등록" />
+					<input type="submit" value="등록"  />
 				</td>
 				<td>
 					<input type="button" value="취소" onClick="location.href='<c:url value="/worker/WorkerList" />' " />
