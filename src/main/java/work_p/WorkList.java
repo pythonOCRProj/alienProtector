@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import dao_p.WorkDAO;
 import dao_p.WorkerDAO;
+import dto_p.CommuteDTO;
 import dto_p.PatrolDTO;
 import dto_p.PlaceDTO;
 import dto_p.WorkerDTO;
@@ -52,6 +53,8 @@ public class WorkList implements WorkService {
 		
 		ArrayList<PlaceDTO> placeList = new WorkDAO().placeList();
 		
+		
+		
 
 		if(sort==null) {
 			sort = "shift";		
@@ -92,6 +95,8 @@ public class WorkList implements WorkService {
 		params.put("start", start);
 		params.put("end", end);
 		
+		ArrayList<CommuteDTO> commuteList = new WorkDAO().commuteList(start, end);
+		ArrayList<PatrolDTO> workCnt = new WorkDAO().workCnt(start,end);
 		ArrayList<PatrolDTO> workData = new WorkDAO().workData(start,end);
 		
 		request.setAttribute("workData", workData);		
@@ -101,6 +106,8 @@ public class WorkList implements WorkService {
 			request.setAttribute("shiftList", shiftList);
 		}else if(sort.equals("worker")) {
 			request.setAttribute("workerList", workerList);
+			request.setAttribute("workCnt", workCnt);
+			request.setAttribute("commuteList", commuteList);
 		}else if(sort.equals("position")) {
 			request.setAttribute("placeList", placeList);
 		}

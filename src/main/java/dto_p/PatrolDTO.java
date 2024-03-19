@@ -7,7 +7,15 @@ import java.util.Date;
 public class PatrolDTO {
 
 	String photo, special, shoot, id, position, shift, date, time, name;
-	int no, turn;
+	int no, turn, pcnt;
+	
+	
+	public int getPcnt() {
+		return pcnt;
+	}
+	public void setPcnt(int pcnt) {
+		this.pcnt = pcnt;
+	}
 	Date now;
 	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 	

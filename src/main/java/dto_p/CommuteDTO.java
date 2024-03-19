@@ -7,8 +7,21 @@ import java.util.Date;
 public class CommuteDTO {
 	String id, name;
 	Date goTime, leaveTime;
+	int cnt, hire;
 	
 	
+	public int getHire() {
+		return hire;
+	}
+	public void setHire(int hire) {
+		this.hire = hire;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	public String getGoTimeStr() {

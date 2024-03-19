@@ -56,8 +56,10 @@ public class DashUtills {
 		ArrayList<CommuteDTO> dto = new DashBoardDAO().todayLeave(todayStr);
 		request.setAttribute("todayLeave", dto);
 	}
-	public void getTodayPatrol() {		
+	public void getTodayPatrol() {			
 		ArrayList<PatrolDTO> dto = new DashBoardDAO().todayPatrol(todayStr);
 		request.setAttribute("todayPatrol", dto);
+		today.add(Calendar.DATE, 1);
+		request.setAttribute("clockDate", new SimpleDateFormat("yyyy-MM-dd(E)").format(today.getTime()));
 	}
 }

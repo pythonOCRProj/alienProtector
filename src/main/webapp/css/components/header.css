@@ -8,6 +8,7 @@ header{
 	left: 0;
 	border-bottom: 2px solid var(--main-dark-color);
 	padding: .5rem.1rem;
+	z-index: 99999;
 }
 .header {
 	width: 100%;
