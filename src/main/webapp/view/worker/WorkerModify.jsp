@@ -14,12 +14,10 @@
 			<c:if test="${dto.profileImg != null }">
 				<img src="../profile/${dto.profileImg}" alt="" />
 			</c:if>
-			<input type="file" name="profile"/>
+			<input class="upload-profile" type="file" name="profile"/>
 		</div>
 		<div class="worker__rows">
 			<div class="worker__row">
-				<input type="hidden" name="id" value="${dto.id }" />
-
 				<p class="worker__col">아이디</p>
 				<div class="worker__col">
 					${dto.id} - 
@@ -40,7 +38,8 @@
 							</c:when>
 							
 						</c:choose>
-				</div>																		
+				</div>
+				<input type="hidden" name="id" value="${dto.id }" />																		
 			</div>
 			
 			<div class="worker__row">
@@ -72,19 +71,19 @@
 				<input type="text" name="phone" placeholder="ex) 010-1234-1234" value="${dto.phoneNum}" />
 			</div>
 			<div class="worker__row">
-				<p class="worker__col">이메일</p>
-				<p class="worker__col">${dto.email }</p>
+				<input type="text" name="email" placeholder="이메일 입력 ex) worker@exam.com" value="${dto.email}" />
 			</div>
 		</div>
 		<div class="worker__btns">
 			<input class="worker__sum-btn" type="submit" value= "전송"/>
-			<a class="worker__sum-btn worker__basic-btn" href="/alienProtector/worker/WorkerList">목록</a>
+			<input class="worker__sum-btn worker__basic-btn" type="button" value= "목록"/>
 		</div>
 	</div>
 </form>
 
 <script>
 	$(()=>{
+		
 		$(".worker__col > button").on("click",function(e){
 			e.preventDefault();
 			const html = $(this).html();
@@ -92,6 +91,42 @@
 				window.location.href = "/alienProtector/worker/Returning?id=${dto.id}&s="+html
 			}
 			
+		});
+		
+		$(".worker__btns > input[type=button]").on("click",function(e){
+			location.href="/alienProtector/worker/WorkerList";
+		});
+		
+		
+		$(".worker__img > img").on("keydown",function(e){
+			let upload = $(".upload-profile")
+			upload.click();
+		});
+		
+		$("input[name = pwd]").on("keydown",function(e){
+			if(e.key == "Enter"){			
+				e.preventDefault();
+				$("input[name=pwdChk]").focus();
+			}
+		});
+		$("input[name = pwdChk]").on("keydown",function(e){
+			if(e.key == "Enter"){			
+				e.preventDefault();
+				$("input[name=phone]").focus();
+			}
+		});
+		$("input[name = phone]").on("keydown",function(e){
+			if(e.key == "Enter"){			
+				e.preventDefault();
+				$("input[name=email]").focus();
+			}
+		});
+		
+		$("input[name = email]").on("keydown",function(e){
+			if(e.key == "Enter"){			
+				e.preventDefault();
+				$("input[type=submit]").focus();
+			}
 		});
 		
 	})

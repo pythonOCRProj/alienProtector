@@ -154,7 +154,7 @@ public class WorkerDAO {
 	public int updateWorker(WorkerDTO dto) {
 		int res = 0;
 		
-		sql = "update worker set pwd = ?, phone_num = ?, profile_img = ? where id = ? ";
+		sql = "update worker set pwd = ?, phone_num = ?, profile_img = ?, email=? where id = ? ";
 		
 		
 		try {
@@ -162,7 +162,8 @@ public class WorkerDAO {
 			psmt.setString(1, dto.getPwd());
 			psmt.setString(2, dto.getPhoneNum());
 			psmt.setString(3, dto.getProfileImg());
-			psmt.setString(4, dto.getId());
+			psmt.setString(4, dto.getEmail());
+			psmt.setString(5, dto.getId());
 			
 			res = psmt.executeUpdate();
 			
