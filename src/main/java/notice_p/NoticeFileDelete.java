@@ -19,7 +19,7 @@ public class NoticeFileDelete implements NoticeService {
 		System.out.println("삭제진입하냐");
 		//1. 파일에서 삭제하기
 		//System.out.println(request.getParameter("upFile"));
-		new FileUp(request).fileDelete(request.getParameter("based_upfile"));		
+		new FileUp(request).fileDelete(request.getParameter("upfile"));		
 		
 		dto.setNo(Integer.parseInt(request.getParameter("no")));
 		dto.setTitle(request.getParameter("title"));
@@ -32,9 +32,10 @@ public class NoticeFileDelete implements NoticeService {
 		//3. 값을 반납하고 원래 수정폼으로 이동
 		request.setAttribute("ModifyData", dto);
 		new RedirectionPage(request, response).movePage("삭제되었습니다.",
-				"NoticeModifyForm?no=" + dto.getNo());
+				"NoticeModify?no=" + dto.getNo());
 		
-		System.out.println("삭제진입하냐2");
+		
+		System.out.println("삭제진입끝");
 	}
 
 }

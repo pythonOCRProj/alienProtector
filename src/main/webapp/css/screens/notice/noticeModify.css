@@ -22,17 +22,24 @@
 }
 
 .noticeModify_titleWrap{
+	position: relative;
 	display: flex;
 	width: 100%;
 	border-bottom: 1px solid var(--border-color);
 	
+}
 
+.noticeModify_titleWrap > .abs{
+	position: absolute;
+	z-index: 5;
+	bottom: 0;
+	right: 10px;
 }
 .noticeModify_fileWrap {
 	display: flex;
 	width: 100%;
 	border-bottom: 1px solid var(--border-color);
-
+	
 }
 
 .noticeModify_imgWrap {
@@ -101,5 +108,11 @@
 }
 
 .noticeModify_Img {
+	width: 80%;
+	box-sizing: border-box;
+	
+}
+.noticeModify_Img > img{
 	width: 100%;
+	object-fit: cover;
 }

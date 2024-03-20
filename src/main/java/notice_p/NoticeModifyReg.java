@@ -20,14 +20,18 @@ public class NoticeModifyReg implements NoticeService {
 		// TODO Auto-generated method stub
 
 		try {
+			
 			WorkerDTO dto2 = (WorkerDTO) request.getSession().getAttribute("Worker");
 			if (!dto2.getId().equals("master")) {
 				new RedirectionPage(request, response).goMain("관리자 권한이 없습니다.");
 			} else {
 
-				String upFileName;
 				try {
+
+					System.out.println("노티스모디파이레그진입");
 					NoticeDTO dto = new NoticeDTO();
+					String upFileName = request.getPart("upfile").getSubmittedFileName();
+
 					dto.setNo(Integer.parseInt(request.getParameter("no")));
 					WorkerDTO login = (WorkerDTO) request.getSession().getAttribute("Worker");
 
@@ -45,7 +49,9 @@ public class NoticeModifyReg implements NoticeService {
 						new NoticeDAO().noticeModify(dto);
 						request.setAttribute("ModifyData", dto);
 
-						new RedirectionPage(request, response).movePage("수정되었습니다.", "NoticeList");
+						// new RedirectionPage(request, response).movePage("수정되었습니다.", "NoticeList");
+						new RedirectionPage(request, response).movePage("수정되었습니다.", "NoticeDetail?no=" + dto.getNo());
+
 					}
 
 				} catch (IOException e) {
