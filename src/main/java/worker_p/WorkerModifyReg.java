@@ -58,7 +58,7 @@ public class WorkerModifyReg implements WorkerService{
 						return;
 					}
 					
-					
+				
 					// 업로드 프로필 유효성 검사
 					Part profile = request.getPart("profile");
 					String profileName = new ProfileUpload(request).fileUpload(profile);
