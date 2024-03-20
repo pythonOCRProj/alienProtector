@@ -12,16 +12,19 @@ function checkValue() {
 	//var form = document.parform;
 	
 	
-	if(document.parform.idDuplication.value != "idChcek") {
+	if(document.parform.idDuplication.value != "idCheck" ) {
 		alert("아이디 중복체크를해주세요.")
 		return false;
-	}
+	} 
+	//else {
+	//	alert("통과")
+	//}
 	
 }
 
-//function inputIdChk() {
-//	document.parform.idDuplication.value ="idUncheck";
-//}
+function inputIdChk() {
+	document.parform.idDuplication.value ="idUncheck";
+}
 </script>
 	<form action="WorkerJoinFormReg" method="post" name="parform" enctype="multipart/form-data" onsubmit="return checkValue()">
 		<table border="">
@@ -30,9 +33,9 @@ function checkValue() {
 				<td>
 					<input type="text" name="id" Placeholder="아이디를 입력해 주세요" onkeydown="inputIdChk()">
 					<input type="button" value="ID중복확인" onclick="idCheck()">
+					<input type="hidden"  name="idDuplication"  value="idUnCheck">
 				</td>
 				<!--  중복 체크 여부  -->
-				<input type="hidden" name="idDuplication" value="idUncheck" />
 				
 			</tr>
 			<tr>
