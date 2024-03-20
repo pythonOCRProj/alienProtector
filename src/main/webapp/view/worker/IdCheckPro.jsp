@@ -39,6 +39,7 @@
         function apply(id) {
         	//opener.document.parform.idDuplication.value=idCheck;
         	opener.document.parform.id.value=id;
+        	opener.document.parform.idDuplication.value="idCheck";
             window.close(); //창닫기
         }
     </script>
