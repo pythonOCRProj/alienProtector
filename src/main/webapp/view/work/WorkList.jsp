@@ -161,7 +161,7 @@
 									<div class="workSincerity__text">
 										<fmt:formatNumber var="barWidth" value="${wc.pcnt / (cl.cnt*15) }" type="percent"/>
 										<span>근무 성실도</span>
-										<span style="font-weight:700">${barWidth }</span>
+										<span style="font-weight:700">${barWidth } (${wc.pcnt }/${cl.cnt*15 })</span>
 										
 									</div>
 									<div class="workSincerity__bar" style="width:${barWidth}; max-width:100%;"></div>
@@ -223,7 +223,7 @@
 									<div class="workSincerity__text">
 										<fmt:formatNumber var="barWidth" value="${wc.pcnt / (cl.cnt*15) }" type="percent"/>
 										<span>근무 성실도</span>
-										<span style="font-weight:700">${barWidth }</span>
+										<span style="font-weight:700">${barWidth } (${wc.pcnt }/${cl.cnt*15 })</span>
 										
 									</div>
 									<div class="workSincerity__bar" style="width:${barWidth}; max-width:100%;"></div>

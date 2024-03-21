@@ -33,7 +33,9 @@ public class PatrolReg implements PatrolService {
 		try {
 			HttpSession session = request.getSession();
 			WorkerDTO res = (WorkerDTO)session.getAttribute("Worker");
-			
+			if(res == null) {
+				throw new NullPointerException("Session 끊김");
+			}
 			PatrolDTO dto = new PatrolDTO();
 			
 			// 파일 업로드와 파이썬 ocr

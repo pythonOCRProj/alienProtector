@@ -27,11 +27,15 @@ public class NoticeModifyReg implements NoticeService {
 			} else {
 
 				try {
-
+					
 					System.out.println("노티스모디파이레그진입");
 					NoticeDTO dto = new NoticeDTO();
-					String upFileName = request.getPart("upfile").getSubmittedFileName();
+					String basedFile = null;
+					if(request.getParameter("based_upfile") != null) {
+						basedFile = request.getParameter("based_upfile");
+						dto.setImg(basedFile);
 
+					}
 					dto.setNo(Integer.parseInt(request.getParameter("no")));
 					WorkerDTO login = (WorkerDTO) request.getSession().getAttribute("Worker");
 
@@ -39,12 +43,14 @@ public class NoticeModifyReg implements NoticeService {
 						new RedirectionPage(request, response).movePage("제목과 내용은 필수입력사항입니다.",
 								"NoticeModify?no=" + dto.getNo());
 					} else {
-						upFileName = new FileUp(request).fileUpload(request.getPart("upfile"));
+						if (request.getPart("upfile") != null && basedFile == null ) {							
+							basedFile = new FileUp(request).fileUpload(request.getPart("upfile"));
+							dto.setImg(basedFile);
+						}
 						dto.setNo(Integer.parseInt(request.getParameter("no")));
 						dto.setTitle(request.getParameter("title"));
 						dto.setContent(request.getParameter("content"));
 						dto.setId(login.getId());
-						dto.setImg(upFileName);
 
 						new NoticeDAO().noticeModify(dto);
 						request.setAttribute("ModifyData", dto);
