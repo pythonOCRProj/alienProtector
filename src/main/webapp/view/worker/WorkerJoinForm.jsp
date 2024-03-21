@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
+const autoHyphen = (target) => {
+    target.value = target.value
+     .replace(/[^0-9]/g, '')
+     .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+}
+
 function idCheck(){
 	  //새창 만들기
 	  window.open("IdCheckForm", "idchang", "width=400, height=350");
@@ -55,7 +61,7 @@ function inputIdChk() {
 			<tr>
 				<td>휴대폰번호</td>
 				<td>
-					<input type="text" name="phone_num" oninput="autoHyphen(this)" maxlength="13"  Placeholder="-는 제외하고 숫자만 입력해주세요" />
+					<input type="text" name="phone_num" oninput="autoHyphen(this)"  maxlength="13"  Placeholder="000-0000-0000" />
 				</td>
 			</tr>
 			<tr>
