@@ -93,13 +93,13 @@
 			
 		});
 		
-		$(".worker__btns > input[type=button]").on("click",function(e){
+		$(".worker__btns > input[type=button]").on("click",function(){
 			location.href="/alienProtector/worker/WorkerList";
 		});
 		
 		
-		$(".worker__img > img").on("keydown",function(e){
-			let upload = $(".upload-profile")
+		$(".worker__img > img").on("click",function(){
+			let upload = $(".upload-profile");
 			upload.click();
 		});
 		

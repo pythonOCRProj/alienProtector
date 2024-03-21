@@ -59,7 +59,7 @@
 						class="btn" />
 				</div>
 				
-				<input type="hidden" name="upfile" value="${ModifyData.img}" />
+				<input type="hidden" name="based_upfile" value="${ModifyData.img}" />
 			</c:when>
 			<c:otherwise>
 				<div>

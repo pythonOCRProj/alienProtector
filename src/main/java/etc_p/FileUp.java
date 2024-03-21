@@ -14,10 +14,10 @@ public class FileUp {
 		dir = request.getServletContext().getRealPath("img/");	
 
 
-		//dir = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //운만
+		dir = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //운만
 
 
-		dir = "C:\\CSJ\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //성재
+		//dir = "C:\\CSJ\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //성재
 //		dir = "C:\\gunwoopark\\workspace\\alienProtector\\src\\main\\webapp\\img\\"; //건우
 		//dir = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\img\\";
 
