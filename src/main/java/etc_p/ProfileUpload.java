@@ -11,9 +11,9 @@ public class ProfileUpload {
 	String dir;
 	
 	public ProfileUpload(HttpServletRequest request) {		
-		dir = request.getServletContext().getRealPath("img/");	
+		dir = request.getServletContext().getRealPath("profile/");	
 
-		dir = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\profile\\";
+		//dir = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\profile\\";
 		//	dir = "D:\\kmj\\javaProj\\alienProtector\\src\\main\\webapp\\profile\\";
 	}
 	

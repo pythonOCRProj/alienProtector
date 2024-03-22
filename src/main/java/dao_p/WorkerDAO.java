@@ -308,7 +308,9 @@ public class WorkerDAO {
 	        }
 	    }catch(Exception e){
 	     	System.out.println("아이디 중복 확인 실패 : " + e);
-	    }
+	    } finally {
+			close();
+		}
 		return cnt;
 	}
 	

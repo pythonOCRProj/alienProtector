@@ -15,7 +15,8 @@ public class PatrolOcr {
 	String photo, path, position, date, time;
 	
 	public String ocr(String  file, HttpServletRequest request, HttpServletResponse response) {
-		
+		path = request.getServletContext().getRealPath("alienPython/patrol_python/");
+		photo = request.getServletContext().getRealPath("img/");
 
 		
 		//path = "C:/CSJ/workspace/alienProtector/alienPython/patrol_python/ocr.py"; //성재
@@ -29,11 +30,11 @@ public class PatrolOcr {
 		// photo = "C:\\gunwoopark\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file; // 건우꺼
 		
 
-		path = "C:/woong/workspace/alienProtector/alienPython/patrol_python/ocr.py";
-		photo = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file;
+		//path = "C:/woong/workspace/alienProtector/alienPython/patrol_python/ocr.py";
+		//photo = "C:\\woong\\workspace\\alienProtector\\src\\main\\webapp\\img\\"+file;
 
 
-		ProcessBuilder pb = new ProcessBuilder("python", path, photo);
+		ProcessBuilder pb = new ProcessBuilder("python", path+"ocr.py", photo+file);
 
 		try {
 			Process process = pb.start();
