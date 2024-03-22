@@ -32,9 +32,13 @@ public class WorkerController extends HttpServlet {
 		try {
 			WorkerService ws = (WorkerService)Class.forName("worker_p."+incJsp).newInstance();
 			ws.execute(request, response);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
-			dispatcher.forward(request, response);
+			if(incJsp.equals("IdCheckForm") || incJsp.equals("IdCheckPro") ) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template2.jsp");
+				dispatcher.forward(request, response);	
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/view/template.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (InstantiationException e) {
 		
 			e.printStackTrace();

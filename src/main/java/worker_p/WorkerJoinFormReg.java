@@ -40,6 +40,9 @@ public class WorkerJoinFormReg implements WorkerService {
 					System.out.println(addr3);
 					System.out.println(addr4);
 					String addr =  addr2 + addr3 + addr4;
+					
+					String phoneRegex = "(0\\d{1,2})-(\\d{3,4})-(\\d{4})";
+					String nameRegex = "(^[가-힣]{2,4}$)";
 					//아이디 유효성 검사
 					//아이디가 공백이거나 null이거나~
 					/*
@@ -52,13 +55,16 @@ public class WorkerJoinFormReg implements WorkerService {
 					if(request.getParameter("pwd").equals("") || request.getParameter("pwd")==null || !(request.getParameter("pwd").equals(pwdchk)) ) {
 						new RedirectionPage(request, response).movePage("비밀번호를 확인해주세요.","WorkerJoinForm");
 					// 이름확인
-					} else if(request.getParameter("name").equals("") || request.getParameter("name")==null) {
+					} else if(request.getParameter("name").equals("") || request.getParameter("name")==null || !(request.getParameter("name")).matches(nameRegex)) {
 						new RedirectionPage(request, response).movePage("이름을 확인해주세요.","WorkerJoinForm");
 					// 전화번호 확인
 					} else if(request.getParameter("phone_num").equals("") || request.getParameter("phone_num")==null){
+					// 전화번호 유효성검사
 						new RedirectionPage(request, response).movePage("전화번호를 확인해주세요.","WorkerJoinForm");
+					} else if(!(request.getParameter("phone_num")).matches(phoneRegex)) {
+						new RedirectionPage(request, response).movePage("000-0000-0000양식을 맞춰주세요.","WorkerJoinForm");
 					} else {
-						//upFileName = new FileUp(request).fileUpload(request.getPart("upfile"));
+						System.out.println("123456789");
 						System.out.println(request.getParameter("pwd"));
 						//id
 						worker.setId(request.getParameter("id"));
